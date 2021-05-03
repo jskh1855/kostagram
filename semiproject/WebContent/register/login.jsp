@@ -7,6 +7,6 @@
    <input type="password" name="password"  placeholder="비밀번호" size="24">
     <input type="submit" value="로그인">
 </form>
-<form method="post" action="main/register.jsp">
+<form method="post" action="register/register.jsp">
     <input type="submit" value="회원가입">
 </form>

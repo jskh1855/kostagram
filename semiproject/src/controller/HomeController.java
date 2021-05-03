@@ -12,11 +12,11 @@ public class HomeController implements Controller{
 	public String execute(HttpServletRequest request, HttpServletResponse response) throws Exception {
 		HttpSession session=request.getSession(false);
 		if(session==null||session.getAttribute("mvo")==null){
-			request.setAttribute("url", "/main/login.jsp");
+			request.setAttribute("url", "/register/login.jsp");
 			return "/template/layout.jsp";
 		}
 		else {
-			request.setAttribute("url", "/main/list.jsp");
+			request.setAttribute("url", "/home/home.jsp");
 			return "/template/layout.jsp";
 		}
 

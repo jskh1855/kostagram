@@ -23,8 +23,22 @@ create table k_member(
 	profile_image varchar2(100) not null,
 	profile_content clob not null
 )
+select * from member;
+delete from member;
+drop table member;
+drop table user;
+create table member (
 
+  userID varchar2(50),
 
+  userPassword varchar2(50),
+
+  userEmail varchar2(50),
+
+  userEmailHash varchar2(64),
+  userEmailChecked NUMBER(1,0)
+
+)
 
 
 
