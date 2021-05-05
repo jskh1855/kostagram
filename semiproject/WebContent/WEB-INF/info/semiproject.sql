@@ -28,16 +28,13 @@ delete from member;
 drop table member;
 drop table user;
 create table member (
-
-  userID varchar2(50),
-
-  userPassword varchar2(50),
-
-  userEmail varchar2(50),
+  name varchar2(50),
+  password varchar2(50),
+  email varchar2(50),
   image varchar2(50),
-  userEmailHash varchar2(64),
-  userEmailChecked NUMBER(1,0)
-
+  intro clob,
+  emailHash varchar2(64),
+  emailChecked NUMBER(1,0)
 )
 
 
