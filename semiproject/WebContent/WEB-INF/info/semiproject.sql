@@ -34,7 +34,7 @@ create table member (
   userPassword varchar2(50),
 
   userEmail varchar2(50),
-
+  image varchar2(50),
   userEmailHash varchar2(64),
   userEmailChecked NUMBER(1,0)
 
