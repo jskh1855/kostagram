@@ -15,7 +15,7 @@
 
 <%
 		String host = "http://localhost:8888/semiproject/";		
-		String from = "halfspacekim@gmail.com";
+		String from = "kosta215555@gmail.com";
 		String to = request.getParameter("email");
 		String code = SHA256.getEncrypt(to, "cos");
 
