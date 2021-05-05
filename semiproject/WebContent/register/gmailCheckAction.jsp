@@ -8,8 +8,10 @@
 
 	//해당 이메일로 SHA256한 값과 code 값을 비교한다.
 	String code = request.getParameter("code");
+	HttpSession session = request.getSession();
+	
 	boolean rightCode = 
-			SHA256.getEncrypt("halfspacekim@gmail.com", "cos").equals(code) ? true : false;
+			SHA256.getEncrypt(, "cos").equals(code) ? true : false;
 	PrintWriter script = response.getWriter();
 	if(rightCode == true){
 		script.println("<script>");
