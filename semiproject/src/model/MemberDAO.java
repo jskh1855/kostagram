@@ -1,203 +1,83 @@
 package model;
 
 import java.sql.Connection;
-
-import java.sql.DriverManager;
-
 import java.sql.PreparedStatement;
-
 import java.sql.ResultSet;
-
 import java.sql.SQLException;
 
+import javax.sql.DataSource;
+
+
+import controller.DataSourceManager;
 
 
 public class MemberDAO {
 
-
-
-	private Connection conn;
-
-	private ResultSet rs;
-
-
-
-	public MemberDAO() {
-
-		try {
-
-			String url = "jdbc:oracle:thin:@127.0.0.1:1521:xe";
-
-			String user = "scott";
-
-			String pass = "tiger";
-
-			Class.forName("oracle.jdbc.OracleDriver");
-
-			conn= DriverManager.getConnection(url, user, pass);
-		} catch (Exception e) {
-
-			e.printStackTrace();
-
-		}
-
-	}
-
+	private static MemberDAO dao=new MemberDAO();
+	private DataSource dataSource;
 	
-
-	public int login(String userID, String userPassword) {
-
-		String SQL = "SELECT userPassword FROM MEMBER WHERE userID = ?";
-
-		try {
-
-			PreparedStatement pstmt = conn.prepareStatement(SQL);
-
-			pstmt.setString(1, userID);
-
-			rs = pstmt.executeQuery();
-
-			if(rs.next()) {
-
-				if(rs.getString(1).equals(userPassword))
-
-					return 1; // 로그인 성공
-
-				else
-
-					return 0; // 비밀번호 틀림
-
+	private MemberDAO(){
+		dataSource=DataSourceManager.getInstance().getDataSource();
+	}
+	
+	public static MemberDAO getInstance(){		
+		return dao;
+	}
+	
+	public void closeAll(PreparedStatement pstmt,
+			Connection con) throws SQLException{
+		closeAll(null,pstmt,con);
+	}
+	
+	public void closeAll(ResultSet rs,PreparedStatement pstmt,
+			Connection con) throws SQLException{
+		if(rs!=null)
+			rs.close();
+		if(pstmt!=null)
+			pstmt.close();
+		if(con!=null)
+			con.close();
+	}
+	
+	public MemberVO login(String id,String password) throws SQLException{
+		MemberVO vo=null;
+		Connection con=null;
+		PreparedStatement pstmt=null;
+		ResultSet rs=null;
+		try{
+			con=dataSource.getConnection();
+			String sql="select name from board_member where email=? and password=?";
+			pstmt=con.prepareStatement(sql);
+			pstmt.setString(1, id);
+			pstmt.setString(2, password);
+			rs=pstmt.executeQuery();
+			if(rs.next()){
+				vo=new MemberVO();
 			}
-
-			return -1; // 아이디 없음
-
-		} catch (SQLException e) {
-
-			e.printStackTrace();
-
+		}finally{
+			closeAll(rs, pstmt,con);
 		}
-
-		return -2; // 데이터베이스 오류
-
+		return vo;
 	}
 
-	
-
-	public int join(MemberVO user) {
-
-		String SQL = "INSERT INTO MEMBER VALUES (?, ?, ?, ?, 0)";
-
-		try {
-
-			PreparedStatement pstmt = conn.prepareStatement(SQL);
-
-			pstmt.setString(1, user.getUserID());
-
-			pstmt.setString(2, user.getUserPassword());
-
-			pstmt.setString(3, user.getUserEmail());
-
-			pstmt.setString(4, user.getUserEmailHash());
-
-			return pstmt.executeUpdate();
-
-		} catch (SQLException e) {
-
-			e.printStackTrace();
-
-		}
-
-		return -1; // 회원가입 실패
-
-	}
-
-	
-
-	public String getUserEmail(String userID) {
-
-		String SQL = "SELECT userEmail FROM MEMBER WHERE userID = ?";
-
-		try {
-
-			PreparedStatement pstmt = conn.prepareStatement(SQL);
-
-			pstmt.setString(1, userID);
-
-			rs = pstmt.executeQuery();
-
-			while(rs.next()) {
-
-				return rs.getString(1); // 이메일 주소 반환
-
-			}
-
-		} catch (SQLException e) {
-
-			e.printStackTrace();
-
-		}
-
-		return null; // 데이터베이스 오류
-
-	}
-
-	
-
-	public boolean getUserEmailChecked(String userID) {
-
-		String SQL = "SELECT userEmailChecked FROM MEMBER WHERE userID = ?";
-		int ans = 0;
-		try {
-
-			PreparedStatement pstmt = conn.prepareStatement(SQL);
-
-			pstmt.setString(1, userID);
-
-			rs = pstmt.executeQuery();
-
-			while(rs.next()) {
-
-				ans = rs.getInt(1); // 이메일 등록 여부 반환
-
-			}
-
-		} catch (SQLException e) {
-
-			e.printStackTrace();
-
-		}
-
-		if (ans == 1)
-			return true;
-		else
-			return false;
-
-	}
-
-	
-
-	public boolean setUserEmailChecked(String userID) {
-
-		String SQL = "UPDATE MEMBER SET userEmailChecked = 1 WHERE userID = ?";
-
-		try {
-
-			PreparedStatement pstmt = conn.prepareStatement(SQL);
-
-			pstmt.setString(1, userID);
-
+	public void register(String email, String password, String name) throws SQLException {
+		Connection con=null;
+		PreparedStatement pstmt=null;
+		try{
+			con=dataSource.getConnection();
+			StringBuilder sql=new StringBuilder();		
+			sql.append("INSERT INTO board(email,password,name) ");
+			sql.append("values(?,?,?) ");
+			sql.append("WHERE b.id=m.id ");	
+			sql.append("order by no desc");
+			pstmt=con.prepareStatement(sql.toString());
+			pstmt.setString(1, email);
+			pstmt.setString(2, password);
+			pstmt.setString(3, name);
 			pstmt.executeUpdate();
-
-			return true; // 이메일 등록 설정 성공
-
-		} catch (SQLException e) {
-
-			e.printStackTrace();
-
+		}finally{
+			closeAll(pstmt,con);
 		}
-
-		return false; // 이메일 등록 설정 실패
-
 	}
 
 }

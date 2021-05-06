@@ -15,7 +15,7 @@
 
 <%
 		String host = "http://localhost:8888/semiproject/";		
-		String from = "halfspacekim@gmail.com";
+		String from = "kosta215555@gmail.com";
 		String to = request.getParameter("email");
 		String code = SHA256.getEncrypt(to, "cos");
 
@@ -64,5 +64,6 @@
 </head>
 <body>
 <h1>이메일 주소 인증 메일이 전송되었습니다. 이메일에 들어가서 인증해주세요.</h1>
+<img src="WebContent/image/error.jpg" alt="JangHoon" width="800" height="600">
 </body>
 </html>
