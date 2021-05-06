@@ -27,7 +27,7 @@ select * from member;
 delete from member;
 drop table member;
 drop table user;
-create table member (
+create table k_member (
   name varchar2(50),
   password varchar2(50),
   email varchar2(50),

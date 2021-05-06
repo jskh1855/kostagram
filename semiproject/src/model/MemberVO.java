@@ -91,5 +91,10 @@ public class MemberVO {
 		this.userEmailChecked = userEmailChecked;
 
 	}
+	
+	public MemberVO() {
+		super();
+		
+	}
 
 }
