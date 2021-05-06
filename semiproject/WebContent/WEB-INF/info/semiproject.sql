@@ -31,12 +31,6 @@ create table k_member(
 
 select no,count(*) AS likes from k_likes group by no;
 
-select title 
-	select email,
-	DENSE_RANK() over(order by count(no) DESC) like_rank
-	from k_likes
-from K_BOARD;
-
 insert into k_member(email,name,password) values('123@gmail','김','123');
 insert into k_member(email,name,password) values('234@gmail','이','234');
 insert into k_member(email,name,password) values('345@gmail','박','345');
