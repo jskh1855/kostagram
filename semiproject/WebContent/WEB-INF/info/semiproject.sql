@@ -4,9 +4,12 @@ create sequence k_seq;
 drop table k_board;
 drop table k_member;
 drop table k_likes;
+DROP SEQUENCE k_seq;
+
 create table k_board(
 	no number primary key,
 	title varchar2(100) not null,
+	post_image varchar2(100) not null,
 	content clob,
 	hits number default 0,
 	time_posted date,
@@ -35,9 +38,9 @@ insert into k_member(email,name,password) values('123@gmail','김','123');
 insert into k_member(email,name,password) values('234@gmail','이','234');
 insert into k_member(email,name,password) values('345@gmail','박','345');
 
-insert into K_BOARD(no,title,email) values(1,'a','123@gmail');
-insert into K_BOARD(no,title,email) values(2,'b','234@gmail');
-insert into K_BOARD(no,title,email) values(3,'c','345@gmail');
+insert into K_BOARD(no,title,post_image,email) values(1,'a','a이미지','123@gmail');
+insert into K_BOARD(no,title,post_image,email) values(2,'b','b이미지','234@gmail');
+insert into K_BOARD(no,title,post_image,email) values(3,'c','c이미지','345@gmail');
 
 insert into k_likes(no,email) values(1,'123@gmail');
 insert into k_likes(no,email) values(1,'234@gmail');
@@ -46,6 +49,50 @@ insert into k_likes(no,email) values(2,'123@gmail');
 insert into k_likes(no,email) values(3,'123@gmail');
 insert into k_likes(no,email) values(3,'345@gmail');
 
+
+
+
+
+----------------------------------------------------------------
+select * from k_board;
+select * from K_LIKES;
+select * from K_MEMBER;
+
+-- 좋아요 top3 포스팅 필요(no, email, content,   count(*) 게시글당 좋아요수 카운트)
+select no, email, content
+from k_board;
+
+select no, count(*) as likesCount 
+from K_LIKES 
+group by no;
+
+select b.no, b.email, b.content, l.email as 누가좋아요
+from k_board b, K_LIKES l
+where b.no = l.no 
+group by b.no, b.email, b.content;
+
+
+select l.no, count(*) as likesCount, b.no
+from K_LIKES l, K_BOARD b 
+where l.no = b.no
+group by l.no;
+
+
+
+
+-- BoardDAO.getPostingTotalList()    
+-- 전체 리스트 출력 By 재훈, 진솔   
+-- no < 시퀀스 시간순으로 입력되므로 역순으로 출력
+select no, post_image 
+from K_BOARD
+order by no desc;
+
+
+
+
+
+
+----------------------------------------------------------------------------
 
 
 
