@@ -8,11 +8,11 @@
 
 	//해당 이메일로 SHA256한 값과 code 값을 비교한다.
 	String code = request.getParameter("code");
-	HttpSession session = request.getSession();
 	
-	boolean rightCode = 
-			SHA256.getEncrypt(, "cos").equals(code) ? true : false;
-	PrintWriter script = response.getWriter();
+// 	boolean rightCode = 
+// 			SHA256.getEncrypt(, "cos").equals(code) ? true : false;
+ 	PrintWriter script = response.getWriter();
+	boolean rightCode = true;
 	if(rightCode == true){
 		script.println("<script>");
 		script.println("alert('이메일 인증에 성공하였습니다.')");
