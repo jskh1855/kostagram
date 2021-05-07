@@ -29,7 +29,9 @@ create table k_member(
 	name varchar2(100) not null,
 	password varchar2(100) not null,
 	profile_image varchar2(100),
-	profile_content clob
+	profile_content clob,
+	user_email_checked number(1,0),
+	user_email_hash varchar2(100)
 )
 
 select no,count(*) AS likes from k_likes group by no;

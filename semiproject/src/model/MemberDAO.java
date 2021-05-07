@@ -37,20 +37,20 @@ public class MemberDAO {
 			con.close();
 	}
 	
-	public MemberVO login(String id,String password) throws SQLException{
+	public MemberVO login(String userEmail,String userPassword) throws SQLException{
 		MemberVO vo=null;
 		Connection con=null;
 		PreparedStatement pstmt=null;
 		ResultSet rs=null;
 		try{
 			con=dataSource.getConnection();
-			String sql="select name from board_member where email=? and password=?";
+			String sql="select userID from k_member where userEmail=? and userPassword=?";
 			pstmt=con.prepareStatement(sql);
-			pstmt.setString(1, id);
-			pstmt.setString(2, password);
+			pstmt.setString(1, userEmail);
+			pstmt.setString(2, userPassword);
 			rs=pstmt.executeQuery();
 			if(rs.next()){
-				vo=new MemberVO();
+				vo=new MemberVO(rs.getString(1),null,userEmail,null,(Integer) null);
 			}
 		}finally{
 			closeAll(rs, pstmt,con);
