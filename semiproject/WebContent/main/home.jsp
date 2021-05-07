@@ -1,11 +1,9 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
-<%@ taglib prefix="c" uri = "http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
-<html>
-<head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<html lang="en">
+  <head>
+    <title>Louie - Free Bootstrap 4 Template by Colorlib</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     
     <link href="https://fonts.googleapis.com/css?family=Poppins:300,400,500,600,700" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css?family=Montserrat:300,400,500,700" rel="stylesheet">
@@ -29,113 +27,165 @@
     <link rel="stylesheet" href="css/flaticon.css">
     <link rel="stylesheet" href="css/icomoon.css">
     <link rel="stylesheet" href="css/style.css">
-<title>Insert title here</title>
-</head>
-<body>
-<div id="colorlib-page">
-		<a href="#" class="js-colorlib-nav-toggle colorlib-nav-toggle"><i></i></a>
-		<aside id="colorlib-aside" role="complementary" class="js-fullheight text-center">
-			<h1 id="colorlib-logo"><a href="index.html"><span class="img" style="background-image: url(images/author.jpg);"></span>Louie Smith</a></h1>
-			<nav id="colorlib-main-menu" role="navigation">
-				<ul>
-					<li class="colorlib-active"><a href="index.html">Home</a></li>
-					<li><a href="collection.html">Collection</a></li>
-					<li><a href="about.html">About Me</a></li>
-					<li><a href="services.html">My Services</a></li>
-					<li><a href="blog.html">Blog</a></li>
-					<li><a href="contact.html">Contact</a></li>
-				</ul>
-			</nav>
+  </head>
+  <body>
 
-			<div class="colorlib-footer">
-				<h3>Newsletter</h3>
-				<div class="d-flex justify-content-center">
-					<form action="#" class="colorlib-subscribe-form">
-            <div class="form-group d-flex">
-            	<div class="icon"><span class="icon-paper-plane"></span></div>
-              <input type="text" class="form-control" placeholder="Enter Email Address">
-            </div>
-          </form>
+	<div id="colorlib-page">
+<!-- 		<a href="#" class="js-colorlib-nav-toggle colorlib-nav-toggle"><i></i></a> -->
+<!-- 		<aside id="colorlib-aside" role="complementary" class="js-fullheight text-center"> -->
+<!-- 			<h1 id="colorlib-logo"><a href="index.html"><span class="img" style="background-image: url(images/author.jpg);"></span>Louie Smith</a></h1> -->
+<!-- 			<nav id="colorlib-main-menu" role="navigation"> -->
+<!-- 				<ul> -->
+<!-- 					<li><a href="index.html">Home</a></li> -->
+<!-- 					<li class="colorlib-active"><a href="collection.html">Collection</a></li> -->
+<!-- 					<li><a href="about.html">About Me</a></li> -->
+<!-- 					<li><a href="services.html">My Services</a></li> -->
+<!-- 					<li><a href="blog.html">Blog</a></li> -->
+<!-- 					<li><a href="contact.html">Contact</a></li> -->
+<!-- 				</ul> -->
+<!-- 			</nav> -->
+
+<!-- 			<div class="colorlib-footer"> -->
+<!-- 				<h3>Newsletter</h3> -->
+<!-- 				<div class="d-flex justify-content-center"> -->
+<!-- 					<form action="#" class="colorlib-subscribe-form"> -->
+<!--             <div class="form-group d-flex"> -->
+<!--             	<div class="icon"><span class="icon-paper-plane"></span></div> -->
+<!--               <input type="text" class="form-control" placeholder="Enter Email Address"> -->
+<!--             </div> -->
+<!--           </form> -->
+<!-- 				</div> -->
+<!-- 			</div> -->
+<!-- 		</aside> END COLORLIB-ASIDE -->
+		<div id="colorlib-main" style = "width : 100%;">
+			<section class="ftco-section ftco-bread" style="padding:0;">
+					<img src="images/logo.jpg" width="100" height="50">	
+				<div class="container">
+
+					<div class="row no-gutters slider-text justify-content-center align-items-center">
+<!-- 	          <div class="col-md-8 ftco-animate"> -->
+<!-- 	            <p class="breadcrumbs"><span class="mr-2"><a href="index.html">Home</a></span> <span>Collection</span></p> -->
+<!-- 	            <h1 class="bread">My Collection</h1> -->
+<!-- 	          </div> -->
+	        </div>
 				</div>
-			</div>
-		</aside> <!-- END COLORLIB-ASIDE -->
-		<div id="colorlib-main">
-			<section class="ftco-section-no-padding bg-light">
-				<div class="hero-wrap">
-					<div class="overlay"></div>
-					<div class="d-flex align-items-center js-fullheight">
-						<div class="author-image text img d-flex">
-							<section class="home-slider js-fullheight owl-carousel">
-					      <div class="slider-item js-fullheight" style="background-image: url(images/author.jpg);">
-					      </div>
-
-					      <div class="slider-item js-fullheight" style="background-image:url(images/author-2.jpg);">
-					      </div>
-					    </section>
+			</section>
+			<!-- 피드 부분 시작 -->
+			<section class="ftco-section-3">
+				<div class="photograhy">
+					<div class="row">
+						<div class="col-md-4 ftco-animate">
+							<a href="images/image_1.jpg" class="photography-entry img image-popup d-flex justify-content-start align-items-end" style="background-image: url(images/image_1.jpg);">
+								<div class="overlay"></div>
+								<div class="text ml-4 mb-4">
+									<h3>Photo 01</h3>
+									<span class="tag">Model</span>
+								</div>
+							</a>
 						</div>
-						<div class="author-info text p-3 p-md-5">
-							<div class="desc">
-								<span class="subheading">Hello! I'm</span>
-								<h1 class="big-letter">Louie Smith</h1>
-								<h1 class="mb-4"><span>Louie Smith</span> A Photographer. <span>I Capture Life</span></h1>
-								<p class="mb-4">I am A Photographer from America Far far away, behind the word mountains, far from the countries Vokalia and Consonantia, there live the blind texts. Separated they live in Bookmarksgrove right at the coast of the Semantics, a large language ocean.</p>
-								<h3 class="signature h1">Louie Smith</h3>
-								<ul class="ftco-social mt-3">
-		              <li class="ftco-animate"><a href="#"><span class="icon-twitter"></span></a></li>
-		              <li class="ftco-animate"><a href="#"><span class="icon-facebook"></span></a></li>
-		              <li class="ftco-animate"><a href="#"><span class="icon-instagram"></span></a></li>
-		            </ul>
-	            </div>
+						<div class="col-md-4 ftco-animate">
+							<a href="images/image_2.jpg" class="photography-entry img image-popup d-flex justify-content-start align-items-end" style="background-image: url(images/image_2.jpg);">
+								<div class="overlay"></div>
+								<div class="text ml-4 mb-4">
+									<h3>Photo 02</h3>
+									<span class="tag">Nature</span>
+								</div>
+							</a>
+						</div>
+						<div class="col-md-4 ftco-animate">
+							<a href="images/image_3.jpg" class="photography-entry img image-popup d-flex justify-content-start align-items-end" style="background-image: url(images/image_3.jpg);">
+								<div class="overlay"></div>
+								<div class="text ml-4 mb-4">
+									<h3>Photo 03</h3>
+									<span class="tag">Fashion</span>
+								</div>
+							</a>
+						</div>
+						<div class="col-md-4 ftco-animate">
+							<a href="images/image_4.jpg" class="photography-entry img image-popup d-flex justify-content-start align-items-end" style="background-image: url(images/image_4.jpg);">
+								<div class="overlay"></div>
+								<div class="text ml-4 mb-4">
+									<h3>Photo 04</h3>
+									<span class="tag">Travel</span>
+								</div>
+							</a>
+						</div>
+						<div class="col-md-4 ftco-animate">
+							<a href="images/image_5.jpg" class="photography-entry img image-popup d-flex justify-content-start align-items-end" style="background-image: url(images/image_5.jpg);">
+								<div class="overlay"></div>
+								<div class="text ml-4 mb-4">
+									<h3>Photo 05</h3>
+									<span class="tag">Travel</span>
+								</div>
+							</a>
+						</div>
+						<div class="col-md-4 ftco-animate">
+							<a href="images/image_6.jpg" class="photography-entry img image-popup d-flex justify-content-start align-items-end" style="background-image: url(images/image_6.jpg);">
+								<div class="overlay"></div>
+								<div class="text ml-4 mb-4">
+									<h3>Photo 06</h3>
+									<span class="tag">Travel</span>
+								</div>
+							</a>
+						</div>
+						<div class="col-md-4 ftco-animate">
+							<a href="images/image_7.jpg" class="photography-entry img image-popup d-flex justify-content-start align-items-end" style="background-image: url(images/image_7.jpg);">
+								<div class="overlay"></div>
+								<div class="text ml-4 mb-4">
+									<h3>Photo 07</h3>
+									<span class="tag">Fashion, Model</span>
+								</div>
+							</a>
+						</div>
+						<div class="col-md-4 ftco-animate">
+							<a href="images/image_8.jpg" class="photography-entry img image-popup d-flex justify-content-start align-items-end" style="background-image: url(images/image_8.jpg);">
+								<div class="overlay"></div>
+								<div class="text ml-4 mb-4">
+									<h3>Photo 08</h3>
+									<span class="tag">Nature</span>
+								</div>
+							</a>
+						</div>
+						<div class="col-md-4 ftco-animate">
+							<a href="images/image_9.jpg" class="photography-entry img image-popup d-flex justify-content-start align-items-end" style="background-image: url(images/image_9.jpg);">
+								<div class="overlay"></div>
+								<div class="text ml-4 mb-4">
+									<h3>Photo 09</h3>
+									<span class="tag">Technology</span>
+								</div>
+							</a>
+						</div>
+						<div class="col-md-4 ftco-animate">
+							<a href="images/image_10.jpg" class="photography-entry img image-popup d-flex justify-content-start align-items-end" style="background-image: url(images/image_10.jpg);">
+								<div class="overlay"></div>
+								<div class="text ml-4 mb-4">
+									<h3>Photo 10</h3>
+									<span class="tag">Model</span>
+								</div>
+							</a>
+						</div>
+						<div class="col-md-4 ftco-animate">
+							<a href="images/image_11.jpg" class="photography-entry img image-popup d-flex justify-content-start align-items-end" style="background-image: url(images/image_11.jpg);">
+								<div class="overlay"></div>
+								<div class="text ml-4 mb-4">
+									<h3>Photo 11</h3>
+									<span class="tag">Fashion</span>
+								</div>
+							</a>
+						</div>
+						<div class="col-md-4 ftco-animate">
+							<a href="images/image_12.jpg" class="photography-entry img image-popup d-flex justify-content-start align-items-end" style="background-image: url(images/image_12.jpg);">
+								<div class="overlay"></div>
+								<div class="text ml-4 mb-4">
+									<h3>Photo 12</h3>
+									<span class="tag">Photography</span>
+								</div>
+							</a>
 						</div>
 					</div>
 				</div>
 			</section>
-			<section class="ftco-section instagram">
-				<div class="container">
-					<div class="row justify-content-center mb-2 pb-3">
-	          <div class="col-md-7 heading-section heading-section-2 text-center ftco-animate">
-	            <h2 class="mb-4">Follow me on Instagram</h2>
-	          </div>
-	        </div>  
-					<div class="row no-gutters">
-		        <div class="col-sm-12 col-md ftco-animate">
-		          <a href="images/image_1.jpg" class="insta-img image-popup" style="background-image: url(images/image_1.jpg);">
-		            <div class="icon d-flex justify-content-center">
-		              <span class="icon-instagram align-self-center"></span>
-		            </div>
-		          </a>
-		        </div>
-		        <div class="col-sm-12 col-md ftco-animate">
-		          <a href="images/image_2.jpg" class="insta-img image-popup" style="background-image: url(images/image_2.jpg);">
-		            <div class="icon d-flex justify-content-center">
-		              <span class="icon-instagram align-self-center"></span>
-		            </div>
-		          </a>
-		        </div>
-		        <div class="col-sm-12 col-md ftco-animate">
-		          <a href="images/image_3.jpg" class="insta-img image-popup" style="background-image: url(images/image_3.jpg);">
-		            <div class="icon d-flex justify-content-center">
-		              <span class="icon-instagram align-self-center"></span>
-		            </div>
-		          </a>
-		        </div>
-		        <div class="col-sm-12 col-md ftco-animate">
-		          <a href="images/image_4.jpg" class="insta-img image-popup" style="background-image: url(images/image_4.jpg);">
-		            <div class="icon d-flex justify-content-center">
-		              <span class="icon-instagram align-self-center"></span>
-		            </div>
-		          </a>
-		        </div>
-		        <div class="col-sm-12 col-md ftco-animate">
-		          <a href="images/image_5.jpg" class="insta-img image-popup" style="background-image: url(images/image_5.jpg);">
-		            <div class="icon d-flex justify-content-center">
-		              <span class="icon-instagram align-self-center"></span>
-		            </div>
-		          </a>
-		        </div>
-		      </div>
-				</div>
-			</section>
+			<!-- 사진 피드 끝남 -->
 	    <footer class="ftco-footer ftco-bg-dark ftco-section">
 	      <div class="container px-md-5">
 	        <div class="row mb-5">
@@ -212,5 +262,5 @@
   <script src="js/google-map.js"></script>
   <script src="js/main.js"></script>
     
-</body>
+  </body>
 </html>
