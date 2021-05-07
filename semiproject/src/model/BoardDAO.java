@@ -78,10 +78,16 @@ public class BoardDAO {
 	/**
 	 * 좋아요 top3 리턴 
 	 * LIST SQL -> Test 후 반영하세요 
-	    SELECT b.no,b.title,b.hits,to_char(time_posted,'YYYY.MM.DD') as time_posted,m.name 
-		FROM board b , board_member m
-		WHERE b.id=m.id
-		order by no desc
+	  SELECT ROWNUM, A.*
+   	  FROM  (  SELECT COUNT(T2.NO) AS LIKE_NUM
+				           , T1.TITLE
+				   FROM K_BOARD T1 
+				   LEFT JOIN K_LIKES T2 
+				                ON T1.NO = T2.NO
+				   GROUP BY T2.NO , T1.TITLE
+				   ORDER BY LIKE_NUM DESC
+             ) A
+     WHERE ROWNUM <= 3 ; 
 	 * @param pageNo
 	 * @return
 	 * @throws SQLException

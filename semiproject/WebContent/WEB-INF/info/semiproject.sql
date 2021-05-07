@@ -1,9 +1,8 @@
-select * from board;
-
-create sequence k_seq;
 drop table k_board;
 drop table k_member;
 drop table k_likes;
+
+CREATE SEQUENCE k_seq;
 DROP SEQUENCE k_seq;
 
 create table k_board(
@@ -57,28 +56,7 @@ insert into k_likes(no,email) values(3,'345@gmail');
 select * from k_board;
 select * from K_LIKES;
 select * from K_MEMBER;
-
--- 좋아요 top3 포스팅 필요(no, email, content,   count(*) 게시글당 좋아요수 카운트)
-select no, email, content
-from k_board;
-
-select no, count(*) as likesCount 
-from K_LIKES 
-group by no;
-
-select b.no, b.email, b.content, l.email as 누가좋아요
-from k_board b, K_LIKES l
-where b.no = l.no 
-group by b.no, b.email, b.content;
-
-
-select l.no, count(*) as likesCount, b.no
-from K_LIKES l, K_BOARD b 
-where l.no = b.no
-group by l.no;
-
-
-
+----------------------------------------------------------------
 
 -- BoardDAO.getPostingTotalList()    
 -- 전체 리스트 출력 By 재훈, 진솔   
@@ -87,35 +65,15 @@ select no, post_image
 from K_BOARD
 order by no desc;
 
-
-
-
-
-
-----------------------------------------------------------------------------
-
-
-
-select * from member;
-delete from member;
-drop table member;
-drop table user;
-create table k_member (
-  name varchar2(50),
-  password varchar2(50),
-  email varchar2(50),
-  image varchar2(50),
-  intro clob,
-  emailHash varchar2(64),
-  emailChecked NUMBER(1,0)
-)
-
-create table board(
-	no number primary key,
-	title varchar2(100) not null,
-	content clob not null,
-	hits number default 0,
-	time_posted date not null,
-	id varchar2(100) not null,
-	constraint myboard_fk foreign key(id) references board_member(id)
-)
+-- BoardDAO.getPostingTop3List()
+-- 좋아요 순위 3위까지 출력
+ SELECT ROWNUM, A.*
+ FROM  (  SELECT COUNT(T2.NO) AS LIKE_NUM
+				           , T1.TITLE
+				   FROM K_BOARD T1 
+				   LEFT JOIN K_LIKES T2 
+				                ON T1.NO = T2.NO
+				   GROUP BY T2.NO , T1.TITLE
+				   ORDER BY LIKE_NUM DESC 
+             ) A -- 좋아요 수를 카운트하기 위해 LEFT JOIN을 한 테이블을 A로 묶음
+ WHERE ROWNUM <= 3 ; 
