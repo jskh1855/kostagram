@@ -18,7 +18,7 @@ public class LoginController implements Controller{
 			HttpSession session = request.getSession();
 			session.setAttribute("mvo", mvo);	
 			
-			return "redirect:home/home.jsp";
+			return "redirect:main/home.jsp";
 		} else {			
 			return "redirect:register/login-fail.jsp";		
 		}
