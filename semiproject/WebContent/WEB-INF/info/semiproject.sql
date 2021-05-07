@@ -75,5 +75,5 @@ order by no desc;
 				                ON T1.NO = T2.NO
 				   GROUP BY T2.NO , T1.TITLE
 				   ORDER BY LIKE_NUM DESC 
-             ) A -- 좋아요 수를 카운트하기 위해 LEFT JOIN을 한 테이블을 A로 묶음
+             ) A -- 좋아요 수를 카운트하기 위해 LEFT JOIN을 한 테이블을 A 테이블로 설정
  WHERE ROWNUM <= 3 ; 
