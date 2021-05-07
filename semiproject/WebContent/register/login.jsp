@@ -4,7 +4,7 @@
 
 <form method="post" action="${pageContext.request.contextPath}/LoginController.do">
     <input type="text" name="userEmail"   placeholder="아이디" size="24"> 
-   <input type="password" name="userPassword"  placeholder="비밀번호" size="24">
+   <input type="password" name="userPassword"  placeholder="비밀번호" size="24"><br>
     <input type="submit" value="로그인">
 </form>
 <form method="post" action="register/register.jsp">

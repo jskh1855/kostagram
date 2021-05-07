@@ -19,5 +19,3 @@
  <a href="${pageContext.request.contextPath}/LogoutController.do">로그아웃</a>
 </c:otherwise>
 </c:choose>
-
-<hr>
