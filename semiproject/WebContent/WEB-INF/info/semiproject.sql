@@ -13,21 +13,21 @@ create table k_board(
 	content clob,
 	hits number default 0,
 	time_posted date,
-	email varchar2(100) not null, 
-	constraint email_fk foreign key (email) references k_member(email)
+	user_email varchar2(100) not null, 
+	constraint user_email_fk foreign key (user_email) references k_member(user_email)
 )
 
 create table k_likes(
 	no number,
-	email varchar2(100) not null,
-	constraint email_fk1 foreign key (email) references k_member(email),
+	user_email varchar2(100) not null,
+	constraint user_email_fk1 foreign key (user_email) references k_member(user_email),
 	constraint no_fk foreign key (no) references k_board(no)
 )
 
 create table k_member(
-	email varchar2(100) primary key,
-	name varchar2(100) not null,
-	password varchar2(100) not null,
+	user_email varchar2(100) primary key,
+	user_name varchar2(100) not null,
+	user_password varchar2(100) not null,
 	profile_image varchar2(100),
 	profile_content clob,
 	user_email_checked number(1,0),
@@ -36,20 +36,20 @@ create table k_member(
 
 select no,count(*) AS likes from k_likes group by no;
 
-insert into k_member(email,name,password) values('123@gmail','김','123');
-insert into k_member(email,name,password) values('234@gmail','이','234');
-insert into k_member(email,name,password) values('345@gmail','박','345');
+insert into k_member(user_email,user_name,user_password) values('123@gmail','김','123');
+insert into k_member(user_email,user_name,user_password) values('234@gmail','이','234');
+insert into k_member(user_email,user_name,user_password) values('345@gmail','박','345');
 
-insert into K_BOARD(no,title,post_image,email) values(1,'a','a이미지','123@gmail');
-insert into K_BOARD(no,title,post_image,email) values(2,'b','b이미지','234@gmail');
-insert into K_BOARD(no,title,post_image,email) values(3,'c','c이미지','345@gmail');
+insert into K_BOARD(no,title,post_image,user_email) values(1,'a','a이미지','123@gmail');
+insert into K_BOARD(no,title,post_image,user_email) values(2,'b','b이미지','234@gmail');
+insert into K_BOARD(no,title,post_image,user_email) values(3,'c','c이미지','345@gmail');
 
-insert into k_likes(no,email) values(1,'123@gmail');
-insert into k_likes(no,email) values(1,'234@gmail');
-insert into k_likes(no,email) values(1,'345@gmail');
-insert into k_likes(no,email) values(2,'123@gmail');
-insert into k_likes(no,email) values(3,'123@gmail');
-insert into k_likes(no,email) values(3,'345@gmail');
+insert into k_likes(no,user_email) values(1,'123@gmail');
+insert into k_likes(no,user_email) values(1,'234@gmail');
+insert into k_likes(no,user_email) values(1,'345@gmail');
+insert into k_likes(no,user_email) values(2,'123@gmail');
+insert into k_likes(no,user_email) values(3,'123@gmail');
+insert into k_likes(no,user_email) values(3,'345@gmail');
 
 
 

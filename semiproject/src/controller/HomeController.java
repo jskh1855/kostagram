@@ -16,7 +16,7 @@ public class HomeController implements Controller{
 			return "/template/layout.jsp";
 		}
 		else {
-			request.setAttribute("url", "/home/home.jsp");
+			request.setAttribute("url", "/main/home.jsp");
 			return "/template/layout.jsp";
 		}
 
