@@ -44,13 +44,13 @@ public class MemberDAO {
 		ResultSet rs=null;
 		try{
 			con=dataSource.getConnection();
-			String sql="select userID from k_member where userEmail=? and userPassword=?";
+			String sql="select user_name, user_email_checked from k_member where user_Email=? and user_Password=?";
 			pstmt=con.prepareStatement(sql);
 			pstmt.setString(1, userEmail);
 			pstmt.setString(2, userPassword);
 			rs=pstmt.executeQuery();
 			if(rs.next()){
-				vo=new MemberVO(rs.getString(1),null,userEmail,null,(Integer) null,null,null);
+				vo=new MemberVO(rs.getString(1),userPassword,userEmail,rs.getInt(2));
 			}
 		}finally{
 			closeAll(rs, pstmt,con);

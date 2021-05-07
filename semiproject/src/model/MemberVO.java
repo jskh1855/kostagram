@@ -1,33 +1,29 @@
 package model;
 
 public class MemberVO {
-	private String userID;
+	private String userName;
 	private String userPassword;
 	private String userEmail;
-	private String userEmailHash;
+	private String userEmailHash = "";
 	private int userEmailChecked;
-	private String profileImage;
-	private String profileContent;
+	private String profileImage = "";
+	private String profileContent = "내용 없음";
 	public MemberVO() {
 		super();
 		// TODO Auto-generated constructor stub
 	}
-	public MemberVO(String userID, String userPassword, String userEmail, String userEmailHash, int userEmailChecked,
-			String profileImage, String profileContent) {
+	public MemberVO(String userName, String userPassword, String userEmail,int userEmailChecked) {
 		super();
-		this.userID = userID;
+		this.userName = userName;
 		this.userPassword = userPassword;
 		this.userEmail = userEmail;
-		this.userEmailHash = userEmailHash;
 		this.userEmailChecked = userEmailChecked;
-		this.profileImage = profileImage;
-		this.profileContent = profileContent;
 	}
-	public String getUserID() {
-		return userID;
+	public String getUserName() {
+		return userName;
 	}
-	public void setUserID(String userID) {
-		this.userID = userID;
+	public void setUserName(String userName) {
+		this.userName = userName;
 	}
 	public String getUserPassword() {
 		return userPassword;
@@ -67,7 +63,7 @@ public class MemberVO {
 	}
 	@Override
 	public String toString() {
-		return "MemberVO [userID=" + userID + ", userPassword=" + userPassword + ", userEmail=" + userEmail
+		return "MemberVO [userName=" + userName + ", userPassword=" + userPassword + ", userEmail=" + userEmail
 				+ ", userEmailHash=" + userEmailHash + ", userEmailChecked=" + userEmailChecked + ", profileImage="
 				+ profileImage + ", profileContent=" + profileContent + "]";
 	}
