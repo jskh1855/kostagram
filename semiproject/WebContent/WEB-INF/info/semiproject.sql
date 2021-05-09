@@ -55,7 +55,8 @@ insert into k_likes(no,user_email) values(3,'123@gmail');
 insert into k_likes(no,user_email) values(3,'345@gmail');
 
 
-
+--posting 
+insert into board(no, title, content, id, time_posted) values(k_seq.nextval,?,?,?,sysdate)
 
 
 ----------------------------------------------------------------
