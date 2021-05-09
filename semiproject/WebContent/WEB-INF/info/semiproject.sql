@@ -23,7 +23,7 @@ create table k_board(
 	no number primary key,
 	post_image varchar2(100) not null,
 	content varchar2(100),
-	hits number default 0,
+	hits number default 0, -- hits 빼고 likes수로 바꾸자는 의견입니다~ (동은)
 	time_posted date,
 	user_email varchar2(100) not null, 
 	constraint user_email_fk foreign key (user_email) references k_member(user_email)
