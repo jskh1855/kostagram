@@ -1,15 +1,15 @@
 
 
-drop table k_likes;
-drop table k_board;
-drop table k_member;
+DROP TABLE k_likes;
+DROP TABLE k_board;
+DROP TABLE k_member cascade constraint;
 
-create sequence k_seq;
+CREATE SEQUENCE k_seq;
 DROP SEQUENCE k_seq;
 
-commit
+COMMIT
 
-create table k_member(
+CREATE TABLE k_member(
 	user_email varchar2(100) primary key,
 	user_name varchar2(100) not null,
 	user_password varchar2(100) not null,
@@ -19,11 +19,11 @@ create table k_member(
 	user_email_hash varchar2(100)
 );
 
+
 create table k_board(
 	no number primary key,
 	post_image varchar2(100) not null,
 	content varchar2(100),
-	hits number default 0, -- hits 빼고 likes수로 바꾸자는 의견입니다~ (동은)
 	time_posted date,
 	user_email varchar2(100) not null, 
 	constraint user_email_fk foreign key (user_email) references k_member(user_email)
@@ -36,16 +36,11 @@ create table k_likes(
 	constraint no_fk foreign key (no) references k_board(no)
 );
 
-
 select no,count(*) AS likes from k_likes group by no;
 
 insert into k_member(user_email,user_name,user_password) values('123@gmail','김','123');
 insert into k_member(user_email,user_name,user_password) values('234@gmail','이','234');
 insert into k_member(user_email,user_name,user_password) values('345@gmail','박','345');
-
-insert into K_BOARD(no,post_image,user_email) values(1,'a이미지','123@gmail');
-insert into K_BOARD(no,post_image,user_email) values(2,'b이미지','234@gmail');
-insert into K_BOARD(no,post_image,user_email) values(3,'c이미지','345@gmail');
 
 insert into k_likes(no,user_email) values(1,'123@gmail');
 insert into k_likes(no,user_email) values(1,'234@gmail');
@@ -55,16 +50,21 @@ insert into k_likes(no,user_email) values(3,'123@gmail');
 insert into k_likes(no,user_email) values(3,'345@gmail');
 
 
---posting 
-insert into board(no, title, content, id, time_posted) values(k_seq.nextval,?,?,?,sysdate)
-
-
 ----------------------------------------------------------------
+
 select * from k_board;
 select * from K_LIKES;
 select * from K_MEMBER;
 
-
+-- BoardDAO.posting(PostVO vo) 
+-- 포스트 작성 
+insert into k_board(no, post_image, content, time_posted, user_email) values (k_seq.nextval,?, ?, 0, sysdate, ?)  
+insert into k_board(no, post_image, content, time_posted, user_email) values (k_seq.nextval,'파일명', '내용1', 0, sysdate, '123@gmail') ; 
+insert into k_board(no, post_image, content, time_posted, user_email) values (k_seq.nextval,'파일명22', '내용2', 0, sysdate, '123@gmail');  
+insert into k_board(no, post_image, content, time_posted, user_email) values (k_seq.nextval,'파일명33', '내용33', 0, sysdate, '123@gmail');  
+insert into k_board(no, post_image, content, time_posted, user_email) values (k_seq.nextval,'파일명11', '내용1', 0, sysdate, '234@gmail');  
+insert into k_board(no, post_image, content, time_posted, user_email) values (k_seq.nextval,'파일명22', '내용2', 0, sysdate, '234@gmail');  
+insert into k_board(no, post_image, content, time_posted, user_email) values (k_seq.nextval,'파일명33', '내용33', 0, sysdate, '234@gmail');  
 
 -- BoardDAO.getPostingTotalList()    
 -- 전체 리스트 출력 
@@ -77,35 +77,15 @@ order by no desc;
 -- 좋아요 top3 포스팅 필요(no, email, content,   count(*) 게시글당 좋아요수 카운트)
 select rownum, A.*
 from ( select count(t2.no) as like_sum, t1.post_image
-		from k_board t1
-		left join k_likes t2
-				on t1.no = t2.no
-		group by t2.no, t1.post_image
-		order by like_sum desc) A
+			from k_board t1
+			left join k_likes t2
+					on t1.no = t2.no
+			group by t2.no, t1.post_image
+			order by like_sum desc) A
 where rownum <=3 ;
 
 
--- BoardDAO.posting(PostVO vo) 
--- 포스트 작성 
-insert into k_board(no, post_image, content, hits, time_posted, user_email) values (k_seq.nextval,?, ?, 0, sysdate, ?)  
-insert into k_board(no, post_image, content, hits, time_posted, user_email) values (k_seq.nextval,'파일명', '내용1', 0, sysdate, '123@gmail') ; 
-insert into k_board(no, post_image, content, hits, time_posted, user_email) values (k_seq.nextval,'파일명22', '내용2', 0, sysdate, '123@gmail');  
-insert into k_board(no, post_image, content, hits, time_posted, user_email) values (k_seq.nextval,'파일명33', '내용33', 0, sysdate, '123@gmail');  
-insert into k_board(no, post_image, content, hits, time_posted, user_email) values (k_seq.nextval,'파일명11', '내용1', 0, sysdate, '234@gmail');  
-insert into k_board(no, post_image, content, hits, time_posted, user_email) values (k_seq.nextval,'파일명22', '내용2', 0, sysdate, '234@gmail');  
-insert into k_board(no, post_image, content, hits, time_posted, user_email) values (k_seq.nextval,'파일명33', '내용33', 0, sysdate, '234@gmail');  
-
-
--- MemberDAO.  (String email)     
--- 개인 프로필 출력 return ArrayList<PosVO>
--- Q1. 세션에 정보가 있는데 처리해야하는지.. ??  
--- Q2. MemberDAO인지?  BoardDAO인지?  
-select name, profile_image, profile_content
-from k_member
-where email='123@gmail'
-
-
--- BoardDAO.  (String email)
+-- BoardDAO. getPostingListByUser(String email)
 -- 개인 포스팅 출력 return ArrayList<PosVO>
 
 select no, post_image  
@@ -123,18 +103,25 @@ order by time_posted desc;
 -- 포스팅 상세보기  return pvo
 
 --1
-select no, post_image, content, hits, to_char(time_posted, 'yyyy-mm-dd'), (select count(*) from k_likes where no = 1) as 좋아요수 
+select no, post_image, content, to_char(time_posted, 'yyyy-mm-dd'), (select count(*) from k_likes where no = 1) as 좋아요수 
 from k_board
 where no = 1 
 
---2글번호로 조인
-SELECT T1.NO, T1.post_image, T1.HITS, TO_CHAR(T1.TIME_POSTED,'YYYY.MM.DD'), COUNT(*)
+--2 글번호로 조인
+SELECT T1.NO, T1.post_image, TO_CHAR(T1.TIME_POSTED,'YYYY.MM.DD'), COUNT(*)
 FROM K_BOARD T1 
 LEFT JOIN K_LIKES T2 
 ON T1.NO = T2.NO
 WHERE T1.NO=1
 GROUP BY T1.NO,T1.post_image, T1.HITS, T1.TIME_POSTED;
 -- K_BOARD 의 CONTENT 의 DATATYPE을 꼭 CLOB로 해야하는지 ? VARCHAR2(1000)등 글자수 제한은 안되나용 
+
+
+--BoardDAO.deletePosting(String no)
+--글번호에 해당하는 포스팅 삭제
+DELETE
+FROM k_board
+where no=1;
 
 
 -- 글1 에 좋아요 누른 사람 목록
@@ -145,3 +132,28 @@ LEFT JOIN K_LIKES T2
 ON T1.NO = T2.NO
 WHERE T1.NO=1; 
 ----------------------------------------------------------------------------
+
+-- MemberDAO. (String email)     
+-- 개인 프로필 출력 return ArrayList<PosVO>
+-- Q1. 세션에 정보가 있는데 처리해야하는지.. ??  
+-- Q2. MemberDAO인지?  BoardDAO인지?  
+select name, profile_image, profile_content
+from k_member
+where email='123@gmail'
+
+---------------------------------------------------------------------------
+--PostDAO 
+
+--좋아요 생성
+INSERT INTO k_likes(no,user_email)
+VALUES(?,?)
+
+-- 좋아요 조회
+SELECT no,user_email
+FROM k_likes
+WHERE no=? and email=?
+
+--좋아요 삭제
+DELETE
+FROM k_likes
+where no=? and email=?
