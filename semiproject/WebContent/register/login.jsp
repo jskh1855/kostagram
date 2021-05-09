@@ -18,11 +18,10 @@
 				<div class="form-group">
 					<input type="submit" value="로그인"
 						class="btn btn-primary py-3 px-5">
-					<a src="register/register.jsp"></a>
 				</div>
 					
 				<div class="form-group">
-					<input type="button" value = "회원가입할래?" class="btn btn-primary py-3 px-5" onclick="location.href='register.jsp'">
+					<input type="button" value = "회원가입할래?" class="btn btn-primary py-3 px-5" onclick="location.href='./register/register.jsp'">
 				</div>
 
 			</form>
@@ -30,4 +29,3 @@
 		</div>
 	</div>
 
-]
