@@ -3,11 +3,9 @@
 	<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <!--  <title>Louie - Free Bootstrap 4 Template by Colorlib</title>
-    -->  
-    <title>KostaGram</title>
-      <meta charset="utf-8">
+    <meta charset="utf-8">
+    <title>main feed</title>
+    <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     
     <link href="https://fonts.googleapis.com/css?family=Poppins:300,400,500,600,700" rel="stylesheet">
@@ -64,7 +62,7 @@
 <!-- 		</aside> END COLORLIB-ASIDE -->
 		<div id="colorlib-main" style = "width : 100%;">
 			<section class="ftco-section ftco-bread" style="padding:0;">
-					<img src="images/logo.jpg" width="100" height="50">	
+					<img src="images/logo.png" width="100" height="50">	
 				<div class="container">
 
 					<div class="row no-gutters slider-text justify-content-center align-items-center">
