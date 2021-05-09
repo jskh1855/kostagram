@@ -27,11 +27,7 @@ create table k_board(
 	time_posted date,
 	user_email varchar2(100) not null, 
 	constraint user_email_fk foreign key (user_email) references k_member(user_email)
-<<<<<<< HEAD
-)
-=======
 );
->>>>>>> branch 'main' of https://github.com/kim-hyeungsuk/kostagram.git
 
 create table k_likes(
 	no number,
@@ -40,18 +36,6 @@ create table k_likes(
 	constraint no_fk foreign key (no) references k_board(no)
 );
 
-<<<<<<< HEAD
-create table k_member(
-	user_email varchar2(100) primary key,
-	user_name varchar2(100) not null,
-	user_password varchar2(100) not null,
-	profile_image varchar2(100),
-	profile_content clob,
-	user_email_checked number(1,0),
-	user_email_hash varchar2(100)
-)
-=======
->>>>>>> branch 'main' of https://github.com/kim-hyeungsuk/kostagram.git
 
 select no,count(*) AS likes from k_likes group by no;
 
@@ -59,15 +43,9 @@ insert into k_member(user_email,user_name,user_password) values('123@gmail','김
 insert into k_member(user_email,user_name,user_password) values('234@gmail','이','234');
 insert into k_member(user_email,user_name,user_password) values('345@gmail','박','345');
 
-<<<<<<< HEAD
-insert into K_BOARD(no,title,post_image,user_email) values(1,'a','a이미지','123@gmail');
-insert into K_BOARD(no,title,post_image,user_email) values(2,'b','b이미지','234@gmail');
-insert into K_BOARD(no,title,post_image,user_email) values(3,'c','c이미지','345@gmail');
-=======
 insert into K_BOARD(no,post_image,user_email) values(1,'a이미지','123@gmail');
 insert into K_BOARD(no,post_image,user_email) values(2,'b이미지','234@gmail');
 insert into K_BOARD(no,post_image,user_email) values(3,'c이미지','345@gmail');
->>>>>>> branch 'main' of https://github.com/kim-hyeungsuk/kostagram.git
 
 insert into k_likes(no,user_email) values(1,'123@gmail');
 insert into k_likes(no,user_email) values(1,'234@gmail');
