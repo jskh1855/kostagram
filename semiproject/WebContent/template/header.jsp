@@ -15,7 +15,7 @@
 <c:otherwise>
 <a href="${pageContext.request.contextPath}/index.jsp">홈</a>&nbsp;&nbsp;
  ${sessionScope.mvo.name}님 &nbsp;&nbsp; 
- <a href="${pageContext.request.contextPath}/board/myPage.jsp">마이페이지</a>
+ <a href="${pageContext.request.contextPath}/">글쓰기</a>
  <a href="${pageContext.request.contextPath}/LogoutController.do">로그아웃</a>
 </c:otherwise>
 </c:choose>
