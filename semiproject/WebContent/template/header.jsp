@@ -1,30 +1,39 @@
-<<<<<<< HEAD
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
+	pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
-   
-		
-<a href="${pageContext.request.contextPath}/HomeController.do"><img src ="./pics/sample.jpg" width= "180" align="left"></a>
 
-		
-<c:choose>
-<c:when test="${sessionScope.mvo==null}">
 
-<!-- kostagram logo -->
-</c:when>
-<c:otherwise>
-<a href="${pageContext.request.contextPath}/index.jsp">홈</a>&nbsp;&nbsp;
- ${sessionScope.mvo.name}님 &nbsp;&nbsp; 
- <a href="${pageContext.request.contextPath}/">글쓰기</a>
- <a href="${pageContext.request.contextPath}/LogoutController.do">로그아웃</a>
-</c:otherwise>
-</c:choose>
-=======
-<%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
-   
-		
+
+
+
+<section class="ftco-section ftco-bread" style="padding: 0;">
+	<div class="container">
+		<div class="row no-gutters slider-text justify-content-center align-items-center">
+			<img src="main/images/logo.png" width="100" height="50">
+			<c:choose>
+				<c:when test="${sessionScope.mvo==null}">
+					로그인 x
+				</c:when>
+				<c:otherwise>
+
+					<a href="${pageContext.request.contextPath}/index.jsp" style= "color: black;">홈</a>&nbsp;&nbsp;
+					 ${sessionScope.mvo.userName}님 &nbsp;&nbsp; 
+					 <a href="${pageContext.request.contextPath}/WritePostFormController.do" style= "color: black;">글쓰기</a>
+					 <a href="${pageContext.request.contextPath}/board/myPage.jsp" style= "color: black;">마이페이지</a>
+					 <a href="${pageContext.request.contextPath}/LogoutController.do" style= "color: black;">로그아웃</a>
+
+				</c:otherwise>
+			</c:choose>
+		</div>
+	</div>
+</section>
+
+
+
+
+
+<%-- 이하 기존코드 --%>   
+<%-- 		
 <c:choose>
 <c:when test="${sessionScope.mvo==null}">
 			<section class="ftco-section ftco-bread" style="padding:0;">
@@ -54,13 +63,13 @@
 				</div>
 			</section>
 
-<%-- <a href="${pageContext.request.contextPath}/index.jsp">홈</a>&nbsp;&nbsp; --%>
-<%--  ${sessionScope.mvo.userName}님 &nbsp;&nbsp;  --%>
-<%--  <a href="${pageContext.request.contextPath}/WritePostFormController.do">글쓰기</a> --%>
-<%--  <a href="${pageContext.request.contextPath}/board/myPage.jsp">마이페이지</a> --%>
-<%--  <a href="${pageContext.request.contextPath}/LogoutController.do">로그아웃</a> --%>
+<a href="${pageContext.request.contextPath}/index.jsp">홈</a>&nbsp;&nbsp;
+ ${sessionScope.mvo.userName}님 &nbsp;&nbsp; 
+ <a href="${pageContext.request.contextPath}/WritePostFormController.do">글쓰기</a>
+ <a href="${pageContext.request.contextPath}/board/myPage.jsp">마이페이지</a>
+ <a href="${pageContext.request.contextPath}/LogoutController.do">로그아웃</a>
 
 </c:otherwise>
 </c:choose>
 
->>>>>>> branch 'main' of https://github.com/kim-hyeungsuk/kostagram.git
+ --%>
