@@ -18,7 +18,7 @@ public class HomeController implements Controller{
 		else {
 			//request.setAttribute("url", "/main/home.jsp");  
 			//(재훈)home.jsp   header footer분리가 잘 안되네욤.. 임시 homeTest.jsp 사용
-			request.setAttribute("url", "/main/homeTest.jsp"); // 수정전 22번 코드 
+			request.setAttribute("url", "/main/home.jsp"); // 수정전 22번 코드 
 			return "/template/layout.jsp";
 		}
 
