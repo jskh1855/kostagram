@@ -18,5 +18,7 @@
 	<input type="email" name="email" placeholder="이메일"  /><br />
 	<input type="submit" />
 </form>
+
+
 </body>
 </html>

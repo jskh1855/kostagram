@@ -22,9 +22,7 @@
 	<c:import url="${url}"></c:import>
   </div>
   <div class="row footer">
-    <div class="col-sm-8 col-sm-offset-2" align="right">
-   	<c:import url="/template/footer.jsp"></c:import>
-    </div>    
+   	<c:import url="/template/footer.jsp"></c:import>   
   </div>
 </div>
 </body>
