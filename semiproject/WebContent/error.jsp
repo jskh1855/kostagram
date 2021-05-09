@@ -9,7 +9,7 @@
 </head>
 <body>
 <div class="container">
-<img src="image/error.jpg" alt="JangHoon" width="1200" height="600">
+<img src="main/images/image_1.jpg" alt="JangHoon" width="1200" height="600">
 <div>예외 발생!!!! </div>
 </div>
 </body>

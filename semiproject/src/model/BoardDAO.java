@@ -227,7 +227,7 @@ public class BoardDAO {
 			pstmt=con.prepareStatement(sql.toString());
 			pstmt.setString(1, vo.getTitle());
 			pstmt.setString(2, vo.getContent());
-			pstmt.setString(3, vo.getMemberVO().getId());
+			pstmt.setString(3, vo.getMvo().getUserName());
 			pstmt.executeUpdate();			
 			pstmt.close();
 			pstmt=con.prepareStatement("select board_seq.currval from dual");

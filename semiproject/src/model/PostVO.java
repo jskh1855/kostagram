@@ -4,7 +4,7 @@ import java.util.ArrayList;
 
 public class PostVO {
 	private String no;  // 포스팅 번호
-	private String title;
+	private String post_image;
 	private String content;
 	private int hits;
 	private String regdate;
@@ -18,7 +18,7 @@ public class PostVO {
 			ArrayList<LikesVO> likesList) {
 		super();
 		this.no = no;
-		this.title = title;
+		this.post_image = post_image;
 		this.content = content;
 		this.hits = hits;
 		this.regdate = regdate;
@@ -32,10 +32,10 @@ public class PostVO {
 		this.no = no;
 	}
 	public String getTitle() {
-		return title;
+		return post_image;
 	}
 	public void setTitle(String title) {
-		this.title = title;
+		this.post_image = title;
 	}
 	public String getContent() {
 		return content;
@@ -69,7 +69,7 @@ public class PostVO {
 	}
 	@Override
 	public String toString() {
-		return "PostVO [no=" + no + ", title=" + title + ", content=" + content + ", hits=" + hits + ", regdate="
+		return "PostVO [no=" + no + ", post_image=" + post_image + ", content=" + content + ", hits=" + hits + ", regdate="
 				+ regdate + ", mvo=" + mvo + ", likesList=" + likesList + "]";
 	}
 	

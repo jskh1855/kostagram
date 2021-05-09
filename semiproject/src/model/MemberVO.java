@@ -1,100 +1,72 @@
 package model;
 
 public class MemberVO {
-	private String userID;
-
+	private String userName;
 	private String userPassword;
-
 	private String userEmail;
-
-	private String userEmailHash;
-
+	private String userEmailHash = "";
 	private int userEmailChecked;
-
-	
-
-	public String getUserID() {
-
-		return userID;
-
-	}
-
-	public void setUserID(String userID) {
-
-		this.userID = userID;
-
-	}
-
-	public String getUserPassword() {
-
-		return userPassword;
-
-	}
-
-	public void setUserPassword(String userPassword) {
-
-		this.userPassword = userPassword;
-
-	}
-
-	public String getUserEmail() {
-
-		return userEmail;
-
-	}
-
-	public void setUserEmail(String userEmail) {
-
-		this.userEmail = userEmail;
-
-	}
-
-	public String getUserEmailHash() {
-
-		return userEmailHash;
-
-	}
-
-	public void setUserEmailHash(String userEmailHash) {
-
-		this.userEmailHash = userEmailHash;
-
-	}
-
-	public boolean isUserEmailChecked() {
-		if (userEmailChecked == 0)
-			return false;
-		return true;
-
-	}
-
-	public void setUserEmailChecked(int userEmailChecked) {
-
-		this.userEmailChecked = userEmailChecked;
-
-	}
-
-	
-
-	public MemberVO(String userID, String userPassword, String userEmail,
-
-			String userEmailHash, int userEmailChecked) {
-
-		this.userID = userID;
-
-		this.userPassword = userPassword;
-
-		this.userEmail = userEmail;
-
-		this.userEmailHash = userEmailHash;
-
-		this.userEmailChecked = userEmailChecked;
-
-	}
-	
+	private String profileImage = "";
+	private String profileContent = "내용 없음";
 	public MemberVO() {
 		super();
-		
+		// TODO Auto-generated constructor stub
 	}
-
+	public MemberVO(String userName, String userPassword, String userEmail,int userEmailChecked) {
+		super();
+		this.userName = userName;
+		this.userPassword = userPassword;
+		this.userEmail = userEmail;
+		this.userEmailChecked = userEmailChecked;
+	}
+	public String getUserName() {
+		return userName;
+	}
+	public void setUserName(String userName) {
+		this.userName = userName;
+	}
+	public String getUserPassword() {
+		return userPassword;
+	}
+	public void setUserPassword(String userPassword) {
+		this.userPassword = userPassword;
+	}
+	public String getUserEmail() {
+		return userEmail;
+	}
+	public void setUserEmail(String userEmail) {
+		this.userEmail = userEmail;
+	}
+	public String getUserEmailHash() {
+		return userEmailHash;
+	}
+	public void setUserEmailHash(String userEmailHash) {
+		this.userEmailHash = userEmailHash;
+	}
+	public int getUserEmailChecked() {
+		return userEmailChecked;
+	}
+	public void setUserEmailChecked(int userEmailChecked) {
+		this.userEmailChecked = userEmailChecked;
+	}
+	public String getProfileImage() {
+		return profileImage;
+	}
+	public void setProfileImage(String profileImage) {
+		this.profileImage = profileImage;
+	}
+	public String getProfileContent() {
+		return profileContent;
+	}
+	public void setProfileContent(String profileContent) {
+		this.profileContent = profileContent;
+	}
+	@Override
+	public String toString() {
+		return "MemberVO [userName=" + userName + ", userPassword=" + userPassword + ", userEmail=" + userEmail
+				+ ", userEmailHash=" + userEmailHash + ", userEmailChecked=" + userEmailChecked + ", profileImage="
+				+ profileImage + ", profileContent=" + profileContent + "]";
+	}
+	
+	
 }

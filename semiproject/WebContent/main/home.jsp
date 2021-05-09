@@ -1,7 +1,10 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
+	<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <!DOCTYPE html>
 <html lang="en">
   <head>
-    <title>Louie - Free Bootstrap 4 Template by Colorlib</title>
+    <title>main feed</title>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     
@@ -59,7 +62,7 @@
 <!-- 		</aside> END COLORLIB-ASIDE -->
 		<div id="colorlib-main" style = "width : 100%;">
 			<section class="ftco-section ftco-bread" style="padding:0;">
-					<img src="images/logo.jpg" width="100" height="50">	
+					<img src="images/logo.png" width="100" height="50">	
 				<div class="container">
 
 					<div class="row no-gutters slider-text justify-content-center align-items-center">
@@ -219,9 +222,9 @@
 	            	<h2 class="ftco-heading-2">Have a Questions?</h2>
 	            	<div class="block-23 mb-3">
 		              <ul>
-		                <li><span class="icon icon-map-marker"></span><span class="text">203 Fake St. Mountain View, San Francisco, California, USA</span></li>
-		                <li><a href="#"><span class="icon icon-phone"></span><span class="text">+2 392 3929 210</span></a></li>
-		                <li><a href="#"><span class="icon icon-envelope"></span><span class="text">info@yourdomain.com</span></a></li>
+		                <li><span class="icon icon-map-marker"></span><span class="text">경기도 성남시 분당구 성남대로 34 6층(구미동 하나프라자빌딩)  © 2021 KOSTA All rights reserved.</span></li>
+		                <li><a href="#"><span class="icon icon-phone"></span><span class="text">031-606-9304 </span></a></li>
+		                <li><a href="#"><span class="icon icon-envelope"></span><span class="text">@kosta.com</span></a></li>
 		              </ul>
 		            </div>
 	            </div>
