@@ -25,7 +25,7 @@ public class LoginController implements Controller{
 			// LoginController 에서도 home.jsp로 response?
 			// header footer 분리를 위해서는 url 파라미터를 넘겨줘야할것같습니다. 
 			
-			return "redirect:index.jsp"; // 수정전 22번 코드 
+			return "redirect:main/home.jsp"; // 수정전 22번 코드 
 		} else {			
 			return "redirect:register/login-fail.jsp";		
 		}
