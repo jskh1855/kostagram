@@ -6,6 +6,16 @@ drop table k_member;
 drop table k_likes;
 DROP SEQUENCE k_seq;
 
+create table k_member(
+	user_email varchar2(100) primary key,
+	user_name varchar2(100) not null,
+	user_password varchar2(100) not null,
+	profile_image varchar2(100),
+	profile_content clob,
+	user_email_checked number(1,0),
+	user_email_hash varchar2(100)
+)
+
 create table k_board(
 	no number primary key,
 	title varchar2(100) not null,
@@ -22,16 +32,6 @@ create table k_likes(
 	user_email varchar2(100) not null,
 	constraint user_email_fk1 foreign key (user_email) references k_member(user_email),
 	constraint no_fk foreign key (no) references k_board(no)
-)
-
-create table k_member(
-	user_email varchar2(100) primary key,
-	user_name varchar2(100) not null,
-	user_password varchar2(100) not null,
-	profile_image varchar2(100),
-	profile_content clob,
-	user_email_checked number(1,0),
-	user_email_hash varchar2(100)
 )
 
 select no,count(*) AS likes from k_likes group by no;

@@ -2,10 +2,7 @@
     pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
    
-		
-		
 <a href="index.jsp"><img src ="./pics/sample.jpg" width= "180" align="left"></a>
-
 		
 <c:choose>
 <c:when test="${sessionScope.mvo==null}">
