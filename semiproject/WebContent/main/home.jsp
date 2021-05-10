@@ -20,7 +20,7 @@
 				<div class="photography">
 				<c:forEach  items="${requestScope.list}" var="pvo"  varStatus="status">
 번호 : ${pvo.no} <br>
-사진 : ${pvo.post_image}<br>
+사진 : ${pvo.postImage}<br>
 내용 : ${pvo.content}<br>
 작성자 : ${pvo.mvo.userName}<br>
 작성일 : ${pvo.regdate} <br>
@@ -39,7 +39,7 @@
 					<!-- 이미지 카드 한 칸 시작-->
 					<c:forEach var="pvo" items="${requestScope.list}">
 					<div class="col-md-4 ftco-animate">
-						<!-- 사진 : ${pvo.post_image} -->
+						<!-- 사진 : ${pvo.postImage} -->
 						<a href="${pvo.image }" class="photography-entry img image-popup d-flex justify-content-start align-items-end" style="background-image: url(main/images/image_1.jpg);">
 								<div class="overlay"></div>
 								<div class="text ml-4 mb-4">
