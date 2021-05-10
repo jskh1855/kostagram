@@ -59,18 +59,18 @@ select * from K_MEMBER;
 -- BoardDAO.posting(PostVO vo) 
 -- 포스트 작성 
 insert into k_board(no, post_image, content, time_posted, user_email) values (k_seq.nextval,?, ?, 0, sysdate, ?) ;
-insert into k_board(no, post_image, content, time_posted, user_email) values (k_seq.nextval,'image_1.jpg', '내용1', sysdate, '123@gmail'); 
-insert into k_board(no, post_image, content, time_posted, user_email) values (k_seq.nextval,'image_2.jpg', '내용2', sysdate, '123@gmail');  
-insert into k_board(no, post_image, content, time_posted, user_email) values (k_seq.nextval,'image_3.jpg', '내용33', sysdate, '123@gmail');  
-insert into k_board(no, post_image, content, time_posted, user_email) values (k_seq.nextval,'image_4.jpg', '내용1', sysdate, '234@gmail');  
-insert into k_board(no, post_image, content, time_posted, user_email) values (k_seq.nextval,'image_5.jpg', '내용2', sysdate, '234@gmail');  
-insert into k_board(no, post_image, content, time_posted, user_email) values (k_seq.nextval,'image_6.jpg', '내용33', sysdate, '234@gmail');
-insert into k_board(no, post_image, content, time_posted, user_email) values (k_seq.nextval,'image_7.jpg', '내용1', sysdate, '123@gmail'); 
-insert into k_board(no, post_image, content, time_posted, user_email) values (k_seq.nextval,'image_8.jpg', '내용2', sysdate, '123@gmail');  
-insert into k_board(no, post_image, content, time_posted, user_email) values (k_seq.nextval,'image_9.jpg', '내용33', sysdate, '123@gmail');  
-insert into k_board(no, post_image, content, time_posted, user_email) values (k_seq.nextval,'image_10.jpg', '내용1', sysdate, '234@gmail');  
-insert into k_board(no, post_image, content, time_posted, user_email) values (k_seq.nextval,'image_11.jpg', '내용2', sysdate, '234@gmail');  
-insert into k_board(no, post_image, content, time_posted, user_email) values (k_seq.nextval,'image_12.jpg', '내용33', sysdate, '234@gmail');
+insert into k_board(no, post_image, content, time_posted, user_email) values (k_seq.nextval,'pics/image_1.jpg', '내용1', sysdate, '123@gmail'); 
+insert into k_board(no, post_image, content, time_posted, user_email) values (k_seq.nextval,'pics/image_2.jpg', '내용2', sysdate, '123@gmail');  
+insert into k_board(no, post_image, content, time_posted, user_email) values (k_seq.nextval,'pics/image_3.jpg', '내용33', sysdate, '123@gmail');  
+insert into k_board(no, post_image, content, time_posted, user_email) values (k_seq.nextval,'pics/image_4.jpg', '내용1', sysdate, '234@gmail');  
+insert into k_board(no, post_image, content, time_posted, user_email) values (k_seq.nextval,'pics/image_5.jpg', '내용2', sysdate, '234@gmail');  
+insert into k_board(no, post_image, content, time_posted, user_email) values (k_seq.nextval,'pics/image_6.jpg', '내용33', sysdate, '234@gmail');
+insert into k_board(no, post_image, content, time_posted, user_email) values (k_seq.nextval,'pics/image_7.jpg', '내용1', sysdate, '123@gmail'); 
+insert into k_board(no, post_image, content, time_posted, user_email) values (k_seq.nextval,'pics/image_8.jpg', '내용2', sysdate, '123@gmail');  
+insert into k_board(no, post_image, content, time_posted, user_email) values (k_seq.nextval,'pics/image_9.jpg', '내용33', sysdate, '123@gmail');  
+insert into k_board(no, post_image, content, time_posted, user_email) values (k_seq.nextval,'pics/image_10.jpg', '내용1', sysdate, '234@gmail');  
+insert into k_board(no, post_image, content, time_posted, user_email) values (k_seq.nextval,'pics/image_11.jpg', '내용2', sysdate, '234@gmail');  
+insert into k_board(no, post_image, content, time_posted, user_email) values (k_seq.nextval,'pics/image_12.jpg', '내용33', sysdate, '234@gmail');
 
 -- BoardDAO.getPostingTotalList()    
 -- 전체 리스트 출력 
