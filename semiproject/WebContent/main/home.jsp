@@ -36,6 +36,11 @@
 									</c:forEach>
 								좋아요 유무(0 or 1) : 
 									${contains}
+									<!-- if else로 좋아요 아이콘 넣을 거임 -->
+									<c:if test="${contains} eq 1}">
+									    <c:set var="contains" value="1" />
+									</c:if>
+									<!-- 좋아요 아이콘 끝 -->
 								 <br>
 								좋아요 개수 : ${status.index}<br><br>
 								
