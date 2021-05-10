@@ -12,8 +12,8 @@
  <%-- <form method="post" action="${pageContext.request.contextPath}/WritePostController.do" >
   --%>
   
-  <form action="posting-upload.jsp" method="post" enctype="multipart/form-data">
-        file: <input type="file" name="post_image"><br>
+  <form action="UploadServlet" method="post" enctype="multipart/form-data">
+        file: <input type="file" name="postImage"><br>
         content: <input type="text" name="content"><br>
         <input type="submit" value="포스팅 업로드!">
  </form>
