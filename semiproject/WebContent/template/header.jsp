@@ -17,9 +17,8 @@
 				<c:otherwise>
 
 					<a href="${pageContext.request.contextPath}/index.jsp" style= "color: black;">홈</a>&nbsp;&nbsp;
-					 ${sessionScope.mvo.userName}님 &nbsp;&nbsp; 
+					<a href="${pageContext.request.contextPath}/ProfileDetailController.do" style= "color: black;"> ${sessionScope.mvo.userName}님</a>&nbsp;&nbsp;
 					 <a href="${pageContext.request.contextPath}/WritePostFormController.do" style= "color: black;">글쓰기</a>&nbsp;&nbsp;
-					 <a href="${pageContext.request.contextPath}/board/myPage.jsp" style= "color: black;">마이페이지</a>&nbsp;&nbsp;
 					 <a href="${pageContext.request.contextPath}/LogoutController.do" style= "color: black;">로그아웃</a>&nbsp;&nbsp;
 
 				</c:otherwise>
