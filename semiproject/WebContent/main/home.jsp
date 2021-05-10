@@ -18,7 +18,24 @@
 
 			<section class="ftco-section-3">
 				<div class="photography">
+				<c:forEach  items="${requestScope.list}" var="pvo"  varStatus="status">
+번호 : ${pvo.no} <br>
+사진 : ${pvo.post_image}<br>
+내용 : ${pvo.content}<br>
+작성자 : ${pvo.mvo.userName}<br>
+작성일 : ${pvo.regdate} <br>
+로그인유저의  <br>
+<c:set var="contains" value="0" />
+	<c:forEach var="email" items="${requestScope.list2}">
+	  <c:if test="${email eq pvo.no}">
+	    <c:set var="contains" value="1" />
+	  </c:if>
+</c:forEach>
+좋아요 유무(0 or 1) : ${ contains}<br>
+좋아요 개수 :${status.index}<br>
+</c:forEach>
 					<div class="row">
+					
 						<div class="col-md-4 ftco-animate">
 							<a href="main/images/image_1.jpg" class="photography-entry img image-popup d-flex justify-content-start align-items-end" style="background-image: url(main/images/image_1.jpg);">
 								<div class="overlay"></div>
