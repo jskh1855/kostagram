@@ -321,5 +321,24 @@ public class BoardDAO {
 		}
 		return list;
 	}
+	
+	public String countLikes(String no) throws SQLException {
+		Connection con = null;
+		PreparedStatement pstmt = null;
+		ResultSet rs = null;
+		String likes = null;
+		try {
+			con = getConnection();
+			pstmt = con.prepareStatement("SELECT COUNT(*) FROM k_likes WHERE no = ?");
+			pstmt.setString(1, no);
+			rs = pstmt.executeQuery();
+			if (rs.next()) {
+				likes = rs.getString(1);
+			}
+		} finally {
+			closeAll(rs, pstmt, con);
+		}
+		return likes;
+	}
 
 }
