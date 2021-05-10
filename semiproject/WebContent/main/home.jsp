@@ -19,7 +19,35 @@
 			<section class="ftco-section-3">
 				<div class="photography">
 					<div class="row">
-						<div class="col-md-4 ftco-animate">
+					<!-- 이미지 카드 한 칸 시작-->
+					<c:forEach var="pvo" items="${requestScope.list}">
+					<div class="col-md-4 ftco-animate">
+						<!-- 사진 : ${pvo.post_image} -->
+						<a href="main/images/image_1.jpg" class="photography-entry img image-popup d-flex justify-content-start align-items-end" style="background-image: url(main/images/image_1.jpg);">
+								<div class="overlay"></div>
+								<div class="text ml-4 mb-4">
+								<h3>글번호 ${pvo.no}</h3>
+								<span class="tag">
+								<c:set var="contains" value="0" />
+									<c:forEach var="email" items="${requestScope.list2}">
+									  <c:if test="${email eq pvo.no}">
+									    <c:set var="contains" value="1" />
+									  </c:if>
+									</c:forEach>
+								좋아요 유무(0 or 1) : 
+									${ contains}
+								 <br>
+								좋아요 개수 : 아직안함<br>
+								</c:forEach>
+								</span>
+					<%-- 내용 : ${pvo.content}<br>
+					작성자 : ${pvo.mvo.userName}<br>
+					작성일 : ${pvo.regdate} <br> --%>
+								</div>
+						</a>
+						</div>
+					</div>
+						<!-- <div class="col-md-4 ftco-animate">
 							<a href="main/images/image_1.jpg" class="photography-entry img image-popup d-flex justify-content-start align-items-end" style="background-image: url(main/images/image_1.jpg);">
 								<div class="overlay"></div>
 								<div class="text ml-4 mb-4">
@@ -27,7 +55,8 @@
 									<span class="tag">Model</span>
 								</div>
 							</a>
-						</div>
+						</div> -->
+					<!--이미지 카드 한 칸 끝 -->
 						<div class="col-md-4 ftco-animate">
 							<a href="main/images/image_2.jpg" class="photography-entry img image-popup d-flex justify-content-start align-items-end" style="background-image: url(main/images/image_2.jpg);">
 								<div class="overlay"></div>

@@ -15,12 +15,12 @@
     <link href="https://fonts.googleapis.com/css?family=Montserrat:300,400,500,700" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css?family=Herr+Von+Muellerhoff" rel="stylesheet">
 
-
+</head>
+<body>
 			<section class="ftco-section-3">
 				<div class="photography">
 					<div class="row">    
-<%--출력을 뭐해야하나 포스트 no, 이미지, content, 좋아요 유무, 좋아요 갯수,  --%>
-
+			<%--출력을 뭐해야하나 포스트 no, 이미지, content, 좋아요 유무, 좋아요 갯수,  --%>
 					<c:forEach var="pvo" items="${requestScope.list}">
 					<div class="col-md-4 ftco-animate">
 						<!-- 사진 : ${pvo.post_image} -->
@@ -67,3 +67,4 @@
 좋아요 유무(0 or 1) : ${ contains}<br>
 좋아요 개수 :${status.index}<br>
 </c:forEach>
+</body>
