@@ -19,11 +19,11 @@
 			<section class="ftco-section-3">
 				<div class="photography">
 					<div class="row">
+				
 					<!-- 이미지 카드 한 칸 시작-->
-					<c:forEach  items="${requestScope.list}" var="pvo"  varStatus="status">
+					<c:forEach  items="${requestScope.list}" var="pvo" varStatus="status">
 					<div class="col-md-4 ftco-animate">
-						<a href="${pvo.post_image}" class="photography-entry img image-popup d-flex justify-content-start align-items-end" style="background-image: url(${pvo.post_image});">
-						<%-- <a href="${pvo.post_image}" class="photography-entry img image-popup d-flex justify-content-start align-items-end"> --%>
+						<a href="${pvo.postImage}" class="photography-entry img image-popup d-flex justify-content-start align-items-end" style="background-image: url(${pvo.postImage});">
 								<div class="overlay"></div>
 								<div class="text ml-4 mb-4">
 								<h2>글번호 ${pvo.no}</h2><br>
@@ -40,33 +40,16 @@
 								좋아요 개수 : ${status.index}<br><br>
 								
 								</span>
-					<%-- 내용 : ${pvo.content}<br>
-					작성자 : ${pvo.mvo.userName}<br>
-					작성일 : ${pvo.regdate} <br> --%>
-					</div>
 								</div>
-								
+							</div>	
 						</a>
-						
-								</c:forEach>
-						</div>
-					</div>
-						<!-- <div class="col-md-4 ftco-animate">
-
-					
-						<div class="col-md-4 ftco-animate">
-							<a href="main/images/image_1.jpg" class="photography-entry img image-popup d-flex justify-content-start align-items-end" style="background-image: url(main/images/image_1.jpg);">
-								<div class="overlay"></div>
-								<div class="text ml-4 mb-4">
-									<h3>Photo 01</h3>
-									<span class="tag">Model</span>
-								</div>
-							</a>
-						</div> -->
+					</c:forEach>
+				</div>
+			</div>
 					<!--이미지 카드 한 칸 끝 -->
 					
 					<!-- 이미지 카드 한 칸 시작-->
-					<c:forEach var="pvo" items="${requestScope.list}">
+				<%-- 	<c:forEach var="pvo" items="${requestScope.list}">
 					<div class="col-md-4 ftco-animate">
 						<!-- 사진 : ${pvo.post_image} -->
 						<a href="${pvo.post_image}" class="photography-entry img image-popup d-flex justify-content-start align-items-end" style="background-image: url(main/images/image_1.jpg);">
@@ -87,7 +70,7 @@
 								</span>
 								</div>
 						</a>
-					</div>
+					</div> --%>
 						<!-- <div class="col-md-4 ftco-animate">
 							<a href="main/images/image_1.jpg" class="photography-entry img image-popup d-flex justify-content-start align-items-end" style="background-image: url(main/images/image_1.jpg);">
 								<div class="overlay"></div>
@@ -98,8 +81,6 @@
 							</a>
 						</div> -->
 					<!--이미지 카드 한 칸 끝 -->
-					</div>
-				</div>
 			</section>
 	
 

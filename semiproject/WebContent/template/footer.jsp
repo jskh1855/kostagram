@@ -10,7 +10,20 @@
 	            <div class="ftco-footer-widget mb-4 ml-md-4">
 	              <h2 class="ftco-heading-2">Recent Photos</h2>
 	              <ul class="list-unstyled photo">
-	                <li><a href="#" class="img" style="background-image: url(main/images/image_1.jpg);"></a></li>
+	              <!-- recent photos 6개 -->
+	              <%-- <c:forEach  items="${requestScope.list}" var="pvo" begin=0 end=5 step=1>
+	                <li><a href="#" class="img" style="background-image: url(${pvo.postImage});"></a></li> --%>
+					<%-- <div class="col-md-4 ftco-animate">
+						<a href="${pvo.postImage}" class="photography-entry img image-popup d-flex justify-content-start align-items-end" style="background-image: url(${pvo.postImage});">
+								<div class="overlay"></div>
+								<div class="text ml-4 mb-4">
+								<h2>글번호 ${pvo.no}</h2><br>
+								<span class="tag">좋아요수</span>
+								</div>
+							</div>	
+						</a>
+					</c:forEach> --%>
+					<li><a href="#" class="img" style="background-image: url(main/images/image_1.jpg);"></a></li>
 	                <li><a href="#" class="img" style="background-image: url(main/images/image_1.jpg);"></a></li>
 	                <li><a href="#" class="img" style="background-image: url(main/images/image_1.jpg);"></a></li>
 	                	                	                	                	              

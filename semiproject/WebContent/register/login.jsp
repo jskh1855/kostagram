@@ -5,10 +5,9 @@
 
 
 
-
 <div class="row block-9" style="margin-top:100px; margin-bottom:100px;">
 		<div class="col-md-6 d-flex" style="text-align: center; margin: 0 auto;">
-			<form method="post" action="${pageContext.request.contextPath}/LoginController.do" class="bg-light p-5 contact-form">
+			<form method="post" action="${pageContext.request.contextPath}/LoginController.do" class="bg-light p-5 contact-form" style="width: 100%">
 				<div class="form-group">
 					<input type="text" name="userEmail" class="form-control" placeholder="이메일">
 				</div>
@@ -19,9 +18,16 @@
 					<input type="submit" value="로그인"
 						class="btn btn-primary py-3 px-5">
 				</div>
-					
+
+			</form>
+
+		</div>
+		
+		<div class="col-md-6 d-flex" style="text-align: center; margin: 0 auto;">
+			<form method="post" action="${pageContext.request.contextPath}/RegisterController.do" class="bg-light p-5 contact-form" style="width: 100%">
 				<div class="form-group">
-					<input type="button" value = "회원가입할래?" class="btn btn-primary py-3 px-5" onclick="location.href='./register/register.jsp'">
+					<input type="submit" value="회원가입?"
+						class="btn btn-primary py-3 px-5">
 				</div>
 
 			</form>

@@ -64,7 +64,7 @@ public class BoardDAO {
 			while (rs.next()) {
 				PostVO pvo = new PostVO();
 				pvo.setNo(rs.getString(1));
-				pvo.setPost_image(rs.getString(2));
+				pvo.setPostImage(rs.getString(2));
 				pvo.setContent(rs.getString(3));
 				pvo.setRegdate(rs.getString(4));
 				
@@ -258,18 +258,13 @@ public class BoardDAO {
 		try {
 			con = getConnection();
 			StringBuilder sql = new StringBuilder();
-			sql.append("insert into board(no,title,content,id,time_posted) ");
-			sql.append("values(board_seq.nextval,?,?,?,sysdate)");
+			sql.append("insert into k_board(no,post_image,content,user_email,time_posted) ");
+			sql.append("values(k_seq.nextval,?,?,?,sysdate)");
 			pstmt = con.prepareStatement(sql.toString());
-			//pstmt.setString(1, vo.getTitle());
+			pstmt.setString(1, vo.getPostImage());
 			pstmt.setString(2, vo.getContent());
-			pstmt.setString(3, vo.getMvo().getUserName());
+			pstmt.setString(3, vo.getMvo().getUserEmail());
 			pstmt.executeUpdate();
-			pstmt.close();
-			pstmt = con.prepareStatement("select board_seq.currval from dual");
-			rs = pstmt.executeQuery();
-			if (rs.next())
-				vo.setNo(rs.getString(1));
 		} finally {
 			closeAll(rs, pstmt, con);
 		}

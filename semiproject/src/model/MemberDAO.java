@@ -77,5 +77,27 @@ public class MemberDAO {
 			closeAll(pstmt,con);
 		}
 	}
-
+	public MemberVO getProfileTotalList(String user_email) throws SQLException {
+		MemberVO mvo=null;
+		Connection con = null;
+		PreparedStatement pstmt = null;
+		ResultSet rs = null;
+		try {
+			con=dataSource.getConnection();
+			String sql="select user_name, profile_image, user_email, profile_content from k_member where user_email=?";
+			pstmt = con.prepareStatement(sql);
+			pstmt.setString(1, user_email);
+			rs = pstmt.executeQuery();
+			if (rs.next()) {
+				mvo=new MemberVO();
+				mvo.setUserName(rs.getString(1));
+				mvo.setProfileImage(rs.getString(2));
+				mvo.setUserEmail(rs.getString(3));
+				mvo.setProfileContent(rs.getString(4));
+			}
+		} finally {
+			closeAll(rs, pstmt, con);
+		}
+		return mvo;
+	}
 }
