@@ -29,7 +29,7 @@
 								<div class="text ml-4 mb-4">
 								<h3>글번호 ${pvo.no}</h3>
 								<span class="tag">
-								로그인유저의  <br>
+								<!-- 로그인유저의  <br> -->
 								<c:set var="contains" value="0" />
 									<c:forEach var="email" items="${requestScope.list2}">
 									  <c:if test="${email eq pvo.no}">
@@ -47,6 +47,105 @@
 					작성일 : ${pvo.regdate} <br> --%>
 								</div>
 						</a>
+						<div class="col-md-4 ftco-animate">
+							<a href="main/images/image_2.jpg" class="photography-entry img image-popup d-flex justify-content-start align-items-end" style="background-image: url(main/images/image_2.jpg);">
+								<div class="overlay"></div>
+								<div class="text ml-4 mb-4">
+									<h3>Photo 02</h3>
+									<span class="tag">Nature</span>
+								</div>
+							</a>
+						</div>
+						<div class="col-md-4 ftco-animate">
+							<a href="main/images/image_3.jpg" class="photography-entry img image-popup d-flex justify-content-start align-items-end" style="background-image: url(main/images/image_3.jpg);">
+								<div class="overlay"></div>
+								<div class="text ml-4 mb-4">
+									<h3>Photo 03</h3>
+									<span class="tag">Fashion</span>
+								</div>
+							</a>
+						</div>
+						<div class="col-md-4 ftco-animate">
+							<a href="main/images/image_4.jpg" class="photography-entry img image-popup d-flex justify-content-start align-items-end" style="background-image: url(main/images/image_4.jpg);">
+								<div class="overlay"></div>
+								<div class="text ml-4 mb-4">
+									<h3>Photo 04</h3>
+									<span class="tag">Travel</span>
+								</div>
+							</a>
+						</div>
+						<div class="col-md-4 ftco-animate">
+							<a href="main/images/image_5.jpg" class="photography-entry img image-popup d-flex justify-content-start align-items-end" style="background-image: url(main/images/image_5.jpg);">
+								<div class="overlay"></div>
+								<div class="text ml-4 mb-4">
+									<h3>Photo 05</h3>
+									<span class="tag">Travel</span>
+								</div>
+							</a>
+						</div>
+						<div class="col-md-4 ftco-animate">
+							<a href="main/images/image_6.jpg" class="photography-entry img image-popup d-flex justify-content-start align-items-end" style="background-image: url(main/images/image_6.jpg);">
+								<div class="overlay"></div>
+								<div class="text ml-4 mb-4">
+									<h3>Photo 06</h3>
+									<span class="tag">Travel</span>
+								</div>
+							</a>
+						</div>
+						<div class="col-md-4 ftco-animate">
+							<a href="main/images/image_7.jpg" class="photography-entry img image-popup d-flex justify-content-start align-items-end" style="background-image: url(main/images/image_7.jpg);">
+								<div class="overlay"></div>
+								<div class="text ml-4 mb-4">
+									<h3>Photo 07</h3>
+									<span class="tag">Fashion, Model</span>
+								</div>
+							</a>
+						</div>
+						<div class="col-md-4 ftco-animate">
+							<a href="main/images/image_8.jpg" class="photography-entry img image-popup d-flex justify-content-start align-items-end" style="background-image: url(main/images/image_8.jpg);">
+								<div class="overlay"></div>
+								<div class="text ml-4 mb-4">
+									<h3>Photo 08</h3>
+									<span class="tag">Nature</span>
+								</div>
+							</a>
+						</div>
+						<div class="col-md-4 ftco-animate">
+							<a href="main/images/image_9.jpg" class="photography-entry img image-popup d-flex justify-content-start align-items-end" style="background-image: url(main/images/image_9.jpg);">
+								<div class="overlay"></div>
+								<div class="text ml-4 mb-4">
+									<h3>Photo 09</h3>
+									<span class="tag">Technology</span>
+								</div>
+							</a>
+						</div>
+						<div class="col-md-4 ftco-animate">
+							<a href="main/images/image_10.jpg" class="photography-entry img image-popup d-flex justify-content-start align-items-end" style="background-image: url(main/images/image_10.jpg);">
+								<div class="overlay"></div>
+								<div class="text ml-4 mb-4">
+									<h3>Photo 10</h3>
+									<span class="tag">Model</span>
+								</div>
+							</a>
+						</div>
+						<div class="col-md-4 ftco-animate">
+							<a href="main/images/image_11.jpg" class="photography-entry img image-popup d-flex justify-content-start align-items-end" style="background-image: url(main/images/image_11.jpg);">
+								<div class="overlay"></div>
+								<div class="text ml-4 mb-4">
+									<h3>Photo 11</h3>
+									<span class="tag">Fashion</span>
+								</div>
+							</a>
+						</div>
+						<div class="col-md-4 ftco-animate">
+							<a href="main/images/image_12.jpg" class="photography-entry img image-popup d-flex justify-content-start align-items-end" style="background-image: url(main/images/image_12.jpg);">
+								<div class="overlay"></div>
+								<div class="text ml-4 mb-4">
+									<h3>Photo 12</h3>
+									<span class="tag">Photography</span>
+								</div>
+							</a>
+						</div>
 						</div>
 					</div>
 </section>
