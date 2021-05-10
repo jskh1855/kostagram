@@ -167,3 +167,5 @@ where no=? and email=?
 SELECT no
 FROM k_likes
 WHERE user_email = '123@gmail';
+
+SELECT COUNT(*) FROM k_likes WHERE no = 1;

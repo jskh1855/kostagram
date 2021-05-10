@@ -8,7 +8,7 @@
 
 <%--출력을 뭐해야하나 포스트 no, 이미지, content, 좋아요 유무, 좋아요 갯수,  --%>
 
-<c:forEach var="pvo" items="${requestScope.list}">
+<c:forEach  items="${requestScope.list}" var="pvo"  varStatus="status">
 번호 : ${pvo.no} <br>
 사진 : ${pvo.post_image}<br>
 내용 : ${pvo.content}<br>
@@ -21,9 +21,6 @@
 	    <c:set var="contains" value="1" />
 	  </c:if>
 </c:forEach>
-좋아요 유무(0 or 1) : 
-	${ contains}
- <br>
-좋아요 개수 : <br>
-<hr>
+좋아요 유무(0 or 1) : ${ contains}<br>
+좋아요 개수 :${status.index}<br>
 </c:forEach>
