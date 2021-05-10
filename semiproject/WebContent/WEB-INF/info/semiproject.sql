@@ -64,7 +64,13 @@ insert into k_board(no, post_image, content, time_posted, user_email) values (k_
 insert into k_board(no, post_image, content, time_posted, user_email) values (k_seq.nextval,'파일명33', '내용33', sysdate, '123@gmail');  
 insert into k_board(no, post_image, content, time_posted, user_email) values (k_seq.nextval,'파일명11', '내용1', sysdate, '234@gmail');  
 insert into k_board(no, post_image, content, time_posted, user_email) values (k_seq.nextval,'파일명22', '내용2', sysdate, '234@gmail');  
-insert into k_board(no, post_image, content, time_posted, user_email) values (k_seq.nextval,'파일명33', '내용33', sysdate, '234@gmail');  
+insert into k_board(no, post_image, content, time_posted, user_email) values (k_seq.nextval,'파일명33', '내용33', sysdate, '234@gmail');
+insert into k_board(no, post_image, content, time_posted, user_email) values (k_seq.nextval,'파일명44', '내용1', sysdate, '123@gmail'); 
+insert into k_board(no, post_image, content, time_posted, user_email) values (k_seq.nextval,'파일명55', '내용2', sysdate, '123@gmail');  
+insert into k_board(no, post_image, content, time_posted, user_email) values (k_seq.nextval,'파일명66', '내용33', sysdate, '123@gmail');  
+insert into k_board(no, post_image, content, time_posted, user_email) values (k_seq.nextval,'파일명77', '내용1', sysdate, '234@gmail');  
+insert into k_board(no, post_image, content, time_posted, user_email) values (k_seq.nextval,'파일명88', '내용2', sysdate, '234@gmail');  
+insert into k_board(no, post_image, content, time_posted, user_email) values (k_seq.nextval,'파일명99', '내용33', sysdate, '234@gmail');
 
 -- BoardDAO.getPostingTotalList()    
 -- 전체 리스트 출력 
