@@ -27,7 +27,7 @@ public class HomeController implements Controller{
 			ArrayList<String> list2 = BoardDAO.getInstance().listLikes(mvo.getUserEmail());
 			request.setAttribute("list", list);
 			request.setAttribute("list2", list2);
-			//request.setAttribute("url", "/main/home.jsp"); 
+			// request.setAttribute("url", "/main/home.jsp"); 
 			request.setAttribute("url", "/main/homeTest.jsp"); 
 			
 			return "/template/layout.jsp";

@@ -17,7 +17,7 @@
 
 
 			<section class="ftco-section-3">
-				<div class="photograhy">
+				<div class="photography">
 					<div class="row">
 						<div class="col-md-4 ftco-animate">
 							<a href="main/images/image_1.jpg" class="photography-entry img image-popup d-flex justify-content-start align-items-end" style="background-image: url(main/images/image_1.jpg);">
