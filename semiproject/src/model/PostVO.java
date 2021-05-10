@@ -4,26 +4,21 @@ import java.util.ArrayList;
 
 public class PostVO {
 	private String no;  // 포스팅 번호
-	private String post_image;
+	private String postImage;
 	private String content;
-	private int hits;
 	private String regdate;
 	private MemberVO mvo;
-	private ArrayList<LikesVO> likesList;
 	public PostVO() {
 		super();
 		// TODO Auto-generated constructor stub
 	}
-	public PostVO(String no, String post_image, String content, int hits, String regdate, MemberVO mvo,
-			ArrayList<LikesVO> likesList) {
+	public PostVO(String no, String postImage, String content, String regdate, MemberVO mvo) {
 		super();
 		this.no = no;
-		this.post_image = post_image;
+		this.postImage = postImage;
 		this.content = content;
-		this.hits = hits;
 		this.regdate = regdate;
 		this.mvo = mvo;
-		this.likesList = likesList;
 	}
 	public String getNo() {
 		return no;
@@ -31,23 +26,17 @@ public class PostVO {
 	public void setNo(String no) {
 		this.no = no;
 	}
-	public String getPost_image() {
-		return post_image;
+	public String getPostImage() {
+		return postImage;
 	}
-	public void setPost_image(String post_image) {
-		this.post_image = post_image;
+	public void setPostImage(String postImage) {
+		this.postImage = postImage;
 	}
 	public String getContent() {
 		return content;
 	}
 	public void setContent(String content) {
 		this.content = content;
-	}
-	public int getHits() {
-		return hits;
-	}
-	public void setHits(int hits) {
-		this.hits = hits;
 	}
 	public String getRegdate() {
 		return regdate;
@@ -61,16 +50,10 @@ public class PostVO {
 	public void setMvo(MemberVO mvo) {
 		this.mvo = mvo;
 	}
-	public ArrayList<LikesVO> getLikesList() {
-		return likesList;
-	}
-	public void setLikesList(ArrayList<LikesVO> likesList) {
-		this.likesList = likesList;
-	}
 	@Override
 	public String toString() {
-		return "PostVO [no=" + no + ", post_image=" + post_image + ", content=" + content + ", hits=" + hits
-				+ ", regdate=" + regdate + ", mvo=" + mvo + ", likesList=" + likesList + "]";
+		return "PostVO [no=" + no + ", postImage=" + postImage + ", content=" + content + ", regdate=" + regdate
+				+ ", mvo=" + mvo + "]";
 	}
 	
 	
