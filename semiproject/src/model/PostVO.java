@@ -14,7 +14,7 @@ public class PostVO {
 		super();
 		// TODO Auto-generated constructor stub
 	}
-	public PostVO(String no, String title, String content, int hits, String regdate, MemberVO mvo,
+	public PostVO(String no, String post_image, String content, int hits, String regdate, MemberVO mvo,
 			ArrayList<LikesVO> likesList) {
 		super();
 		this.no = no;
@@ -31,11 +31,11 @@ public class PostVO {
 	public void setNo(String no) {
 		this.no = no;
 	}
-	public String getTitle() {
+	public String getPost_image() {
 		return post_image;
 	}
-	public void setTitle(String title) {
-		this.post_image = title;
+	public void setPost_image(String post_image) {
+		this.post_image = post_image;
 	}
 	public String getContent() {
 		return content;
@@ -69,8 +69,8 @@ public class PostVO {
 	}
 	@Override
 	public String toString() {
-		return "PostVO [no=" + no + ", post_image=" + post_image + ", content=" + content + ", hits=" + hits + ", regdate="
-				+ regdate + ", mvo=" + mvo + ", likesList=" + likesList + "]";
+		return "PostVO [no=" + no + ", post_image=" + post_image + ", content=" + content + ", hits=" + hits
+				+ ", regdate=" + regdate + ", mvo=" + mvo + ", likesList=" + likesList + "]";
 	}
 	
 	

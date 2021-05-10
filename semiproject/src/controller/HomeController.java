@@ -1,9 +1,15 @@
 package controller;
 
 
+import java.util.ArrayList;
+
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
+
+import model.BoardDAO;
+import model.MemberDAO;
+import model.PostVO;
 
 
 public class HomeController implements Controller{
@@ -16,9 +22,13 @@ public class HomeController implements Controller{
 			return "/template/layout.jsp";
 		}
 		else {
-			//request.setAttribute("url", "/main/home.jsp");  
-			//(재훈)home.jsp   header footer분리가 잘 안되네욤.. 임시 homeTest.jsp 사용
-			request.setAttribute("url", "/main/home.jsp"); // 수정전 22번 코드 
+			
+			ArrayList<PostVO> list = BoardDAO.getInstance().getPostingTotalList();
+			
+			request.setAttribute("list", list);
+			//request.setAttribute("url", "/main/home.jsp"); 
+			request.setAttribute("url", "/main/homeTest.jsp"); 
+			
 			return "/template/layout.jsp";
 		}
 
