@@ -9,17 +9,22 @@
 <section class="ftco-section ftco-bread" style="padding: 0;">
 	<div class="container">
 		<div class="row no-gutters slider-text justify-content-center align-items-center">
-			<img src="main/images/logo.png" width="100" height="50">
+
 			<c:choose>
 				<c:when test="${sessionScope.mvo==null}">
-					로그인 x
 				</c:when>
 				<c:otherwise>
+				<div class="kostagram">
+						<div><img src="main/images/logo.png" width="200" height="100"></div>
+						<div class="kostagram2">
+<%-- 							<div><a href="${pageContext.request.contextPath}/index.jsp">홈</a>&nbsp;&nbsp;</div> --%>
+							 <div>${sessionScope.mvo.userName}님 &nbsp;&nbsp;</div>
+							 <div><a href="${pageContext.request.contextPath}/WritePostFormController.do">Post</a></div>
+							 <div><a href="${pageContext.request.contextPath}/board/myPage.jsp">My Page</a></div>
+							 <div><a href="${pageContext.request.contextPath}/LogoutController.do">Log out</a></div>
+						 </div>
+				</div>
 
-					<a href="${pageContext.request.contextPath}/index.jsp" style= "color: black;">홈</a>&nbsp;&nbsp;
-					<a href="${pageContext.request.contextPath}/ProfileDetailController.do" style= "color: black;"> ${sessionScope.mvo.userName}님</a>&nbsp;&nbsp;
-					 <a href="${pageContext.request.contextPath}/WritePostFormController.do" style= "color: black;">글쓰기</a>&nbsp;&nbsp;
-					 <a href="${pageContext.request.contextPath}/LogoutController.do" style= "color: black;">로그아웃</a>&nbsp;&nbsp;
 
 				</c:otherwise>
 			</c:choose>
@@ -28,7 +33,10 @@
 </section>
 
 
-
+<%-- 					<a href="${pageContext.request.contextPath}/index.jsp" style= "color: black;">홈</a>&nbsp;&nbsp; --%>
+<%-- 					<a href="${pageContext.request.contextPath}/ProfileDetailController.do" style= "color: black;"> ${sessionScope.mvo.userName}님</a>&nbsp;&nbsp; --%>
+<%-- 					 <a href="${pageContext.request.contextPath}/WritePostFormController.do" style= "color: black;">글쓰기</a>&nbsp;&nbsp; --%>
+<%-- 					 <a href="${pageContext.request.contextPath}/LogoutController.do" style= "color: black;">로그아웃</a>&nbsp;&nbsp; --%>
 
 
 <%-- 이하 기존코드 --%>   
