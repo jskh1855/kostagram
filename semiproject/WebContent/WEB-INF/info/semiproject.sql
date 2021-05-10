@@ -58,7 +58,7 @@ select * from K_MEMBER;
 
 -- BoardDAO.posting(PostVO vo) 
 -- 포스트 작성 
-insert into k_board(no, post_image, content, time_posted, user_email) values (k_seq.nextval,?, ?, 0, sysdate, ?)  
+insert into k_board(no, post_image, content, time_posted, user_email) values (k_seq.nextval,?, ?, 0, sysdate, ?) ;
 insert into k_board(no, post_image, content, time_posted, user_email) values (k_seq.nextval,'파일명', '내용1', sysdate, '123@gmail'); 
 insert into k_board(no, post_image, content, time_posted, user_email) values (k_seq.nextval,'파일명22', '내용2', sysdate, '123@gmail');  
 insert into k_board(no, post_image, content, time_posted, user_email) values (k_seq.nextval,'파일명33', '내용33', sysdate, '123@gmail');  
@@ -157,3 +157,7 @@ WHERE no=? and email=?
 DELETE
 FROM k_likes
 where no=? and email=?
+
+SELECT no
+FROM k_likes
+WHERE user_email = '123@gmail';

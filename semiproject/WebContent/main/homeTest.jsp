@@ -15,7 +15,15 @@
 작성자 : ${pvo.mvo.userName}<br>
 작성일 : ${pvo.regdate} <br>
 로그인유저의  <br>
-좋아요 유무(0 or 1) : <%-- BoardDAO.getInstance().likeCheck(${pvo.no}, ${sessionScope.mvo.userEmail}) --%> <br>
+<c:set var="contains" value="0" />
+	<c:forEach var="email" items="${requestScope.list2}">
+	  <c:if test="${email eq pvo.no}">
+	    <c:set var="contains" value="1" />
+	  </c:if>
+</c:forEach>
+좋아요 유무(0 or 1) : 
+	${ contains}
+ <br>
 좋아요 개수 : <br>
 <hr>
 </c:forEach>

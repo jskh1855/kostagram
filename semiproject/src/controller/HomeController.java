@@ -8,7 +8,7 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import model.BoardDAO;
-import model.MemberDAO;
+import model.MemberVO;
 import model.PostVO;
 
 
@@ -22,10 +22,11 @@ public class HomeController implements Controller{
 			return "/template/layout.jsp";
 		}
 		else {
-			
+			MemberVO mvo = (MemberVO)session.getAttribute("mvo");
 			ArrayList<PostVO> list = BoardDAO.getInstance().getPostingTotalList();
-			
+			ArrayList<String> list2 = BoardDAO.getInstance().listLikes(mvo.getUserEmail());
 			request.setAttribute("list", list);
+			request.setAttribute("list2", list2);
 			//request.setAttribute("url", "/main/home.jsp"); 
 			request.setAttribute("url", "/main/homeTest.jsp"); 
 			

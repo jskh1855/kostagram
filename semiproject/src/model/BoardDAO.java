@@ -300,5 +300,26 @@ public class BoardDAO {
 	 * @param vo
 	 * @throws SQLException
 	 */
+	
+	
+	
+	public ArrayList<String> listLikes(String email) throws SQLException {
+		Connection con = null;
+		PreparedStatement pstmt = null;
+		ResultSet rs = null;
+		ArrayList<String> list = new ArrayList<String>();
+		try {
+			con = getConnection();
+			pstmt = con.prepareStatement("SELECT no FROM k_likes WHERE user_email = ?");
+			pstmt.setString(1, email);
+			rs = pstmt.executeQuery();
+			while(rs.next()) {
+				list.add(rs.getString(1));
+			}
+		} finally {
+			closeAll(rs, pstmt, con);
+		}
+		return list;
+	}
 
 }
