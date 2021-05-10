@@ -94,6 +94,22 @@ address {
   font-style: normal;
   line-height: inherit; }
 
+.kostagram{
+		display: flex;
+		width:100%;
+		font-weight: 700;
+		font-size: 2.5rem;
+}
+
+.kostagram2{
+		display: flex;
+		float:right;
+		width:100%;
+		font-weight: 700;
+		font-size: 3.5rem;
+		font-family: "Poppins", Arial, sans-serif;
+}
+
 ol,
 ul,
 dl {
@@ -7298,7 +7314,7 @@ a {
   -webkit-transition: .3s all ease;
   -o-transition: .3s all ease;
   transition: .3s all ease;
-  color: #ccb78f; }
+  color: 	#000000; }
   a:hover, a:focus {
     text-decoration: none;
     color: #ccb78f;
