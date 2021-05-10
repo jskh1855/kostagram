@@ -2,14 +2,9 @@
 	pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 
-
-
-
-
 <section class="ftco-section ftco-bread" style="padding: 0;">
 	<div class="container">
 		<div class="row no-gutters slider-text justify-content-center align-items-center">
-
 			<c:choose>
 				<c:when test="${sessionScope.mvo==null}">
 				</c:when>
@@ -19,13 +14,11 @@
 						<div class="kostagram2">
 <%-- 							<div><a href="${pageContext.request.contextPath}/index.jsp">홈</a>&nbsp;&nbsp;</div> --%>
 							 <div>${sessionScope.mvo.userName}님 &nbsp;&nbsp;</div>
-							 <div><a href="${pageContext.request.contextPath}/WritePostFormController.do">Post</a></div>
-							 <div><a href="${pageContext.request.contextPath}/board/myPage.jsp">My Page</a></div>
-							 <div><a href="${pageContext.request.contextPath}/LogoutController.do">Log out</a></div>
+							 <div><a href="${pageContext.request.contextPath}/WritePostFormController.do">Post</a>&nbsp;&nbsp;</div>
+							 <div><a href="${pageContext.request.contextPath}/board/myPage.jsp">My Page</a>&nbsp;&nbsp;</div>
+							 <div><a href="${pageContext.request.contextPath}/LogoutController.do">Log out</a>&nbsp;&nbsp;</div>
 						 </div>
 				</div>
-
-
 				</c:otherwise>
 			</c:choose>
 		</div>
