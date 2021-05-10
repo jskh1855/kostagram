@@ -11,11 +11,14 @@
 	              <h2 class="ftco-heading-2">Recent Photos</h2>
 	              <ul class="list-unstyled photo">
 	                <li><a href="#" class="img" style="background-image: url(main/images/image_1.jpg);"></a></li>
-	                <li><a href="#" class="img" style="background-image: url(main/images/image_2.jpg);"></a></li>
-	                <li><a href="#" class="img" style="background-image: url(main/images/image_3.jpg);"></a></li>
-	                <li><a href="#" class="img" style="background-image: url(main/images/image_4.jpg);"></a></li>
-	                <li><a href="#" class="img" style="background-image: url(main/images/image_5.jpg);"></a></li>
-	                <li><a href="#" class="img" style="background-image: url(main/images/image_6.jpg);"></a></li>
+	                <li><a href="#" class="img" style="background-image: url(main/images/image_1.jpg);"></a></li>
+	                <li><a href="#" class="img" style="background-image: url(main/images/image_1.jpg);"></a></li>
+	                	                	                	                	              
+<!-- 	                <li><a href="#" class="img" style="background-image: url(main/images/image_2.jpg);"></a></li> -->
+<!-- 	                <li><a href="#" class="img" style="background-image: url(main/images/image_3.jpg);"></a></li> -->
+<!-- 	                <li><a href="#" class="img" style="background-image: url(main/images/image_4.jpg);"></a></li> -->
+<!-- 	                <li><a href="#" class="img" style="background-image: url(main/images/image_5.jpg);"></a></li> -->
+<!-- 	                <li><a href="#" class="img" style="background-image: url(main/images/image_6.jpg);"></a></li> -->
 	              </ul>
 	            </div>
 	          </div>
@@ -41,7 +44,7 @@
 	          <div class="col-md-12">
 
 	            <p><!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
-	  Copyright &copy;<script>document.write(new Date().getFullYear());</script> All rights reserved | This template is made with <i class="icon-heart" aria-hidden="true"></i> by <a href="https://colorlib.com" target="_blank">Colorlib</a>
+	  Copyright &copy;<script>document.write(new Date().getFullYear());</script> All rights reserved | This template is made with <i class="icon-heart" aria-hidden="true"></i> by <a href="https://colorlib.com" target="_blank">그만큼 신나시는 거조</a>
 	  <!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. --></p>
 	          </div>
 	        </div>
