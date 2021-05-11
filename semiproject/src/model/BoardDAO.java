@@ -346,5 +346,33 @@ public class BoardDAO {
 		}
 		return likes;
 	}
+	
+	public void insertLike(String no, String email) throws SQLException {
+		Connection con = null;
+		PreparedStatement pstmt = null;
+		try {
+			con = getConnection();
+			pstmt = con.prepareStatement("INSERT INTO k_likes(no,user_email) VALUES(?,?)");
+			pstmt.setString(1, no);
+			pstmt.setString(2, email);
+			pstmt.executeUpdate();
+		} finally {
+			closeAll(pstmt, con);
+		}	
+	}
+	
+	public void deleteLike(String no, String email) throws SQLException {
+		Connection con = null;
+		PreparedStatement pstmt = null;
+		try {
+			con = getConnection();
+			pstmt = con.prepareStatement("DELETE FROM k_likes WHERE no=? and user_email=?");
+			pstmt.setString(1, no);
+			pstmt.setString(2, email);
+			pstmt.executeUpdate();
+		} finally {
+			closeAll(pstmt, con);
+		}			
+	}
 
 }
