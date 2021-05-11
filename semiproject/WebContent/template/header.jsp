@@ -10,7 +10,7 @@
 				</c:when>
 				<c:otherwise>
 				<div class="kostagram">
-						<div><a href="${pageContext.request.contextPath}/index.jsp"><img src="main/images/logo.png" width="200" height="100"></a></div>
+						<div><a href="${pageContext.request.contextPath}/index.jsp"><img src="pics/logo.png" width="200" height="100"></a></div>
 						<div class="kostagram2">
 <%-- 							<div><a href="${pageContext.request.contextPath}/index.jsp">홈</a>&nbsp;&nbsp;</div> --%>
 <%-- 							 <div>${sessionScope.mvo.userName}님 &nbsp;&nbsp;</div> --%>
