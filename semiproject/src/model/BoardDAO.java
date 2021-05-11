@@ -130,20 +130,31 @@ public class BoardDAO {
 		try {
 			con = getConnection();
 			StringBuilder sql = new StringBuilder();
-			/*
-			 * sql.
-			 * append("SELECT b.no,b.title,b.hits,to_char(time_posted,'YYYY.MM.DD') as time_posted,m.name "
-			 * ); sql.append("FROM board b , board_member m ");
-			 * sql.append("WHERE b.id=m.id "); sql.append("order by no desc");
-			 */
+
+			sql.append("select rownum, A.* ");
+			sql.append("from ( select count(t2.no) as like_sum, t1.no, t1.post_image, t1.content, to_char(t1.time_posted,'MM.DD')AS UPLOAD_DATE,t1.user_email,(SELECT user_name FROM k_member WHERE user_email=t1.user_email) as USER_NAME ");
+			sql.append("from k_board t1 ");
+			sql.append("left join k_likes t2 ");
+			sql.append("on t1.no = t2.no ");
+			sql.append("group by t2.no, t1.no, t1.post_image,t1.content, to_char(t1.time_posted,'MM.DD'),t1.user_email ");
+			sql.append("order by like_sum desc) A ");
+			sql.append("where rownum <=3 ");
+
+			
 			pstmt = con.prepareStatement(sql.toString());
 			rs = pstmt.executeQuery();
-			// 목록에서 게시물 content는 필요없으므로 null로 setting
-			// select no,title,time_posted,hits,id,name
+			
 			while (rs.next()) {
 				PostVO pvo = new PostVO();
+				pvo.setNo(rs.getString(3));
+				pvo.setPostImage(rs.getString(4));
+				pvo.setContent(rs.getString(5));
+				pvo.setRegdate(rs.getString(6));
+				
 				MemberVO mvo = new MemberVO();
-
+				mvo.setUserName(rs.getString(8));
+				pvo.setMvo(mvo);
+				
 				list.add(pvo);
 			}
 		} finally {
