@@ -19,15 +19,15 @@ public class UpdateProfileController implements Controller {
             request.getMethod().equals("POST")==false){
          return "redirect:index.jsp";
       }   
-      String profileimage = request.getParameter("profileimage");
-      String profilecontent = request.getParameter("profilecontent");
+      String profileImage = request.getParameter("profileImage");
+      String profileContent = request.getParameter("profileContent");
     
       MemberVO mvo = (MemberVO)session.getAttribute("mvo");
 	  String userEmail=mvo.getUserEmail();
       
       mvo.setUserEmail(userEmail);
-      mvo.setProfileImage(profileimage);
-      mvo.setProfileContent(profilecontent);
+      mvo.setProfileImage(profileImage);
+      mvo.setProfileContent(profileContent);
       MemberDAO.getInstance().updateProfile(mvo);         
       String path="redirect:ProfileDetailController.do";
       return path;
