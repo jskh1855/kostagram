@@ -100,4 +100,46 @@ public class MemberDAO {
 		}
 		return mvo;
 	}
+	public void updateProfile(MemberVO mvo) throws SQLException {
+		Connection con=null;
+		PreparedStatement pstmt=null;
+		try{
+			con=dataSource.getConnection();
+			pstmt=con.prepareStatement("update k_member set profile_image=?,profile_content=? where user_email=?");
+			pstmt.setString(1, mvo.getProfileImage());
+			pstmt.setString(2, mvo.getProfileContent());
+			pstmt.setString(3, mvo.getUserEmail());	
+			pstmt.executeUpdate();			
+		}finally{
+			closeAll(pstmt,con);
+		}
+	}
+
+	// getProfileByEmail 구현해서 update profilejsp 구현하기.
+	   public MemberVO getProfileByEmail(String userEmail) throws SQLException {
+	      MemberVO vo = null;
+	      Connection con = null;
+	      PreparedStatement pstmt = null;
+	      ResultSet rs = null;
+	      try {
+	         con = dataSource.getConnection();
+	         StringBuilder sql = new StringBuilder();
+	         sql.append("SELECT profile_image,profile_content ");
+	         sql.append("FROM k_member ");
+	         sql.append("WHERE user_email=? ");
+	         pstmt = con.prepareStatement(sql.toString());
+	         pstmt.setString(1, userEmail);
+	         rs = pstmt.executeQuery();
+	         if (rs.next()) {
+	            vo = new MemberVO();
+	            vo.setUserEmail("userEmail");
+	            vo.setProfileImage(rs.getString("profile_image"));
+	            vo.setProfileContent(rs.getString("profile_content"));
+	         }
+	      } finally {
+	         closeAll(rs, pstmt, con);
+	      }
+	      return vo;
+	   }
+	
 }
