@@ -28,6 +28,7 @@
 					<div class="row">
 					탑 3 
 					<c:forEach  items="${requestScope.list4}" var="pvoTop3" varStatus="status">
+					<p>???</p>
 					사진 : <img src="images/contentImage/${pvoTop3.postImage}" alt="My Image" width="100" height="200"> ${pvoTop3.postImage} <br>
 					내용 : ${pvoTop3.content}<br>
 					작성자 : ${pvoTop3.mvo.userName}<br>
