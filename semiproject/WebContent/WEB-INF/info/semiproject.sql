@@ -36,9 +36,10 @@ create table k_likes(
 
 select no,count(*) AS likes from k_likes group by no;
 
-insert into k_member(user_email,user_name,user_password) values('123@gmail','김','123');
-insert into k_member(user_email,user_name,user_password) values('234@gmail','이','234');
-insert into k_member(user_email,user_name,user_password) values('345@gmail','박','345');
+insert into k_member(user_email,user_name,user_password, profile_image) values('123@gmail','김','123', 'profile_default.jpg');
+insert into k_member(user_email,user_name,user_password, profile_image) values('234@gmail','이','234', 'profile_default.jpg');
+insert into k_member(user_email,user_name,user_password, profile_image) values('345@gmail','박','345', 'profile_default.jpg');
+
 
 insert into k_likes(no,user_email) values(1,'123@gmail');
 insert into k_likes(no,user_email) values(1,'234@gmail');
@@ -57,18 +58,20 @@ select * from K_MEMBER;
 -- BoardDAO.posting(PostVO vo) 
 -- 포스트 작성 
 insert into k_board(no, post_image, content, time_posted, user_email) values (k_seq.nextval,?, ?, 0, sysdate, ?) ;
-insert into k_board(no, post_image, content, time_posted, user_email) values (k_seq.nextval,'pics/image_1.jpg', '내용1', sysdate, '123@gmail'); 
-insert into k_board(no, post_image, content, time_posted, user_email) values (k_seq.nextval,'pics/image_2.jpg', '내용2', sysdate, '123@gmail');  
-insert into k_board(no, post_image, content, time_posted, user_email) values (k_seq.nextval,'pics/image_3.jpg', '내용33', sysdate, '123@gmail');  
-insert into k_board(no, post_image, content, time_posted, user_email) values (k_seq.nextval,'pics/image_4.jpg', '내용1', sysdate, '234@gmail');  
-insert into k_board(no, post_image, content, time_posted, user_email) values (k_seq.nextval,'pics/image_5.jpg', '내용2', sysdate, '234@gmail');  
-insert into k_board(no, post_image, content, time_posted, user_email) values (k_seq.nextval,'pics/image_6.jpg', '내용33', sysdate, '234@gmail');
-insert into k_board(no, post_image, content, time_posted, user_email) values (k_seq.nextval,'pics/image_7.jpg', '내용1', sysdate, '123@gmail'); 
-insert into k_board(no, post_image, content, time_posted, user_email) values (k_seq.nextval,'pics/image_8.jpg', '내용2', sysdate, '123@gmail');  
-insert into k_board(no, post_image, content, time_posted, user_email) values (k_seq.nextval,'pics/image_9.jpg', '내용33', sysdate, '123@gmail');  
-insert into k_board(no, post_image, content, time_posted, user_email) values (k_seq.nextval,'pics/image_10.jpg', '내용1', sysdate, '234@gmail');  
-insert into k_board(no, post_image, content, time_posted, user_email) values (k_seq.nextval,'pics/image_11.jpg', '내용2', sysdate, '234@gmail');  
-insert into k_board(no, post_image, content, time_posted, user_email) values (k_seq.nextval,'pics/image_12.jpg', '내용33', sysdate, '234@gmail');
+insert into k_board(no, post_image, content, time_posted, user_email) values (k_seq.nextval,'image_1.jpg', '내용1', sysdate, '123@gmail'); 
+insert into k_board(no, post_image, content, time_posted, user_email) values (k_seq.nextval,'image_2.jpg', '내용2', sysdate, '123@gmail');  
+insert into k_board(no, post_image, content, time_posted, user_email) values (k_seq.nextval,'image_3.jpg', '내용33', sysdate, '123@gmail');  
+insert into k_board(no, post_image, content, time_posted, user_email) values (k_seq.nextval,'image_4.jpg', '내용1', sysdate, '234@gmail');  
+insert into k_board(no, post_image, content, time_posted, user_email) values (k_seq.nextval,'image_5.jpg', '내용2', sysdate, '234@gmail');  
+insert into k_board(no, post_image, content, time_posted, user_email) values (k_seq.nextval,'image_6.jpg', '내용33', sysdate, '234@gmail');
+insert into k_board(no, post_image, content, time_posted, user_email) values (k_seq.nextval,'image_7.jpg', '내용1', sysdate, '123@gmail'); 
+insert into k_board(no, post_image, content, time_posted, user_email) values (k_seq.nextval,'image_8.jpg', '내용2', sysdate, '123@gmail');  
+insert into k_board(no, post_image, content, time_posted, user_email) values (k_seq.nextval,'image_9.jpg', '내용33', sysdate, '123@gmail');  
+insert into k_board(no, post_image, content, time_posted, user_email) values (k_seq.nextval,'image_10.jpg', '내용1', sysdate, '234@gmail');  
+insert into k_board(no, post_image, content, time_posted, user_email) values (k_seq.nextval,'image_11.jpg', '내용2', sysdate, '234@gmail');  
+insert into k_board(no, post_image, content, time_posted, user_email) values (k_seq.nextval,'image_12.jpg', '내용33', sysdate, '234@gmail');
+
+
 
 -- BoardDAO.getPostingTotalList()    
 -- 전체 리스트 출력 
@@ -76,6 +79,13 @@ insert into k_board(no, post_image, content, time_posted, user_email) values (k_
 select no, post_image 
 from K_BOARD
 order by no desc;
+
+--<수정>
+select b.no, b.post_image, b.content, to_char(b.time_posted,'MM.DD'), m.user_name
+from K_BOARD b, K_MEMBER m
+where b.user_email = m.user_email
+order by no desc
+
 
 -- BoardDAO.getPostingTop3List()
 -- 좋아요 top3 포스팅 필요(no, email, content,   count(*) 게시글당 좋아요수 카운트)
@@ -85,6 +95,16 @@ from ( select count(t2.no) as like_sum, t1.post_image
 			left join k_likes t2
 					on t1.no = t2.no
 			group by t2.no, t1.post_image
+			order by like_sum desc) A
+where rownum <=3 ;
+
+--<수정>
+select rownum, A.*
+from ( select count(t2.no) as like_sum, t1.no, t1.post_image, t1.content, to_char(t1.time_posted,'MM.DD')AS UPLOAD_DATE,t1.user_email,(SELECT user_name FROM k_member WHERE user_email=t1.user_email) as USER_NAME 
+			from k_board t1
+			left join k_likes t2
+					on t1.no = t2.no
+			group by t2.no, t1.no, t1.post_image, t1.content, to_char(t1.time_posted,'MM.DD'),t1.user_email
 			order by like_sum desc) A
 where rownum <=3 ;
 
