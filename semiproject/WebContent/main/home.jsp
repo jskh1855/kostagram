@@ -39,6 +39,7 @@
 								</div>
 								</a>
 					<%-- 내용 : ${pvoTop3.content}<br> --%>
+					
 					작성자 : ${pvoTop3.mvo.userName}<br>
 					<%-- 작성일 : ${pvoTop3.regdate} <br> --%>
 					<div id="like-display">
@@ -82,6 +83,10 @@
 									<a href="http://farm9.staticflickr.com/8242/8558295633_f34a55c1c6_b.jpg" title="${pvo.mvo.userName}" content="${pvo.content }"><img src="http://farm9.staticflickr.com/8242/8558295633_f34a55c1c6_s.jpg" width="75" height="75"></a>
 								</div>
 								<div class="text ml-4 mb-4" style="display: inline-flex;">
+								
+								작성자 : ${pvo.mvo.userName}<br>
+								<a href="ProfileDetailController.do">
+								프로필이미지 : <img alt="이미지안뜸" src="images/profileImage/profile_default.jpg" style="width:30px; height:30px;"><br></a>
 <%-- 								<h3>글번호 ${pvo.no}</h3> --%>
 									<span class="tag">
 									<c:set var="contains" value="0" />
