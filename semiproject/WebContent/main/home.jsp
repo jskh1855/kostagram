@@ -27,44 +27,60 @@
 				<div class="photography">
 				<div style="background-color: lightgray; margin-bottom: 1rem;">
 					<div class="row justify-content-center mb-2 pb-3" >
-					<h2 class="mb-4" >좋아요 탑 3</h2>
+					<h2 class="mb-4">좋아요 탑 3</h2>
 					</div>
 					
 					<div class="row">
 					<c:forEach  items="${requestScope.list4}" var="pvoTop3" varStatus="status">
+					<%-- ${pvoTop3 } --%>
 					<div class="col-md-4 ftco-animate">
 					<a href="images/contentImage/${pvoTop3.postImage}" class="photography-entry img image-popup d-flex justify-content-start align-items-end" style="background-image: url(images/contentImage/${pvoTop3.postImage});">
 								<div class="overlay">
 								</div>
 								</a>
-					<%-- 내용 : ${pvoTop3.content}<br>
+					<%-- 내용 : ${pvoTop3.content}<br> --%>
 					작성자 : ${pvoTop3.mvo.userName}<br>
-					작성일 : ${pvoTop3.regdate} <br>
-					로그인유저의 <br>
-					좋아요 유무(0 or 1) : <br>
-					좋아요 개수 : <br> --%>
+					<%-- 작성일 : ${pvoTop3.regdate} <br> --%>
+					<div id="like-display">
+						좋아요 유무(0 or 1)
+						<!-- if else로 좋아요 아이콘 넣을 거임 -->
+					    <%-- <c:set var="contains" value="1" /> --%>
+						<c:choose>
+						    <c:when test="${1 eq 1}">
+						        좋아요 하얀 버튼
+						    </c:when>
+						    <c:otherwise>
+						        좋아요 빨간 버튼
+						    </c:otherwise>
+						</c:choose>
+						<!-- 좋아요 아이콘 끝 -->
+						좋아요 개수 : <br>					
+					</div>
 					</div>
 					</c:forEach>
 					<br>
 					<br>
 					</div>
 					</div>
+					
 					<div class="row">
 					<!-- 이미지 카드 한 칸 시작-->
 					<c:forEach  items="${requestScope.list}" var="pvo" varStatus="status">
 					<div class="col-md-4 ftco-animate">
-						<a href="images/contentImage/${pvo.postImage}" class="photography-entry img image-popup d-flex justify-content-start align-items-end" style="background-image: url(images/contentImage/${pvo.postImage});">
+					<div class="popup-gallery">
+					<a class="simple-ajax-popup" href="images/contentImage/${pvo.postImage}">
+						<a href="images/contentImage/${pvo.postImage}" class="photography-entry img image-popup d-flex justify-content-start align-items-end" title="${pvo.mvo.userName}"  content="${pvo.content }" style="background-image: url(images/contentImage/${pvo.postImage});">
 								<div class="overlay">
-								<!-- <p>어케하누</p> -->
 								</div>
 								</a>
-								<!-- popup 테스트 -->
-								<div class="popup-gallery">
-									<a href="http://farm9.staticflickr.com/8242/8558295633_f34a55c1c6_b.jpg" title="${pvo.mvo.userName}"><img src="http://farm9.staticflickr.com/8242/8558295633_f34a55c1c6_s.jpg" width="75" height="75"></a>
-									<a href="http://farm9.staticflickr.com/8382/8558295631_0f56c1284f_b.jpg" title="Winter Dance"><img src="http://farm9.staticflickr.com/8382/8558295631_0f56c1284f_s.jpg" width="75" height="75"></a>
+								</a>
 								</div>
-								<a class="simple-ajax-popup" href="${pvo.postImage}">Load another content via ajax</a>
+								<!-- popup 테스트용 -->
 								
+					<div id="test-popup" class="white-popup mfp-hide">
+								<%-- <div class="popup-gallery"> --%>
+									<a href="http://farm9.staticflickr.com/8242/8558295633_f34a55c1c6_b.jpg" title="${pvo.mvo.userName}" content="${pvo.content }"><img src="http://farm9.staticflickr.com/8242/8558295633_f34a55c1c6_s.jpg" width="75" height="75"></a>
+								</div>
 								<div class="text ml-4 mb-4" style="display: inline-flex;">
 								<h3>글번호 ${pvo.no}</h3>
 									<span class="tag">
@@ -125,7 +141,7 @@ $(document).ready(function() {
 		image: {
 			tError: '<a href="%url%">The image #%curr%</a> could not be loaded.',
 			titleSrc: function(item) {
-				return item.el.attr('title') + '<small>by Marsel Van Oosten</small>';
+				return item.el.attr('title') + item.el.attr('content') +  '<small>by Marsel Van Oosten</small>';
 			}
 		}
 	});
