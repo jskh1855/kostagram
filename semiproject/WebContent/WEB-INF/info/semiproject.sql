@@ -8,30 +8,31 @@ DROP SEQUENCE k_seq;
 COMMIT
 
 CREATE TABLE k_member(
-	user_email varchar2(100) primary key,
-	user_name varchar2(100) not null,
-	user_password varchar2(100) not null,
-	profile_image varchar2(100),
-	profile_content varchar2(100),
-	user_email_checked number(1,0),
-	user_email_hash varchar2(100)
+   user_email varchar2(100) primary key,
+   user_name varchar2(100) not null,
+   user_password varchar2(100) not null,
+   profile_image varchar2(100) default 'profile_default.jpg',
+   profile_content varchar2(100),
+   user_email_checked number(1,0),
+   user_email_hash varchar2(100)
 );
 
+delete from k_board;
 
 create table k_board(
-	no number primary key,
-	post_image varchar2(100) not null,
-	content varchar2(100),
-	time_posted date,
-	user_email varchar2(100) not null, 
-	constraint user_email_fk foreign key (user_email) references k_member(user_email)
+   no number primary key,
+   post_image varchar2(100) not null,
+   content varchar2(100),
+   time_posted date,
+   user_email varchar2(100) not null, 
+   constraint user_email_fk foreign key (user_email) references k_member(user_email)
 );
 
 create table k_likes(
-	no number,
-	user_email varchar2(100) not null,
-	constraint user_email_fk1 foreign key (user_email) references k_member(user_email),
-	constraint no_fk foreign key (no) references k_board(no)
+   no number,
+   user_email varchar2(100) not null,
+   constraint user_email_fk1 foreign key (user_email) references k_member(user_email),
+   constraint no_fk foreign key (no) references k_board(no)
 );
 
 select no,count(*) AS likes from k_likes group by no;
@@ -39,7 +40,7 @@ select no,count(*) AS likes from k_likes group by no;
 insert into k_member(user_email,user_name,user_password, profile_image) values('123@gmail','김','123', 'profile_default.jpg');
 insert into k_member(user_email,user_name,user_password, profile_image) values('234@gmail','이','234', 'profile_default.jpg');
 insert into k_member(user_email,user_name,user_password, profile_image) values('345@gmail','박','345', 'profile_default.jpg');
-
+insert into k_member(user_email,user_name,user_password) values('456@gmail','정','456');
 
 insert into k_likes(no,user_email) values(1,'123@gmail');
 insert into k_likes(no,user_email) values(1,'234@gmail');
@@ -91,37 +92,36 @@ order by no desc
 -- 좋아요 top3 포스팅 필요(no, email, content,   count(*) 게시글당 좋아요수 카운트)
 select rownum, A.*
 from ( select count(t2.no) as like_sum, t1.post_image
-			from k_board t1
-			left join k_likes t2
-					on t1.no = t2.no
-			group by t2.no, t1.post_image
-			order by like_sum desc) A
+         from k_board t1
+         left join k_likes t2
+               on t1.no = t2.no
+         group by t2.no, t1.post_image
+         order by like_sum desc) A
 where rownum <=3 ;
 
 --<수정>
 select rownum, A.*
 from ( select count(t2.no) as like_sum, t1.no, t1.post_image, t1.content, to_char(t1.time_posted,'MM.DD')AS UPLOAD_DATE,t1.user_email,(SELECT user_name FROM k_member WHERE user_email=t1.user_email) as USER_NAME 
-			from k_board t1
-			left join k_likes t2
-					on t1.no = t2.no
-			group by t2.no, t1.no, t1.post_image, t1.content, to_char(t1.time_posted,'MM.DD'),t1.user_email
-			order by like_sum desc) A
+         from k_board t1
+         left join k_likes t2
+               on t1.no = t2.no
+         group by t2.no, t1.no, t1.post_image, t1.content, to_char(t1.time_posted,'MM.DD'),t1.user_email
+         order by like_sum desc) A
 where rownum <=3 ;
 
 
 -- BoardDAO. getPostingListByUser(String email)
 -- 개인 포스팅 출력 return ArrayList<PosVO>
 
-select no, post_image  
-from k_board
-where user_email='123@gmail'  
-order by time_posted desc;
+SELECT no, post_image, content, to_char(time_posted,'MM.DD')
+FROM k_board
+WHERE user_email='123@gmail'  
+ORDER BY time_posted DESC;
 
-select no, post_image  
-from k_board
-where user_email=?
-order by time_posted desc;
-
+SELECT no, post_image, content, to_char(time_posted,'MM.DD')
+FROM k_board
+WHERE user_email=?  
+ORDER BY time_posted DESC;
 
 -- BoardDAO.getPostingByNo(String no)
 -- 포스팅 상세보기  return pvo

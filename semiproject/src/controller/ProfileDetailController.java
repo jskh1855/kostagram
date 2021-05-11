@@ -1,11 +1,15 @@
 package controller;
 
+import java.util.ArrayList;
+
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
+import model.BoardDAO;
 import model.MemberDAO;
 import model.MemberVO;
+import model.PostVO;
 
 public class ProfileDetailController implements Controller {
 
@@ -21,6 +25,8 @@ public class ProfileDetailController implements Controller {
 		
 		MemberVO vo = MemberDAO.getInstance().getProfileTotalList(user_email);		
 		request.setAttribute("vo", vo);
+		ArrayList<PostVO> list = BoardDAO.getInstance().getPostingListByUser(user_email);		
+		request.setAttribute("list", list);
 		request.setAttribute("url", "/main/profile.jsp");
 		return "/template/layout.jsp";
 	}
