@@ -1,4 +1,4 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8"
+<%@ page language="java"  isELIgnored="false" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 	<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 
@@ -25,21 +25,31 @@
     </head>
 			<section class="ftco-section-3">
 				<div class="photography">
+				<div style="background-color: lightgray; margin-bottom: 1rem;">
+					<div class="row justify-content-center mb-2 pb-3" >
+					<h2 class="mb-4" >좋아요 탑 3</h2>
+					</div>
+					
 					<div class="row">
-					탑 3   수정~
 					<c:forEach  items="${requestScope.list4}" var="pvoTop3" varStatus="status">
-					<p>???</p>
-					사진 : <img src="images/contentImage/${pvoTop3.postImage}" alt="My Image" width="100" height="200"> ${pvoTop3.postImage} <br>
-					내용 : ${pvoTop3.content}<br>
+					<div class="col-md-4 ftco-animate">
+					<a href="images/contentImage/${pvoTop3.postImage}" class="photography-entry img image-popup d-flex justify-content-start align-items-end" style="background-image: url(images/contentImage/${pvoTop3.postImage});">
+								<div class="overlay">
+								</div>
+								</a>
+					<%-- 내용 : ${pvoTop3.content}<br>
 					작성자 : ${pvoTop3.mvo.userName}<br>
 					작성일 : ${pvoTop3.regdate} <br>
 					로그인유저의 <br>
 					좋아요 유무(0 or 1) : <br>
-					좋아요 개수 : <br>
+					좋아요 개수 : <br> --%>
+					</div>
 					</c:forEach>
 					<br>
-					<hr>
 					<br>
+					</div>
+					</div>
+					<div class="row">
 					<!-- 이미지 카드 한 칸 시작-->
 					<c:forEach  items="${requestScope.list}" var="pvo" varStatus="status">
 					<div class="col-md-4 ftco-animate">
