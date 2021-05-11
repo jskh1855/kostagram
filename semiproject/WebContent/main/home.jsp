@@ -17,11 +17,23 @@
 			<section class="ftco-section-3">
 				<div class="photography">
 					<div class="row">
-				
+					탑 3 
+					<c:forEach  items="${requestScope.list4}" var="pvoTop3" varStatus="status">
+					사진 : <img src="images/contentImage/${pvoTop3.postImage}" alt="My Image" width="100" height="200"> ${pvoTop3.postImage} <br>
+					내용 : ${pvoTop3.content}<br>
+					작성자 : ${pvoTop3.mvo.userName}<br>
+					작성일 : ${pvoTop3.regdate} <br>
+					로그인유저의 <br>
+					좋아요 유무(0 or 1) : <br>
+					좋아요 개수 : <br>
+					</c:forEach>
+					<br>
+					<hr>
+					<br>
 					<!-- 이미지 카드 한 칸 시작-->
 					<c:forEach  items="${requestScope.list}" var="pvo" varStatus="status">
 					<div class="col-md-4 ftco-animate">
-						<a href="${pvo.postImage}" class="photography-entry img image-popup d-flex justify-content-start align-items-end" style="background-image: url(${pvo.postImage});">
+						<a href="images/contentImage/${pvo.postImage}" class="photography-entry img image-popup d-flex justify-content-start align-items-end" style="background-image: url(images/contentImage/${pvo.postImage});">
 								<div class="overlay"></div>
 								</a>
 								<div class="text ml-4 mb-4" style="display: inline-flex;">
