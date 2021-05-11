@@ -64,7 +64,7 @@ public class UploadServlet extends HttpServlet {
 		// 파일명보호: DefaultFileRenamePolicy => name.zip, name1.zip, ...
 		// 업로드에 해당하는 부분
 		MultipartRequest mr = new MultipartRequest(request,
-				request.getSession().getServletContext().getRealPath("pics"), maxFileSize, encType,
+				request.getSession().getServletContext().getRealPath("images/contentImage"), maxFileSize, encType,
 				new DefaultFileRenamePolicy());
 
 		// 파일 관련 정보 추출
