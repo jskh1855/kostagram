@@ -113,16 +113,15 @@ where rownum <=3 ;
 -- BoardDAO. getPostingListByUser(String email)
 -- 개인 포스팅 출력 return ArrayList<PosVO>
 
-select no, post_image  
-from k_board
-where user_email='123@gmail'  
-order by time_posted desc;
+SELECT no, post_image, content, to_char(time_posted,'MM.DD')
+FROM k_board
+WHERE user_email='123@gmail'  
+ORDER BY time_posted DESC;
 
-select no, post_image  
-from k_board
-where user_email=?
-order by time_posted desc;
-
+SELECT no, post_image, content, to_char(time_posted,'MM.DD')
+FROM k_board
+WHERE user_email=?  
+ORDER BY time_posted DESC;
 
 -- BoardDAO.getPostingByNo(String no)
 -- 포스팅 상세보기  return pvo

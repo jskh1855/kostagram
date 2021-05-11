@@ -57,21 +57,21 @@ public class BoardDAO {
 			sql.append("from K_BOARD b, K_MEMBER m ");
 			sql.append("where b.user_email = m.user_email ");
 			sql.append("order by no desc");
-			
+
 			pstmt = con.prepareStatement(sql.toString());
 			rs = pstmt.executeQuery();
-			
+
 			while (rs.next()) {
 				PostVO pvo = new PostVO();
 				pvo.setNo(rs.getString(1));
 				pvo.setPostImage(rs.getString(2));
 				pvo.setContent(rs.getString(3));
 				pvo.setRegdate(rs.getString(4));
-				
+
 				MemberVO mvo = new MemberVO();
 				mvo.setUserName(rs.getString(5));
 				pvo.setMvo(mvo);
-				
+
 				list.add(pvo);
 			}
 		} finally {
@@ -79,8 +79,9 @@ public class BoardDAO {
 		}
 		return list;
 	}
+
 	/**
-	 * 좋아요 체크  로그인한 유저가 해당 게시글에 좋아요를 표시했는가?
+	 * 좋아요 체크 로그인한 유저가 해당 게시글에 좋아요를 표시했는가?
 	 * 
 	 */
 	public int likeCheck(String no, String user_email) throws SQLException {
@@ -95,22 +96,21 @@ public class BoardDAO {
 			sql.append("SELECT count(*) ");
 			sql.append("FROM k_likes ");
 			sql.append("WHERE no=? and user_email=? ");
-			
+
 			pstmt = con.prepareStatement(sql.toString());
 			pstmt.setString(1, no);
 			pstmt.setString(2, user_email);
 			rs = pstmt.executeQuery();
-			
-			if(rs.next()) {
+
+			if (rs.next()) {
 				likeCKRetrun = rs.getInt(1);
 				System.out.println(likeCKRetrun);
 			}
 		} finally {
 			closeAll(rs, pstmt, con);
 		}
-		return likeCKRetrun; 
+		return likeCKRetrun;
 	}
-	
 
 	/**
 	 * 좋아요 top3 리턴 LIST SQL -> Test 후 반영하세요 SELECT ROWNUM, A.* FROM ( SELECT
@@ -132,29 +132,30 @@ public class BoardDAO {
 			StringBuilder sql = new StringBuilder();
 
 			sql.append("select rownum, A.* ");
-			sql.append("from ( select count(t2.no) as like_sum, t1.no, t1.post_image, t1.content, to_char(t1.time_posted,'MM.DD')AS UPLOAD_DATE,t1.user_email,(SELECT user_name FROM k_member WHERE user_email=t1.user_email) as USER_NAME ");
+			sql.append(
+					"from ( select count(t2.no) as like_sum, t1.no, t1.post_image, t1.content, to_char(t1.time_posted,'MM.DD')AS UPLOAD_DATE,t1.user_email,(SELECT user_name FROM k_member WHERE user_email=t1.user_email) as USER_NAME ");
 			sql.append("from k_board t1 ");
 			sql.append("left join k_likes t2 ");
 			sql.append("on t1.no = t2.no ");
-			sql.append("group by t2.no, t1.no, t1.post_image,t1.content, to_char(t1.time_posted,'MM.DD'),t1.user_email ");
+			sql.append(
+					"group by t2.no, t1.no, t1.post_image,t1.content, to_char(t1.time_posted,'MM.DD'),t1.user_email ");
 			sql.append("order by like_sum desc) A ");
 			sql.append("where rownum <=3 ");
 
-			
 			pstmt = con.prepareStatement(sql.toString());
 			rs = pstmt.executeQuery();
-			
+
 			while (rs.next()) {
 				PostVO pvo = new PostVO();
 				pvo.setNo(rs.getString(3));
 				pvo.setPostImage(rs.getString(4));
 				pvo.setContent(rs.getString(5));
 				pvo.setRegdate(rs.getString(6));
-				
+
 				MemberVO mvo = new MemberVO();
 				mvo.setUserName(rs.getString(8));
 				pvo.setMvo(mvo);
-				
+
 				list.add(pvo);
 			}
 		} finally {
@@ -169,7 +170,7 @@ public class BoardDAO {
 	 * @return
 	 * @throws SQLException
 	 */
-	public ArrayList<PostVO> getPostingListByUser(String email) throws SQLException {
+	public ArrayList<PostVO> getPostingListByUser(String user_email) throws SQLException {
 		ArrayList<PostVO> list = new ArrayList<PostVO>();
 		Connection con = null;
 		PreparedStatement pstmt = null;
@@ -177,20 +178,19 @@ public class BoardDAO {
 		try {
 			con = getConnection();
 			StringBuilder sql = new StringBuilder();
-			/*
-			 * sql.
-			 * append("SELECT b.no,b.title,b.hits,to_char(time_posted,'YYYY.MM.DD') as time_posted,m.name "
-			 * ); sql.append("FROM board b , board_member m ");
-			 * sql.append("WHERE b.id=m.id "); sql.append("order by no desc");
-			 */
+			sql.append("SELECT no, post_image, content, to_char(time_posted,'MM.DD')  ");
+			sql.append("FROM k_board  ");
+			sql.append("WHERE user_email=?  ");
+			sql.append("ORDER BY time_posted DESC  ");
 			pstmt = con.prepareStatement(sql.toString());
+			pstmt.setString(1, user_email);
 			rs = pstmt.executeQuery();
-			// 목록에서 게시물 content는 필요없으므로 null로 setting
-			// select no,title,time_posted,hits,id,name
 			while (rs.next()) {
 				PostVO pvo = new PostVO();
-				MemberVO mvo = new MemberVO();
-
+				pvo.setNo(rs.getString(1));
+				pvo.setPostImage(rs.getString(2));
+				pvo.setContent(rs.getString(3));
+				pvo.setRegdate(rs.getString(4));
 				list.add(pvo);
 			}
 		} finally {
@@ -306,9 +306,7 @@ public class BoardDAO {
 	 * @param vo
 	 * @throws SQLException
 	 */
-	
-	
-	
+
 	public ArrayList<String> listLikes(String email) throws SQLException {
 		Connection con = null;
 		PreparedStatement pstmt = null;
@@ -319,7 +317,7 @@ public class BoardDAO {
 			pstmt = con.prepareStatement("SELECT no FROM k_likes WHERE user_email = ?");
 			pstmt.setString(1, email);
 			rs = pstmt.executeQuery();
-			while(rs.next()) {
+			while (rs.next()) {
 				list.add(rs.getString(1));
 			}
 		} finally {
@@ -327,7 +325,7 @@ public class BoardDAO {
 		}
 		return list;
 	}
-	
+
 	public String countLikes(String no) throws SQLException {
 		Connection con = null;
 		PreparedStatement pstmt = null;
@@ -346,7 +344,7 @@ public class BoardDAO {
 		}
 		return likes;
 	}
-	
+
 	public void insertLike(String no, String email) throws SQLException {
 		Connection con = null;
 		PreparedStatement pstmt = null;
@@ -358,9 +356,9 @@ public class BoardDAO {
 			pstmt.executeUpdate();
 		} finally {
 			closeAll(pstmt, con);
-		}	
+		}
 	}
-	
+
 	public void deleteLike(String no, String email) throws SQLException {
 		Connection con = null;
 		PreparedStatement pstmt = null;
@@ -372,7 +370,7 @@ public class BoardDAO {
 			pstmt.executeUpdate();
 		} finally {
 			closeAll(pstmt, con);
-		}			
+		}
 	}
 
 }
