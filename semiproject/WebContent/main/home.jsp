@@ -26,7 +26,7 @@
 			<section class="ftco-section-3">
 				<div class="photography">
 					<div class="row">
-					탑 3 
+					탑 3   수정~
 					<c:forEach  items="${requestScope.list4}" var="pvoTop3" varStatus="status">
 					<p>???</p>
 					사진 : <img src="images/contentImage/${pvoTop3.postImage}" alt="My Image" width="100" height="200"> ${pvoTop3.postImage} <br>
