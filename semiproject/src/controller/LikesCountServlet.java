@@ -2,12 +2,17 @@ package controller;
 
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.sql.SQLException;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
+
+import model.BoardDAO;
+import model.MemberVO;
 
 /**
  * Servlet implementation class LikesCountServlet
@@ -31,12 +36,31 @@ public class LikesCountServlet extends HttpServlet {
     int count;
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		response.setContentType("text/html;charset=utf-8");
+		HttpSession session=request.getSession(false);
+		MemberVO mvo = (MemberVO)session.getAttribute("mvo");
+		String no = request.getParameter("no");
+		String email = mvo.getUserEmail();
+		String like = request.getParameter("like");
 		PrintWriter out = response.getWriter();
 		
-		request.getParameter("");
+		System.out.println(email);
 		
-		out.println("hello ajax count:"+ count++);
-		System.out.println(getServletName()+" doGet()");
+		if (like.equals("1")) {
+			try {
+				BoardDAO.getInstance().deleteLike(no, email);
+			} catch (SQLException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}			
+		}else {
+			try {
+				BoardDAO.getInstance().insertLike(no, email);
+			} catch (SQLException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}			
+		}
+
 		out.close();
 	}
 
