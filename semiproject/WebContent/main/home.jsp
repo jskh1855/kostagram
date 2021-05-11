@@ -13,6 +13,15 @@
     <link href="https://fonts.googleapis.com/css?family=Poppins:300,400,500,600,700" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css?family=Montserrat:300,400,500,700" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css?family=Herr+Von+Muellerhoff" rel="stylesheet">
+    
+    <!-- Magnific Popup core CSS file -->
+    <link rel="stylesheet" href="css/magnific-popup.css">
+    <!-- jQuery 1.7.2+ or Zepto.js 1.0+ -->
+    <script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+    <!-- Magnific Popup core JS file -->
+    <script src="js/jquery.magnific-popup.js"></script>
+
+    
     </head>
 			<section class="ftco-section-3">
 				<div class="photography">
@@ -22,8 +31,17 @@
 					<c:forEach  items="${requestScope.list}" var="pvo" varStatus="status">
 					<div class="col-md-4 ftco-animate">
 						<a href="${pvo.postImage}" class="photography-entry img image-popup d-flex justify-content-start align-items-end" style="background-image: url(${pvo.postImage});">
-								<div class="overlay"></div>
+								<div class="overlay">
+								<!-- <p>어케하누</p> -->
+								</div>
 								</a>
+								<!-- popup 테스트 -->
+								<div class="popup-gallery">
+									<a href="http://farm9.staticflickr.com/8242/8558295633_f34a55c1c6_b.jpg" title="${pvo.mvo.userName}"><img src="http://farm9.staticflickr.com/8242/8558295633_f34a55c1c6_s.jpg" width="75" height="75"></a>
+									<a href="http://farm9.staticflickr.com/8382/8558295631_0f56c1284f_b.jpg" title="Winter Dance"><img src="http://farm9.staticflickr.com/8382/8558295631_0f56c1284f_s.jpg" width="75" height="75"></a>
+								</div>
+								<a class="simple-ajax-popup" href="${pvo.postImage}">Load another content via ajax</a>
+								
 								<div class="text ml-4 mb-4" style="display: inline-flex;">
 								<h3>글번호 ${pvo.no}</h3>
 									<span class="tag">
@@ -59,7 +77,38 @@
 			</div>			
 		</section>
 	
+<script type="text/javascript">
+$(document).ready(function() {
 
+	$('.simple-ajax-popup-align-top').magnificPopup({
+		type: 'ajax',
+		alignTop: true,
+		overflowY: 'scroll' // as we know that popup content is tall we set scroll overflow by default to avoid jump
+	});
+
+	$('.simple-ajax-popup').magnificPopup({
+		type: 'ajax'
+	});
+	$('.popup-gallery').magnificPopup({
+		delegate: 'a',
+		type: 'image',
+		tLoading: 'Loading image #%curr%...',
+		mainClass: 'mfp-img-mobile',
+		gallery: {
+			enabled: true,
+			navigateByImgClick: true,
+			preload: [0,1] // Will preload 0 - before current, and 1 after the current image
+		},
+		image: {
+			tError: '<a href="%url%">The image #%curr%</a> could not be loaded.',
+			titleSrc: function(item) {
+				return item.el.attr('title') + '<small>by Marsel Van Oosten</small>';
+			}
+		}
+	});
+});
+
+</script>
   <script src="js/jquery.min.js"></script>
   <script src="js/jquery-migrate-3.0.1.min.js"></script>
   <script src="js/popper.min.js"></script>
