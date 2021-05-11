@@ -10,7 +10,7 @@
 	              <ul class="list-unstyled photo">
 	              <!-- recent photos 6개 -->
 	              <c:forEach  items="${requestScope.list}" var="pvo" begin="0" end="5" step="1">
-	                <li><a href="#" class="img" style="background-image: url(${pvo.postImage});"></a></li>
+	                <li><a href="#" class="img" style="background-image: url(images/contentImage/${pvoTop3.postImage}${pvo.postImage});"></a></li>
 				  </c:forEach>
 				  </ul>
 	            </div>
