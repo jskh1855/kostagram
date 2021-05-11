@@ -26,7 +26,8 @@
             <tr>
                 <td>프로필사진</td> 
                 <%-- default 이미지 설정해주기 --%>
-                <td>${requestScope.vo.profileImage}</td>
+                <td>
+                <img src="images/profileImage/profile_default.jsp" alt="profileImage" width="100" height="100"> <%-- ${requestScope.vo.profileImage} --%></td>
             </tr>
              <tr>
                 <td>이메일</td>
