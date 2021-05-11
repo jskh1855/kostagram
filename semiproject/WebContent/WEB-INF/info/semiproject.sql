@@ -1,5 +1,3 @@
-
-
 DROP TABLE k_likes;
 DROP TABLE k_board;
 DROP TABLE k_member cascade constraint;
