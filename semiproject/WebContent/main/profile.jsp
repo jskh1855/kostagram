@@ -18,7 +18,7 @@
 		<tr>
 			<td>프로필사진</td>
 			<%-- default 이미지 설정해주기 --%>
-			<td><img src="images/profileImage/${requestScope.vo.profileImage}" alt="My Image" width="100" height="200"></td>
+			<td><img src="images/profileImage/${requestScope.vo.profileImage}" alt="My Image" width="200" height="200"></td>
 		</tr>
 		<tr>
 			<td>이메일</td>
