@@ -56,7 +56,7 @@
 								<a class="simple-ajax-popup" href="${pvo.postImage}">Load another content via ajax</a>
 								
 								<div class="text ml-4 mb-4" style="display: inline-flex;">
-								<h3>글번호 ${pvo.no}</h3>
+<%-- 								<h3>글번호 ${pvo.no}</h3> --%>
 									<span class="tag">
 									<c:set var="contains" value="0" />
 										<c:forEach var="email" items="${requestScope.list2}">
@@ -66,19 +66,15 @@
 										</c:forEach>
 										<!-- 좋아요 아이콘이랑 개수 float: right 하고픔 -->
 										<div id="like-display">
-											좋아요 유무: ${contains}
-											<!-- if else로 좋아요 아이콘 넣을 거임 -->
-										    <%-- <c:set var="contains" value="1" /> --%>
 											<c:choose>
 											    <c:when test="${contains eq 1}">
-											        좋아요 빨간 버튼
+														<img src="images/contentImage/like.png" height="20" width="20">
 											    </c:when>
 											    <c:otherwise>
-											        좋아요 하얀 버튼
+														<img src="images/contentImage/dislike.png" height="20" width="20">
 											    </c:otherwise>
 											</c:choose>
-											<!-- 좋아요 아이콘 끝 -->
-											좋아요 개수 : ${status.index}<br>
+											${status.index}
 											
 										</div>
 									</span>

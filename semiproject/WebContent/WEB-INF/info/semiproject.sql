@@ -17,6 +17,7 @@ CREATE TABLE k_member(
 	user_email_hash varchar2(100)
 );
 
+delete from k_board;
 
 create table k_board(
 	no number primary key,
