@@ -42,79 +42,53 @@
 		
 		<section class="ftco-section-3">
 				<div class="photography">
-				<div style="background-color: lightgray; margin-bottom: 1rem;">
+				<div>
 		<div class="row">
-	<c:forEach items="${requestScope.list}" var="pvo" varStatus="status">
-	${pvo} 
+		
+		<c:forEach items="${requestScope.list}" var="pvo" varStatus="status">
+		
 		<div class="col-md-4 ftco-animate">
-		<!-- images/contentImage/ -->
+			글번호 : ${pvo.no} <br>
 			<a href="images/contentImage/${pvo.postImage}"
 				class="photography-entry img image-popup d-flex justify-content-start align-items-end"
 				style="background-image: url(images/contentImage/${pvo.postImage});">
 				<div class="overlay">
 				</div>
 			</a>
-			<div class="text ml-4 mb-4" style="display: inline-flex;">
-				<%-- 								<h3>글번호 ${pvo.no}</h3> --%>
-				<span class="tag"> <c:set var="contains" value="0" /> 
-				<c:forEach
-						var="email" items="${requestScope.list2}">
-						<c:if test="${email eq pvo.no}">
-							<c:set var="contains" value="1" />
-						</c:if>
-					</c:forEach> <!-- 좋아요 아이콘이랑 개수 float: right 하고픔 -->
-					<div id="like-display">
-						<c:choose>
-							<c:when test="${contains eq 1}">
-								<img src="images/contentImage/like.png" height="20" width="20">
-							</c:when>
-							<c:otherwise>
-								<img src="images/contentImage/dislike.png" height="20"
-									width="20">
-							</c:otherwise>
-						</c:choose>
-						${status.index}
-					</div>
-				</span>
+			<%-- <img src="images/contentImage/${pvo.postImage}" alt="My Image"
+					width="100" height="200"><br> --%>
+			내용 : ${pvo.content}<br>
+			<%-- 작성자 : ${pvo.mvo.userName}<br> --%>
+			작성일 : ${pvo.regdate} <br>
+			
+			<%-- <input type="button" value="좋아요~" onclick="startAjax(${pvo.no})"><br>
+			<input type="hidden" id="postNum${pvo.no}" name="${pvo.no}" value="${pvo.no}"> --%>
+			<!-- 로그인유저의 <br> 좋아요 유무(0 or 1) : <span id="likeBoolean"></span><br>
+			좋아요 개수 : <span id="likeCount"></span><br> -->
 			</div>
-		</div>
-		<!-- 사진 안에 글번호랑 좋아요 표시하려면 여기서 a태그 닫기 </a> -->
-	</c:forEach>
-	<!--  -->
-	<!-- <div class="row"> -->
-					<c:forEach  items="${requestScope.list}" var="pvo" varStatus="status">
-					<%-- ${pvoTop3 } --%>
-					<div class="col-md-4 ftco-animate">
-					<a href="images/contentImage/${pvo.postImage}" class="photography-entry img image-popup d-flex justify-content-start align-items-end" style="background-image: url(images/contentImage/${pvo.postImage});">
-								<div class="overlay">
-								</div>
-								</a>
-					<%-- 내용 : ${pvoTop3.content}<br> --%>
-					작성자 : ${pvo.mvo.userName}<br>
-					<%-- 작성일 : ${pvoTop3.regdate} <br> --%>
-					<div id="like-display">
-						좋아요 유무(0 or 1)
-						<!-- if else로 좋아요 아이콘 넣을 거임 -->
-					    <%-- <c:set var="contains" value="1" /> --%>
-						<c:choose>
-						    <c:when test="${1 eq 1}">
-						        좋아요 하얀 버튼
-						    </c:when>
-						    <c:otherwise>
-						        좋아요 빨간 버튼
-						    </c:otherwise>
-						</c:choose>
-						<!-- 좋아요 아이콘 끝 -->
-						좋아요 개수 : <br>					
-					</div>
-					</div>
-					</c:forEach>
-					<br>
-					<br>
-					<!-- </div> -->
+		</c:forEach>
+	
 					
 					
 </div>
 </div>
 </div>
 </section>
+
+ <script src="js/jquery.min.js"></script>
+  <script src="js/jquery-migrate-3.0.1.min.js"></script>
+  <script src="js/popper.min.js"></script>
+  <script src="js/bootstrap.min.js"></script>
+  <script src="js/jquery.easing.1.3.js"></script>
+  <script src="js/jquery.waypoints.min.js"></script>
+  <script src="js/jquery.stellar.min.js"></script>
+  <script src="js/owl.carousel.min.js"></script>
+  <script src="js/jquery.magnific-popup.min.js"></script>
+  <script src="js/aos.js"></script>
+  <script src="js/jquery.animateNumber.min.js"></script>
+  <script src="js/bootstrap-datepicker.js"></script>
+  <script src="js/jquery.timepicker.min.js"></script>
+  <script src="js/scrollax.min.js"></script>
+  <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBVWaKrjvy3MaE7SQ74_uJiULgl1JY0H2s&sensor=false"></script>
+  <script src="js/google-map.js"></script>
+  <script src="js/main.js"></script>
