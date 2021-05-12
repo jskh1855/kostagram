@@ -37,8 +37,8 @@
 		// readyState 가 4 : 서버의 응답 정보를 받은 상태 
 		// status 가 200 : 정상 수행 
 		if(xhr.readyState==4&&xhr.status==200){
-			alert(xhr.responseText); // : 서버의 응답데이터를 저장하는 변수 
-			document.getElementById("likeCount").innerHTML = xhr.responseText;
+// 			alert(xhr.responseText); // : 서버의 응답데이터를 저장하는 변수 
+// 			document.getElementById("likeCount").innerHTML = xhr.responseText;
 		}
 	}
 
@@ -58,7 +58,8 @@
 </div>
 <%-- <input type="hidden" id="postNum${pvo.no}" name="${pvo.no}" value="${pvo.no}"> --%>
 로그인유저의 <br> 좋아요 유무(0 or 1) : <span id="likeBoolean"></span><br>
-좋아요 개수 : <span id="likeCount"></span><br>
+좋아요 개수 : <span id="likeCount"> ${pvo.likeCount }</span><br>
+
 
 	<hr>
 	<hr>
