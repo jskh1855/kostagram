@@ -23,8 +23,10 @@
 
     
     </head>
+    
 			<section class="ftco-section-3">
 				<div class="photography">
+				
 				<div style="background-color: lightgray; margin-bottom: 1rem;">
 					<div class="row justify-content-center mb-2 pb-3" >
 					<h2 class="mb-4"><strong>HOT 게시물</strong></h2>
@@ -38,12 +40,6 @@
 								<div class="overlay">
 								</div>
 								</a>
-
-								<div class="text ml-4 mb-4" style="display: inline-flex; margin-top: 0.1rem;">
-					<a href="ProfileDetailController.do">
-								<img alt="프로필사진" src="images/profileImage/${pvoTop3.mvo.profileImage}" style="width:3rem; height:3rem;">
-								${pvoTop3.mvo.userName}</a>
-
 								<div class="text ml-4 mb-4" style="display: inline-flex;">
 					
 								<a href="ProfileDetailController.do?userEmail=${pvoTop3.mvo.userEmail}"> <img alt="이미지안뜸"
@@ -71,14 +67,6 @@
 											${status2.index}
 										</div>
 					<!-- end like-display -->
-					<!-- 작성일 -->
-					<span style="margin-left: 3rem;">작성일 : ${pvoTop3.regdate}</span>
-					
-					</div>
-					<div class="text ml-4 mb-4" style="display: block;">
-					
-					<!-- 게시글 본문 표시 -->
-					${pvoTop3.content}
 					</div>
 					</div>
 					</c:forEach>
@@ -97,11 +85,6 @@
 								</div>
 								</a>
 								<div class="text ml-4 mb-4" style="display: inline-flex;">
-
-								<a href="ProfileDetailController.do">
-								<img alt="프로필사진" src="images/profileImage/${pvo.mvo.profileImage}" style="width:3rem; height:3rem;">
-								${pvo.mvo.userName}</a>
-
 								
 								<a href="ProfileDetailController.do?userEmail=${pvo.mvo.userEmail}"> <img alt="이미지안뜸"
 							src="images/profileImage/${pvo.mvo.profileImage}"
@@ -110,7 +93,6 @@
 								<%-- <a href="ProfileDetailController.do">
 								<img alt="프로필사진" src="images/profileImage/profile_default.jpg" style="width:3rem; height:3rem;">
 								${pvo.mvo.userName}</a> --%>
-
 <%-- 								<h3>글번호 ${pvo.no}</h3> --%>
 									<!-- <span class="tag"> -->
 									<div>
@@ -145,13 +127,11 @@
 	
 <script type="text/javascript">
 $(document).ready(function() {
-
 	$('.simple-ajax-popup-align-top').magnificPopup({
 		type: 'ajax',
 		alignTop: true,
 		overflowY: 'scroll' // as we know that popup content is tall we set scroll overflow by default to avoid jump
 	});
-
 	$('.simple-ajax-popup').magnificPopup({
 		type: 'ajax'
 	});
@@ -173,7 +153,6 @@ $(document).ready(function() {
 		}
 	});
 });
-
 </script>
   <script src="js/jquery.min.js"></script>
   <script src="js/jquery-migrate-3.0.1.min.js"></script>
