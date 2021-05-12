@@ -24,7 +24,7 @@ public class DeletePostController implements Controller {
 		BoardDAO.getInstance().deletePosting(no);
 		// 게시물 목록을 보여주기 위해
 		// 리다이렉트 방식으로 이동시킨다. 
-		return "redirect:ProfileDetailController.do";
+		return "redirect:ProfileDetailController.do?userEmail="+mvo.getUserEmail();
 	}
  
 }
