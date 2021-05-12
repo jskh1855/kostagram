@@ -118,6 +118,8 @@ public class MemberDAO {
 			closeAll(pstmt,con);
 		}
 	}
+	
+	
 
 	// getProfileByEmail 구현해서 update profilejsp 구현하기.
 	   public MemberVO getProfileByEmail(String userEmail) throws SQLException {
@@ -145,5 +147,34 @@ public class MemberDAO {
 	      }
 	      return vo;
 	   }
+	   
+	   public boolean isExist(String userEmail) throws SQLException {
+		      Connection con = null;
+		      PreparedStatement pstmt = null;
+		      ResultSet rs = null;
+		      int num = 0;
+		      try {
+		         con = dataSource.getConnection();
+		         StringBuilder sql = new StringBuilder();
+		         sql.append("SELECT COUNT(*) ");
+		         sql.append("FROM k_member ");
+		         sql.append("WHERE user_email = ? ");
+		         pstmt = con.prepareStatement(sql.toString());
+		         pstmt.setString(1, userEmail);
+		         rs = pstmt.executeQuery();
+		         if (rs.next()) {
+		            num = rs.getInt(1);
+		            System.out.println(num);
+		            
+		         }
+		      } finally {
+		         closeAll(rs, pstmt, con);
+		      }
+		      if (num>0) {
+		    	  return true;
+		      }else {
+		    	  return false;		    	  
+		      }
+		   }
 	
 }
