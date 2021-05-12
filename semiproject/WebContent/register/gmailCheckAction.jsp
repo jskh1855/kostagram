@@ -16,7 +16,7 @@
 	if(rightCode == true){
 		script.println("<script>");
 		script.println("alert('이메일 인증에 성공하였습니다.')");
-		script.println("location.href='login.jsp'");
+		script.println("location.href='../index.jsp'");
 		script.println("</script>");
 	} else{
 		script.println("<script>");

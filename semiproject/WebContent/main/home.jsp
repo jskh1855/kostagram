@@ -77,24 +77,37 @@
 							
 					<%-- 작성일 : ${pvoTop3.regdate} <br> --%>
 					<!-- 이하 좋아요 개수 표시 코드 수정필요 -->
-					<c:set var="contains2" value="0" />
-										<c:forEach var="email2" items="${requestScope.list3}">
+									<c:set var="contains2" value="0" />
+										<c:forEach var="email2" items="${requestScope.list2}">
 										  <c:if test="${email2 eq pvoTop3.no}">
 										    <c:set var="contains2" value="1" />
 										  </c:if>
 										</c:forEach>
 					<div id="like-display" style="margin-left: 3rem;">
-					
-											<%-- <c:choose>
+											<c:choose>
 											    <c:when test="${contains2 eq 1}">
-														<img src="images/contentImage/like_up.png" height="20" width="20">
+													  <div class="area-desc" style="width: 50px; height: 50px;">
+															<span><img id="img${pvoTop3.no }" src ="images/contentImage/like_up.png" width = "25" height="25" onclick="startAjax(${pvoTop3.no})"><br></span>
+													</div>
 											    </c:when>
 											    <c:otherwise>
-														<img src="images/contentImage/dislike_down.png" height="20" width="20">
+														  <div class="area-desc" style="width: 50px; height: 50px;">
+														<span><img id="img${pvoTop3.no }" src ="images/contentImage/like_down.png" width = "25" height="25" onclick="startAjax(${pvoTop3.no})"><br></span>
+														</div>
 											    </c:otherwise>
+<<<<<<< HEAD
 											</c:choose> --%>
 											<img class="like-button" src="images/contentImage/like.png" height="20" width="20">
 											${status2.index}
+=======
+											</c:choose>
+
+<%-- 											<button  onclick="myFunction(${pvo.no})">Click me</button> --%>
+											<div id="likeBoolean${pvoTop3.no }" style="margin-left: -20px;">${contains2 }</div>
+											<c:set var="count2" value="${pvoTop3.likeCount}" />
+<%-- 											좋아요 개수 : <div id="likeCount${pvo.no }"> ${pvo.likeCount}</div><br> --%>
+											<div id="likeCount${pvoTop3.no }"  style="margin-left: 20px;"> ${count2}</div>
+>>>>>>> branch 'main' of https://github.com/kim-hyeungsuk/kostagram.git
 										</div>
 					<!-- end like-display -->
 					</div>

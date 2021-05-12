@@ -25,23 +25,20 @@ public class HomeController implements Controller{
 			MemberVO mvo = (MemberVO)session.getAttribute("mvo");
 			ArrayList<PostVO> list = BoardDAO.getInstance().getPostingTotalList();
 			ArrayList<String> list2 = BoardDAO.getInstance().listLikes(mvo.getUserEmail());
-			//ArrayList<String> list3 = new ArrayList<String> ();
-//			for (int i = 0;i<list.size() ;i++) {
-//				list3.add(BoardDAO.getInstance().countLikes(list.get(i).getNo()));
-//			}
-			
+			ArrayList<PostVO> list4 = BoardDAO.getInstance().getPostingTop3List();
 			for (int i = 0;i<list.size() ;i++) {
 				list.get(i).setLikeCount((BoardDAO.getInstance().countLikes(list.get(i).getNo())));
-			}			
-			
+			}
+			for (int j = 0;j<list4.size() ;j++) {
+				list4.get(j).setLikeCount((BoardDAO.getInstance().countLikes(list4.get(j).getNo())));
+			}		
 			// top3 
-			ArrayList<PostVO> list4 = BoardDAO.getInstance().getPostingTop3List();
+
 			
 			
 			
 			request.setAttribute("list", list);
 			request.setAttribute("list2", list2);
-			//request.setAttribute("list3", list3);
 			request.setAttribute("list4", list4);
 			request.setAttribute("url", "/main/home.jsp");  
 			//request.setAttribute("url", "/main/homeTest.jsp"); 
