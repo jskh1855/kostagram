@@ -58,6 +58,7 @@
 		
 		<div class="col-md-4 ftco-animate">
 			글번호 : ${pvo.no} 
+			<c:if test="${requestScope.vo.userEmail==sessionScope.mvo.userEmail}">
 			<tr>
 			<td colspan="5" class="btnArea">
 				<!--  <form name="deleteForm"
@@ -73,6 +74,7 @@
 				</form> -->
 			</td>
 			</tr>
+			</c:if>
 			<br>
 			<a href="images/contentImage/${pvo.postImage}"
 				class="photography-entry img image-popup d-flex justify-content-start align-items-end"
