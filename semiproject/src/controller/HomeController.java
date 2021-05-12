@@ -43,8 +43,8 @@ public class HomeController implements Controller{
 			request.setAttribute("list2", list2);
 			//request.setAttribute("list3", list3);
 			request.setAttribute("list4", list4);
-			//request.setAttribute("url", "/main/home.jsp");  
-			request.setAttribute("url", "/main/homeTest.jsp"); 
+			request.setAttribute("url", "/main/home.jsp");  
+			//request.setAttribute("url", "/main/homeTest.jsp"); 
 			
 			return "/template/layout.jsp";
 		}

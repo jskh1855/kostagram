@@ -77,7 +77,7 @@ public class UpdateProfileImageServlet extends HttpServlet {
 			e.printStackTrace();
 		}
 
-		response.sendRedirect("ProfileDetailController.do");
+		response.sendRedirect("ProfileDetailController.do?userEmail="+mvo.getUserEmail());
 
 	}
 
