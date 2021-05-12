@@ -83,27 +83,32 @@
 										    <c:set var="contains2" value="1" />
 										  </c:if>
 										</c:forEach>
-					<div id="like-display" style="margin-left: 3rem;">
+					<div id="like-display" style="margin-left: 3rem; display:flex;">
 											<c:choose>
 											    <c:when test="${contains2 eq 1}">
-													  <div class="area-desc" style="width: 50px; height: 50px;">
+											    <!-- <div class="area-desc" style="width: 50px; height: 50px;"> -->
+													  <div class="area-desc">
 															<span><img class="img${pvoTop3.no }" src ="images/contentImage/like.png" width = "25" height="25" onclick="startAjax(${pvoTop3.no})"><br></span>
 													</div>
 											    </c:when>
 											    <c:otherwise>
-														  <div class="area-desc" style="width: 50px; height: 50px;">
+														  <div class="area-desc">
 														<span><img class="img${pvoTop3.no }" src ="images/contentImage/unlike.png" width = "25" height="25" onclick="startAjax(${pvoTop3.no})"><br></span>
 														</div>
 											    </c:otherwise>
 											</c:choose>
-<button  onclick="myFunction(${pvo.no})">Click me</button> --%>
-											<div class="likeBoolean${pvoTop3.no }" style="margin-left: -20px;">${contains2 }</div>
+
+<%-- 										<button onclick="myFunction(${pvo.no})">Click me</button> --%>
+											<!-- 탑3 좋아요 플래그 안보이게함 -->
+											<div class="likeBoolean${pvoTop3.no }" style="display: none;"></div>
 											<c:set var="count2" value="${pvoTop3.likeCount}" />
 <%-- 											좋아요 개수 : <div id="likeCount${pvo.no }"> ${pvo.likeCount}</div><br> --%>
-											<div class="likeCount${pvoTop3.no }"  style="margin-left: 20px;"> ${count2}</div>
+											<div class="likeCount${pvoTop3.no }"  style="margin-left: 0.5rem;"> ${count2}</div>
 										</div>
 					<!-- end like-display -->
 					</div>
+					<!-- 작성일 -->
+											<span style="margin-left: 8rem;">작성일 :  ${pvoTop3.regdate}</span>
 					</div>
 					</c:forEach>
 					<br>
@@ -115,7 +120,7 @@
 					
 					<!-- 이미지 카드 한 칸 시작-->
 						<c:forEach  items="${requestScope.list}" var="pvo" varStatus="status">
-					<div class="col-md-4 ftco-animate">
+					<div class="col-md-4 ftco-animate" style="box-shadow: 0 2px 4px 0 rgb(216 216 216 / 20%), 0 16px 68px 0 rgb(216 216 216 / 40%)">
 						<a href="images/contentImage/${pvo.postImage}" class="photography-entry img image-popup d-flex justify-content-start align-items-end" title="${pvo.mvo.userName}"  content="${pvo.content }" style="background-image: url(images/contentImage/${pvo.postImage});">
 								<div class="overlay">
 								</div>
@@ -141,22 +146,24 @@
 										<div id="like-display" style="margin-left: 3rem; display:flex;">
 																					<c:choose>
 											    <c:when test="${contains eq 1}">
-													  <div class="area-desc" style="width: 50px; height: 50px;">
-															<span><img class="img${pvo.no }" src ="images/contentImage/like_up.png" width = "25" height="25" onclick="startAjax(${pvo.no})"><br></span>
+													  <div class="area-desc">
+															<span><img class="img${pvo.no }" src ="images/contentImage/like.png" width = "25" height="25" onclick="startAjax(${pvo.no})"><br></span>
 													</div>
 											    </c:when>
 											    <c:otherwise>
-														  <div class="area-desc" style="width: 50px; height: 50px;">
-														<span><img class="img${pvo.no }" src ="images/contentImage/like_down.png" width = "25" height="25" onclick="startAjax(${pvo.no})"><br></span>
+														  <div class="area-desc">
+														<span><img class="img${pvo.no }" src ="images/contentImage/unlike.png" width = "25" height="25" onclick="startAjax(${pvo.no})"><br></span>
 														</div>
 											    </c:otherwise>
 											</c:choose>
 
 <%-- 											<button  onclick="myFunction(${pvo.no})">Click me</button> --%>
-											<div class="likeBoolean${pvo.no }" style="margin-left: -20px;">${contains }</div>
+											<!-- 좋아요 flag 안보이게함 -->
+											<div class="likeBoolean${pvo.no }" style="display: none;">${contains }</div>
+											
 											<c:set var="count" value="${pvo.likeCount}" />
 <%-- 											좋아요 개수 : <div id="likeCount${pvo.no }"> ${pvo.likeCount}</div><br> --%>
-											<div class="likeCount${pvo.no }"  style="margin-left: 20px;"> ${count}</div>
+											<div class="likeCount${pvo.no }" style="margin-left: 0.5rem;" > ${count}</div>
 <%-- 											<c:choose> --%>
 <%-- 											    <c:when test="${contains eq 1}"> --%>
 <!-- 														<img src="images/contentImage/like_up.png" height="20" width="20"> -->
@@ -168,13 +175,18 @@
 											
 
 											<!-- 작성일 -->
-											내용: ${pvo.content}
-											<!-- 내용 -->
+											<span style="margin-left: 8rem;">작성일 :  ${pvo.regdate}</span>
 
 										</div>
+										
 										</div>
 									<!-- </span> -->
 								</div>
+								
+									<!-- 내용 -->
+									<div class="content">
+									내용 : ${pvo.content}
+									</div>
 							</div>	
 						<!-- 사진 안에 글번호랑 좋아요 표시하려면 여기서 a태그 닫기 </a> -->
 					</c:forEach>
@@ -241,7 +253,7 @@ function callback(){
 				  list1[i].innerText = 0;		  
 				  number2 = parseInt(list2[i].innerText) - 1;
 				  list2[i].innerText = number2;
-				  list3[i].src = "images/contentImage/like_down.png";
+				  list3[i].src = "images/contentImage/unlike.png";
 			  }else{			  
 // 					  resultElement1.innerText = 1;
 // 				  number2 = parseInt(number2) + 1;
@@ -250,7 +262,7 @@ function callback(){
 				  list1[i].innerText = 1;		  
 				  number2 = parseInt(list2[i].innerText) + 1;
 				  list2[i].innerText = number2;
-				  list3[i].src = "images/contentImage/like_up.png";
+				  list3[i].src = "images/contentImage/like.png";
 			  }
 			}
 		  
