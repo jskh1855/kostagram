@@ -72,10 +72,17 @@
 					</div>
 					<!-- 좋아요 탑3 끝 -->
 					<div class="row">
+					
 					<!-- 이미지 카드 한 칸 시작-->
 					<c:forEach  items="${requestScope.list}" var="pvo" varStatus="status">
 					<div class="col-md-4 ftco-animate">
 						<a href="images/contentImage/${pvo.postImage}" class="photography-entry img image-popup d-flex justify-content-start align-items-end" title="${pvo.mvo.userName}"  content="${pvo.content }" style="background-image: url(images/contentImage/${pvo.postImage});">
+
+					<div class="col-md-4 ftco-animate">
+					<div class="popup-gallery">
+					<a class="simple-ajax-popup" href="images/contentImage/${pvo.postImage}">
+						<a href="images/contentImage/${pvo.postImage}" class="photography-entry img image-popup d-flex justify-content-start align-items-end" title="${pvo.mvo.userName}"  content="${pvo.content }" style="background-image: url(images/contentImage/${pvo.postImage});">
+
 								<div class="overlay">
 								</div>
 								</a>
