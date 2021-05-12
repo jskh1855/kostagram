@@ -25,13 +25,16 @@ public class HomeController implements Controller{
 			MemberVO mvo = (MemberVO)session.getAttribute("mvo");
 			ArrayList<PostVO> list = BoardDAO.getInstance().getPostingTotalList();
 			ArrayList<String> list2 = BoardDAO.getInstance().listLikes(mvo.getUserEmail());
-			
+			ArrayList<PostVO> list4 = BoardDAO.getInstance().getPostingTop3List();
 			for (int i = 0;i<list.size() ;i++) {
 				list.get(i).setLikeCount((BoardDAO.getInstance().countLikes(list.get(i).getNo())));
-			}			
-			
+			}
+			for (int j = 0;j<3 ;j++) {
+				list4.get(j).setLikeCount((BoardDAO.getInstance().countLikes(list4.get(j).getNo())));
+			}		
+			System.out.println(list4);
 			// top3 
-			ArrayList<PostVO> list4 = BoardDAO.getInstance().getPostingTop3List();
+
 			
 			
 			
