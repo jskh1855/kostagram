@@ -70,8 +70,6 @@ public class MemberDAO {
 			StringBuilder sql=new StringBuilder();		
 			sql.append("INSERT INTO k_member(user_email,user_password,user_name) ");
 			sql.append("values(?,?,?) ");
-			//sql.append("WHERE b.id=m.id ");	
-			//sql.append("order by no desc");
 			pstmt=con.prepareStatement(sql.toString());
 			pstmt.setString(1, email);
 			pstmt.setString(2, password);
@@ -164,8 +162,6 @@ public class MemberDAO {
 		         rs = pstmt.executeQuery();
 		         if (rs.next()) {
 		            num = rs.getInt(1);
-		            System.out.println(num);
-		            
 		         }
 		      } finally {
 		         closeAll(rs, pstmt, con);

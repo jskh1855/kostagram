@@ -35,7 +35,7 @@ public class HomeController implements Controller{
 			// top3 
 
 			
-			
+
 			
 			request.setAttribute("list", list);
 			request.setAttribute("list2", list2);

@@ -13,8 +13,10 @@
 <%@page import="javax.mail.internet.MimeMessage"%>
 <%@page import="javax.mail.Session"%>
 <%@page import="java.util.Properties"%>
+<%@page import="java.sql.SQLException"%>
 
 <%
+		request.setCharacterEncoding("UTF-8");
 		String host = "http://localhost:8888/semiproject/";		
 		String from = "kosta215555@gmail.com";
 		String to = request.getParameter("email");
@@ -37,33 +39,29 @@
 		p.put("mail.smtp.socketFactory.class", "javax.net.ssl.SSLSocketFactory");
 		p.put("mail.smtp.sockerFactory.fallback", "false");
 		
-		if (MemberDAO.getInstance().isExist(to) == true){
+
+		try {
+			Authenticator auth = new Gmail();
+			Session ses = Session.getInstance(p, auth);
+			ses.setDebug(true);
+			MimeMessage msg = new MimeMessage(ses);
+			msg.setSubject(subject);
+			Address fromAddr = new InternetAddress(from);
+			msg.setFrom(fromAddr);
+			Address toAddr = new InternetAddress(to);
+			msg.addRecipient(Message.RecipientType.TO, toAddr);
+			msg.setContent(content, "text/html; charset=UTF8");
+			Transport.send(msg);
 			PrintWriter script = response.getWriter();
 			script.println("<script>");
-			script.println("alert('이메일이 이미 존재합니다')");
+			script.println("alert('이메일을 확인하세요~')");
+			script.println("</script>");
+		} catch (Exception e) {
+			PrintWriter script = response.getWriter();
+			script.println("<script>");
+			script.println("alert('이메일 인증 오류')");
 			script.println("history.back();");
 			script.println("</script>");
-		}
-		else{
-			try {
-				Authenticator auth = new Gmail();
-				Session ses = Session.getInstance(p, auth);
-				ses.setDebug(true);
-				MimeMessage msg = new MimeMessage(ses);
-				msg.setSubject(subject);
-				Address fromAddr = new InternetAddress(from);
-				msg.setFrom(fromAddr);
-				Address toAddr = new InternetAddress(to);
-				msg.addRecipient(Message.RecipientType.TO, toAddr);
-				msg.setContent(content, "text/html; charset=UTF8");
-				Transport.send(msg);
-			} catch (Exception e) {
-				PrintWriter script = response.getWriter();
-				script.println("<script>");
-				script.println("alert('이메일 인증 오류')");
-				script.println("history.back();");
-				script.println("</script>");
-			}
 		}
 	%>	
 <script type="text/javascript">
