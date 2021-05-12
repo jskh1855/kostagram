@@ -89,7 +89,6 @@
 								<a href="ProfileDetailController.do?userEmail=${pvo.mvo.userEmail}"> <img alt="이미지안뜸"
 							src="images/profileImage/${pvo.mvo.profileImage}"
 							style="width: 30px; height: 30px;"> ${pvo.mvo.userName}<br></a>
-							
 								<%-- <a href="ProfileDetailController.do">
 								<img alt="프로필사진" src="images/profileImage/profile_default.jpg" style="width:3rem; height:3rem;">
 								${pvo.mvo.userName}</a> --%>
@@ -178,13 +177,13 @@ $(".area-desc").click(function() {
 function startAjax(no){	
 	xhr=new XMLHttpRequest();//Ajax 통신을 위한 자바스크립트 객체 
 	//no1 = no;
-//		const resultElement2 = document.getElementById('likeBoolean'+no1);
+	const resultElement2 = document.getElementById('likeBoolean'+no);
 	myFunction(no);
 	  
 	  // 현재 화면에 표시된 값
-//		  let like2 = resultElement2.innerText;
+	 let like2 = resultElement2.innerText;
 
-//		  like2 = parseInt(like2);
+	 like2 = parseInt(like2);
 	//alert(xhr);
 	//XMLHttpRequest의 속성에 callback 함수를 바인딩
 	//readystate가 변화될 때 callback 함수가 실행 

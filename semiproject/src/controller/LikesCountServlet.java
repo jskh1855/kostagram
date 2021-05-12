@@ -42,9 +42,10 @@ public class LikesCountServlet extends HttpServlet {
 		String email = mvo.getUserEmail();
 		String like = request.getParameter("like");
 		PrintWriter out = response.getWriter();
+		System.out.println(no);
+		System.out.println(like);
 		
-		
-		if (like.equals("1")) {
+		if (like.equals("0")) {
 			try {
 				BoardDAO.getInstance().deleteLike(no, email);
 				System.out.println("좋아요 취소  ");
