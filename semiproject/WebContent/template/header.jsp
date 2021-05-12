@@ -2,42 +2,49 @@
 	pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 
-<style>
-.image--cover {
-  width: 150px;
-  height: 150px;
-  border-radius: 50%;
-
-  object-fit: cover;
-  object-position: center right;
-}
-</style>
 <section class="ftco-section ftco-bread" style="padding: 0;">
 	<div class="container">
-		<div class="row no-gutters slider-text justify-content-center align-items-center">
-			<c:choose>
-				<c:when test="${sessionScope.mvo==null}">
-				</c:when>
-				<c:otherwise>
-				<div class="kostagram">
-						<div><a href="${pageContext.request.contextPath}/index.jsp"><img src="pics/logo.png" width="200" height="100"></a></div>
+		<!-- 		<div class="row no-gutters slider-text justify-content-center align-items-center"> -->
+		<div class="row justify-content-center mb-2 pb-3">
+			<a href="${pageContext.request.contextPath}/index.jsp"><img
+				src="pics/logo.png" width="200rem" height="100rem"></a>
+		</div>
+		<c:choose>
+			<c:when test="${sessionScope.mvo==null}">
+			</c:when>
+			<c:otherwise>
+				<div style="float:right">
 						<div class="kostagram2">
-<%-- 							<div><a href="${pageContext.request.contextPath}/index.jsp">홈</a>&nbsp;&nbsp;</div> --%>
-<%-- 							 <div>${sessionScope.mvo.userName}님 &nbsp;&nbsp;</div> --%>
-							<a href="${pageContext.request.contextPath}/ProfileDetailController.do?userEmail=${sessionScope.mvo.userEmail}" > <img class="image--cover" alt="이미지안뜸"
-							src="images/profileImage/${sessionScope.mvo.profileImage}" style="width: 50px; height: 50px;"></a>&nbsp;&nbsp;
-							 <a href="${pageContext.request.contextPath}/ProfileDetailController.do?userEmail=${sessionScope.mvo.userEmail}" style= "color: black;"> ${sessionScope.mvo.userName}님</a>&nbsp;&nbsp;
-							
-							 
+							<%-- 							<div><a href="${pageContext.request.contextPath}/index.jsp">홈</a>&nbsp;&nbsp;</div> --%>
+							<%-- 							 <div>${sessionScope.mvo.userName}님 &nbsp;&nbsp;</div> --%>
+							<a
+								href="${pageContext.request.contextPath}/ProfileDetailController.do?userEmail=${sessionScope.mvo.userEmail}"
+								style="color: black;"> ${sessionScope.mvo.userName}님</a>&nbsp;&nbsp;
+
+							<a
+								href="${pageContext.request.contextPath}/ProfileDetailController.do?userEmail=${sessionScope.mvo.userEmail}">
+								<img alt="이미지안뜸"
+								src="images/profileImage/${sessionScope.mvo.profileImage}"
+								style="width: 50px; height: 50px;">
+							</a>&nbsp;&nbsp;
 							<%-- ${sessionScope.mvo.profileImage} --%>
-							 <div><a href="${pageContext.request.contextPath}/WritePostFormController.do">Post</a></div>&nbsp;&nbsp;
-							 <div><a href="${pageContext.request.contextPath}/LogoutController.do">Log out</a></div>
-						 </div>
-				</div>
+							<div>
+								<a
+									href="${pageContext.request.contextPath}/WritePostFormController.do"><img
+									src="pics/post.png" width="100rem" height="50rem"></a>
+							</div>
+							&nbsp;&nbsp;
+							<div>
+								<a href="${pageContext.request.contextPath}/LogoutController.do"><img
+									src="pics/logout.png" width="100rem" height="50rem"></a>
+							</div>
+						</div>
+					
+	</div>
 				</c:otherwise>
 			</c:choose>
 		</div>
-	</div>
+	<!-- 	</div> -->
 </section>
 
 
@@ -47,7 +54,7 @@
 <%-- 					 <a href="${pageContext.request.contextPath}/LogoutController.do" style= "color: black;">로그아웃</a>&nbsp;&nbsp; --%>
 
 
-<%-- 이하 기존코드 --%>   
+<%-- 이하 기존코드 --%>
 <%-- 		
 <c:choose>
 <c:when test="${sessionScope.mvo==null}">
