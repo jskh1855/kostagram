@@ -38,9 +38,9 @@
 								<div class="overlay">
 								</div>
 								</a>
-								<div class="text ml-4 mb-4" style="display: inline-flex;">
+								<div class="text ml-4 mb-4" style="display: inline-flex; margin-top: 0.1rem;">
 					<a href="ProfileDetailController.do">
-								<img alt="프로필사진" src="images/profileImage/profile_default.jpg" style="width:3rem; height:3rem;">
+								<img alt="프로필사진" src="images/profileImage/${pvoTop3.mvo.profileImage}" style="width:3rem; height:3rem;">
 								${pvoTop3.mvo.userName}</a>
 					<%-- 작성일 : ${pvoTop3.regdate} <br> --%>
 					<!-- 이하 좋아요 개수 표시 코드 수정필요 -->
@@ -64,6 +64,14 @@
 											${status2.index}
 										</div>
 					<!-- end like-display -->
+					<!-- 작성일 -->
+					<span style="margin-left: 3rem;">작성일 : ${pvoTop3.regdate}</span>
+					
+					</div>
+					<div class="text ml-4 mb-4" style="display: block;">
+					
+					<!-- 게시글 본문 표시 -->
+					${pvoTop3.content}
 					</div>
 					</div>
 					</c:forEach>
@@ -83,7 +91,7 @@
 								</a>
 								<div class="text ml-4 mb-4" style="display: inline-flex;">
 								<a href="ProfileDetailController.do">
-								<img alt="프로필사진" src="images/profileImage/profile_default.jpg" style="width:3rem; height:3rem;">
+								<img alt="프로필사진" src="images/profileImage/${pvo.mvo.profileImage}" style="width:3rem; height:3rem;">
 								${pvo.mvo.userName}</a>
 <%-- 								<h3>글번호 ${pvo.no}</h3> --%>
 									<!-- <span class="tag"> -->
