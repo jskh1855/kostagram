@@ -44,20 +44,24 @@ public class MemberDAO {
 		ResultSet rs=null;
 		try{
 			con=dataSource.getConnection();
-			String sql="select user_name, user_email_checked from k_member where user_Email=? and user_Password=?";
+			String sql="select user_name, profile_image, user_email_checked from k_member where user_Email=? and user_Password=?";
 			pstmt=con.prepareStatement(sql);
 			pstmt.setString(1, userEmail);
 			pstmt.setString(2, userPassword);
 			rs=pstmt.executeQuery();
 			if(rs.next()){
-				vo=new MemberVO(rs.getString(1),userPassword,userEmail,rs.getInt(2));
+				
+				vo=new MemberVO(rs.getString(1), userPassword, userEmail, rs.getInt(3));
+				vo.setProfileImage(rs.getString(2));
+				
+//				vo=new MemberVO(rs.getString(1),userPassword,userEmail,rs.getInt(2));
+				
 			}
 		}finally{
 			closeAll(rs, pstmt,con);
 		}
 		return vo;
 	}
-
 	public void register(String email, String password, String name) throws SQLException {
 		Connection con=null;
 		PreparedStatement pstmt=null;

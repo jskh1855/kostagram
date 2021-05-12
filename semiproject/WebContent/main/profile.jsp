@@ -36,6 +36,7 @@
 			<td>${requestScope.vo.profileContent}</td>
 		</tr>
 	</table>
+	<c:if test="${requestScope.vo.userEmail==sessionScope.mvo.userEmail}">
 			<tr>
 			<td colspan="5" class="btnArea">
 				<form name="updateForm"
@@ -45,6 +46,7 @@
 				<button type="button" class="btn" onclick="updatePost()">수정</button>
 			</td>
 		</tr>
+		</c:if>
 		<br><br><!-- 개인 피드 게시물 출력 -->
 		
 		<section class="ftco-section-3">
