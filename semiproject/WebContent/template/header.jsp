@@ -14,7 +14,7 @@
 						<div class="kostagram2">
 <%-- 							<div><a href="${pageContext.request.contextPath}/index.jsp">홈</a>&nbsp;&nbsp;</div> --%>
 <%-- 							 <div>${sessionScope.mvo.userName}님 &nbsp;&nbsp;</div> --%>
-							 <a href="${pageContext.request.contextPath}/ProfileDetailController.do" style= "color: black;"> ${sessionScope.mvo.userName}님</a>&nbsp;&nbsp;
+							 <a href="${pageContext.request.contextPath}/ProfileDetailController.do?userEmail=${sessionScope.mvo.userEmail}" style= "color: black;"> ${sessionScope.mvo.userName}님</a>&nbsp;&nbsp;
 							 <div><a href="${pageContext.request.contextPath}/WritePostFormController.do">Post</a></div>&nbsp;&nbsp;
 							 <div><a href="${pageContext.request.contextPath}/LogoutController.do">Log out</a></div>
 						 </div>

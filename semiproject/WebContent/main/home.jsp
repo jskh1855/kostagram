@@ -23,8 +23,10 @@
 
     
     </head>
+    
 			<section class="ftco-section-3">
 				<div class="photography">
+				
 				<div style="background-color: lightgray; margin-bottom: 1rem;">
 					<div class="row justify-content-center mb-2 pb-3" >
 					<h2 class="mb-4"><strong>HOT 게시물</strong></h2>
@@ -39,9 +41,10 @@
 								</div>
 								</a>
 								<div class="text ml-4 mb-4" style="display: inline-flex;">
-					<a href="ProfileDetailController.do">
-								<img alt="프로필사진" src="images/profileImage/profile_default.jpg" style="width:3rem; height:3rem;">
-								${pvoTop3.mvo.userName}</a>
+					
+								<a href="ProfileDetailController.do?userEmail=${pvoTop3.mvo.userEmail}"> <img alt="이미지안뜸"
+							src="images/profileImage/${pvoTop3.mvo.profileImage}" style="width: 30px; height: 30px;"> ${pvoTop3.mvo.userName}<br></a>
+							
 					<%-- 작성일 : ${pvoTop3.regdate} <br> --%>
 					<!-- 이하 좋아요 개수 표시 코드 수정필요 -->
 					<c:set var="contains2" value="0" />
@@ -75,16 +78,21 @@
 					<div class="row">
 					
 					<!-- 이미지 카드 한 칸 시작-->
-					<c:forEach  items="${requestScope.list}" var="pvo" varStatus="status">
+						<c:forEach  items="${requestScope.list}" var="pvo" varStatus="status">
 					<div class="col-md-4 ftco-animate">
 						<a href="images/contentImage/${pvo.postImage}" class="photography-entry img image-popup d-flex justify-content-start align-items-end" title="${pvo.mvo.userName}"  content="${pvo.content }" style="background-image: url(images/contentImage/${pvo.postImage});">
 								<div class="overlay">
 								</div>
 								</a>
 								<div class="text ml-4 mb-4" style="display: inline-flex;">
-								<a href="ProfileDetailController.do">
+								
+								<a href="ProfileDetailController.do?userEmail=${pvo.mvo.userEmail}"> <img alt="이미지안뜸"
+							src="images/profileImage/${pvo.mvo.profileImage}"
+							style="width: 30px; height: 30px;"> ${pvo.mvo.userName}<br></a>
+							
+								<%-- <a href="ProfileDetailController.do">
 								<img alt="프로필사진" src="images/profileImage/profile_default.jpg" style="width:3rem; height:3rem;">
-								${pvo.mvo.userName}</a>
+								${pvo.mvo.userName}</a> --%>
 <%-- 								<h3>글번호 ${pvo.no}</h3> --%>
 									<!-- <span class="tag"> -->
 									<div>
@@ -119,13 +127,11 @@
 	
 <script type="text/javascript">
 $(document).ready(function() {
-
 	$('.simple-ajax-popup-align-top').magnificPopup({
 		type: 'ajax',
 		alignTop: true,
 		overflowY: 'scroll' // as we know that popup content is tall we set scroll overflow by default to avoid jump
 	});
-
 	$('.simple-ajax-popup').magnificPopup({
 		type: 'ajax'
 	});
@@ -147,7 +153,6 @@ $(document).ready(function() {
 		}
 	});
 });
-
 </script>
   <script src="js/jquery.min.js"></script>
   <script src="js/jquery-migrate-3.0.1.min.js"></script>
