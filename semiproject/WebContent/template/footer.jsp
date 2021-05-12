@@ -10,7 +10,7 @@
 	              <ul class="list-unstyled photo">
 	              <!-- recent photos 6개 -->
 	              <c:forEach  items="${requestScope.list}" var="pvo" begin="0" end="5" step="1">
-	                <li><a href="#" class="img" style="background-image: url(images/contentImage/${pvo.postImage});"></a></li>
+	                <li><a href="#" class="img" style="background-image: url(images/contentImage/${pvoTop3.postImage}${pvo.postImage});"></a></li>
 				  </c:forEach>
 				  </ul>
 	            </div>
@@ -33,8 +33,8 @@
 	            	<div class="block-23 mb-3">
 		              <ul>
 		                <li><span class="icon icon-map-marker"></span><span class="text">경기도 성남시 분당구 성남대로 34 6층(구미동 하나프라자빌딩)  © 2021 KOSTA All rights reserved.</span></li>
-		                <li><a href="#"><span class="icon icon-phone"></span><span class="text">031-606-9304 </span></a></li>
-		                <li><a href="#"><span class="icon icon-envelope"></span><span class="text">@kosta.com</span></a></li>
+		                <li><span class="icon icon-phone"></span><span class="text">031-606-9304 </span></a></li>
+		                <li><span class="icon icon-envelope"></span><span class="text">@kosta.com</span></a></li>
 		              </ul>
 		            </div>
 	            </div>

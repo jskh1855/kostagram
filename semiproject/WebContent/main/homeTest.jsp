@@ -8,6 +8,7 @@
 	let xhr;
 	$(document).ready(function(){
 	$(".area-desc").click(function() { 
+		console.log("1");
 		var arrowImage = $(this).children("span").children("img"); 
 		arrowImage.attr("src", function(index, attr){
 			if (attr.match('up')) {		
@@ -99,10 +100,10 @@
 											    </c:otherwise>
 											</c:choose>
 <%-- 											<button  onclick="myFunction(${pvo.no})">Click me</button> --%>
-											좋아요 유무(0 or 1) : <div id="likeBoolean${pvo.no }">${contains }</div>
+											<div id="likeBoolean${pvo.no }" style ="visibility:hidden;">${contains }</div>
 											<c:set var="count" value="${pvo.likeCount}" />
 <%-- 											좋아요 개수 : <div id="likeCount${pvo.no }"> ${pvo.likeCount}</div><br> --%>
-											좋아요 개수 : <div id="likeCount${pvo.no }"> ${count}</div>
+											 <div id="likeCount${pvo.no }"> ${count}</div>
 	<hr>
 	<hr>
 </c:forEach>

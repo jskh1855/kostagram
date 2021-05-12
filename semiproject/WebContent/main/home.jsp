@@ -87,27 +87,20 @@
 											<c:choose>
 											    <c:when test="${contains2 eq 1}">
 													  <div class="area-desc" style="width: 50px; height: 50px;">
-															<span><img id="img${pvoTop3.no }" src ="images/contentImage/like_up.png" width = "25" height="25" onclick="startAjax(${pvoTop3.no})"><br></span>
+															<span><img class="img${pvoTop3.no }" src ="images/contentImage/like.png" width = "25" height="25" onclick="startAjax(${pvoTop3.no})"><br></span>
 													</div>
 											    </c:when>
 											    <c:otherwise>
 														  <div class="area-desc" style="width: 50px; height: 50px;">
-														<span><img id="img${pvoTop3.no }" src ="images/contentImage/like_down.png" width = "25" height="25" onclick="startAjax(${pvoTop3.no})"><br></span>
+														<span><img class="img${pvoTop3.no }" src ="images/contentImage/unlike.png" width = "25" height="25" onclick="startAjax(${pvoTop3.no})"><br></span>
 														</div>
 											    </c:otherwise>
-<<<<<<< HEAD
-											</c:choose> --%>
-											<img class="like-button" src="images/contentImage/like.png" height="20" width="20">
-											${status2.index}
-=======
 											</c:choose>
-
-<%-- 											<button  onclick="myFunction(${pvo.no})">Click me</button> --%>
-											<div id="likeBoolean${pvoTop3.no }" style="margin-left: -20px;">${contains2 }</div>
+<button  onclick="myFunction(${pvo.no})">Click me</button> --%>
+											<div class="likeBoolean${pvoTop3.no }" style="margin-left: -20px;">${contains2 }</div>
 											<c:set var="count2" value="${pvoTop3.likeCount}" />
 <%-- 											좋아요 개수 : <div id="likeCount${pvo.no }"> ${pvo.likeCount}</div><br> --%>
-											<div id="likeCount${pvoTop3.no }"  style="margin-left: 20px;"> ${count2}</div>
->>>>>>> branch 'main' of https://github.com/kim-hyeungsuk/kostagram.git
+											<div class="likeCount${pvoTop3.no }"  style="margin-left: 20px;"> ${count2}</div>
 										</div>
 					<!-- end like-display -->
 					</div>
@@ -149,21 +142,21 @@
 																					<c:choose>
 											    <c:when test="${contains eq 1}">
 													  <div class="area-desc" style="width: 50px; height: 50px;">
-															<span><img id="img${pvo.no }" src ="images/contentImage/like_up.png" width = "25" height="25" onclick="startAjax(${pvo.no})"><br></span>
+															<span><img class="img${pvo.no }" src ="images/contentImage/like_up.png" width = "25" height="25" onclick="startAjax(${pvo.no})"><br></span>
 													</div>
 											    </c:when>
 											    <c:otherwise>
 														  <div class="area-desc" style="width: 50px; height: 50px;">
-														<span><img id="img${pvo.no }" src ="images/contentImage/like_down.png" width = "25" height="25" onclick="startAjax(${pvo.no})"><br></span>
+														<span><img class="img${pvo.no }" src ="images/contentImage/like_down.png" width = "25" height="25" onclick="startAjax(${pvo.no})"><br></span>
 														</div>
 											    </c:otherwise>
 											</c:choose>
 
 <%-- 											<button  onclick="myFunction(${pvo.no})">Click me</button> --%>
-											<div id="likeBoolean${pvo.no }" style="margin-left: -20px;">${contains }</div>
+											<div class="likeBoolean${pvo.no }" style="margin-left: -20px;">${contains }</div>
 											<c:set var="count" value="${pvo.likeCount}" />
 <%-- 											좋아요 개수 : <div id="likeCount${pvo.no }"> ${pvo.likeCount}</div><br> --%>
-											<div id="likeCount${pvo.no }"  style="margin-left: 20px;"> ${count}</div>
+											<div class="likeCount${pvo.no }"  style="margin-left: 20px;"> ${count}</div>
 <%-- 											<c:choose> --%>
 <%-- 											    <c:when test="${contains eq 1}"> --%>
 <!-- 														<img src="images/contentImage/like_up.png" height="20" width="20"> -->
@@ -192,17 +185,6 @@
 <script type="text/javascript">
 let xhr;
 $(document).ready(function(){
-    $("#img1").click(function(){
-        $("#img1").hide();
-        $("#img2").show();
-    });
-
-    /*img2를 클릭했을 때 img1을 보여줌*/
-    $("#img2").click(function(){
-        $("#img1").show();
-        $("#img2").hide();
-    });
-	
 	
 $(".area-desc").click(function() { 
 	var arrowImage = $(this).children("span").children("img"); 
@@ -225,7 +207,6 @@ function startAjax(no){
 	  
 	  // 현재 화면에 표시된 값
 	 let like2 = resultElement2.innerText;
-
 	 like2 = parseInt(like2);
 	//alert(xhr);
 	//XMLHttpRequest의 속성에 callback 함수를 바인딩
@@ -235,8 +216,6 @@ function startAjax(no){
 //		//서버로 요청 
 	xhr.open("GET","LikesCountServlet?no="+no+"&like="+like2);
 	xhr.send(null); //post 방식일때 form data 명시 
-
-
 }
 function callback(){
 	//console.log(xhr.readyState)
@@ -244,27 +223,49 @@ function callback(){
 	// status 가 200 : 정상 수행 
 	if(xhr.readyState==4&&xhr.status==200){
 //			alert(xhr.responseText); // : 서버의 응답데이터를 저장하는 변수 
-		document.getElementById("likeCount"+no1).innerHTML = xhr.responseText;
+		document.getElementByClassName("likeCount"+no1).innerHTML = xhr.responseText;
 	}
 }
 	function myFunction(no){
-		  const resultElement1 = document.getElementById('likeBoolean'+no);
-		  const resultElement2 = document.getElementById('likeCount'+no);
-
-		  let number1 = resultElement1.innerText;
-		  let number2 = resultElement2.innerText;
-		  console.log(number2);
-		  if (number1 === '1'){
-			  resultElement1.innerText = 0;		  
-			  number2 = parseInt(number2) - 1;
-			  resultElement2.innerText = number2;
-			  document.getElementById('img'+no).src = "images/contentImage/like_down.png";
-		  }else{			  
-				  resultElement1.innerText = 1;
-			  number2 = parseInt(number2) + 1;
-			  resultElement2.innerText = number2;
-			  document.getElementById('img'+no).src = "images/contentImage/like_up.png";
-		  }
+		  const list1 = document.getElementsByClassName('likeBoolean'+no);
+		  const list2 = document.getElementsByClassName('likeCount'+no);
+		  const list3 = document.getElementsByClassName('img'+no);
+		  let number1 = 0;
+		  let number2 = 0;
+// 		  let number1 = resultElement1.innerText;
+// 		  let number2 = resultElement2.innerText;
+		  for (var i = 0; i < list1.length; i++) {
+	 		  number1 = list1[i].innerText;
+//	 		  let number2 = resultElement2.innerText;			  
+		 	  if (number1 === '1'){
+				  list1[i].innerText = 0;		  
+				  number2 = parseInt(list2[i].innerText) - 1;
+				  list2[i].innerText = number2;
+				  list3[i].src = "images/contentImage/like_down.png";
+			  }else{			  
+// 					  resultElement1.innerText = 1;
+// 				  number2 = parseInt(number2) + 1;
+// 				  resultElement2.innerText = number2;
+// 				  document.getElementsByClassName('img'+no).src = "images/contentImage/like_up.png";
+				  list1[i].innerText = 1;		  
+				  number2 = parseInt(list2[i].innerText) + 1;
+				  list2[i].innerText = number2;
+				  list3[i].src = "images/contentImage/like_up.png";
+			  }
+			}
+		  
+		  
+// 		  if (number1 === '1'){
+// 			  resultElement1.innerText = 0;		  
+// 			  number2 = parseInt(number2) - 1;
+// 			  resultElement2.innerText = number2;
+// 			  document.getElementsByClassName('img'+no).src = "images/contentImage/like_down.png";
+// 		  }else{			  
+// 				  resultElement1.innerText = 1;
+// 			  number2 = parseInt(number2) + 1;
+// 			  resultElement2.innerText = number2;
+// 			  document.getElementsByClassName('img'+no).src = "images/contentImage/like_up.png";
+// 		  }
 	}
 $(document).ready(function() {
 	$('.simple-ajax-popup-align-top').magnificPopup({
