@@ -20,21 +20,17 @@ public class ProfileDetailController implements Controller {
 			return "redirect:index.jsp";
 		}
 		
-		MemberVO mvo = (MemberVO)session.getAttribute("mvo");
-		String user_email=mvo.getUserEmail();
-		
-		MemberVO vo = MemberDAO.getInstance().getProfileTotalList(user_email);		
+		String userEmail=request.getParameter("userEmail");
+		System.out.println(userEmail);
+		/*
+		 * MemberVO mvo = (MemberVO)session.getAttribute("mvo"); String
+		 * user_email=mvo.getUserEmail();
+		 */
+		MemberVO vo = MemberDAO.getInstance().getProfileTotalList(userEmail);		
 		request.setAttribute("vo", vo);
-		ArrayList<PostVO> list = BoardDAO.getInstance().getPostingListByUser(user_email);		
+		ArrayList<PostVO> list = BoardDAO.getInstance().getPostingListByUser(userEmail);		
 		request.setAttribute("list", list);
 		request.setAttribute("url", "/main/profile.jsp");
 		return "/template/layout.jsp";
 	}
 }
-
-
-
-
-
-
-

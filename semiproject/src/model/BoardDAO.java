@@ -285,19 +285,40 @@ public class BoardDAO {
 	 * 글번호에 해당하는 포스팅 삭제하는 메서드
 	 * 
 	 * @param no
+	 * @return 
 	 * @throws SQLException
 	 */
 	public void deletePosting(String no) throws SQLException {
 		Connection con = null;
 		PreparedStatement pstmt = null;
+
 		try {
 			con = getConnection();
 			pstmt = con.prepareStatement("delete from k_board where no=?");
 			pstmt.setString(1, no);
 			pstmt.executeUpdate();
+		
 		} finally {
 			closeAll(pstmt, con);
 		}
+	
+	}
+	
+	public void deleteAllLikes(String no) throws SQLException {
+		Connection con = null;
+		PreparedStatement pstmt = null;
+		
+
+		try {
+			con = getConnection();
+			pstmt = con.prepareStatement("delete from k_likes where no = ?");
+			pstmt.setString(1, no);
+			pstmt.executeUpdate();
+		
+		} finally {
+			closeAll(pstmt, con);
+		}
+	
 	}
 
 	/**

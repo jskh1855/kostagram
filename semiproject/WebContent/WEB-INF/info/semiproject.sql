@@ -1,3 +1,4 @@
+  
 DROP TABLE k_likes;
 DROP TABLE k_board;
 DROP TABLE k_member cascade constraint;
@@ -19,7 +20,7 @@ CREATE TABLE k_member(
 
 delete from k_board;
 
-create table k_board(
+CREATE TABLE k_board(
    no number primary key,
    post_image varchar2(100) not null,
    content varchar2(100),
@@ -28,9 +29,10 @@ create table k_board(
    constraint user_email_fk foreign key (user_email) references k_member(user_email)
 );
 
-create table k_likes(
+CREATE TABLE k_likes(
    no number,
    user_email varchar2(100) not null,
+   constraint like_pk primary key(no,user_email),
    constraint user_email_fk1 foreign key (user_email) references k_member(user_email),
    constraint no_fk foreign key (no) references k_board(no)
 );
@@ -48,8 +50,8 @@ insert into k_likes(no,user_email) values(1,'345@gmail');
 insert into k_likes(no,user_email) values(2,'123@gmail');
 insert into k_likes(no,user_email) values(3,'123@gmail');
 insert into k_likes(no,user_email) values(3,'345@gmail');
-
-
+-- 중복 insert 불가 -- fail
+insert into k_likes(no,user_email) values(1,'123@gmail');
 ----------------------------------------------------------------
 
 select * from k_board;
@@ -82,14 +84,14 @@ from K_BOARD
 order by no desc;
 
 --<수정>
-select b.no, b.post_image, b.content, to_char(b.time_posted,'MM.DD'), m.user_name
+select b.no, b.post_image, b.content, to_char(b.time_posted,'MM.DD'), m.user_name, m.profile_image
 from K_BOARD b, K_MEMBER m
 where b.user_email = m.user_email
 order by no desc
 
 
 -- BoardDAO.getPostingTop3List()
--- 좋아요 top3 포스팅 필요(no, email, content,   count(*) 게시글당 좋아요수 카운트)
+-- 좋아요 top3 포스팅 필요(no, email, content, count(*) 게시글당 좋아요수 카운트)
 select rownum, A.*
 from ( select count(t2.no) as like_sum, t1.post_image
          from k_board t1
@@ -101,7 +103,8 @@ where rownum <=3 ;
 
 --<수정>
 select rownum, A.*
-from ( select count(t2.no) as like_sum, t1.no, t1.post_image, t1.content, to_char(t1.time_posted,'MM.DD')AS UPLOAD_DATE,t1.user_email,(SELECT user_name FROM k_member WHERE user_email=t1.user_email) as USER_NAME 
+from ( select count(t2.no) as like_sum, t1.no, t1.post_image, t1.content, to_char(t1.time_posted,'MM.DD')AS UPLOAD_DATE,t1.user_email,
+(SELECT user_name FROM k_member WHERE user_email=t1.user_email) as USER_NAME 
          from k_board t1
          left join k_likes t2
                on t1.no = t2.no
@@ -109,6 +112,32 @@ from ( select count(t2.no) as like_sum, t1.no, t1.post_image, t1.content, to_cha
          order by like_sum desc) A
 where rownum <=3 ;
 
+-- top3에 이름 같이 가져오기
+select rownum, A.*
+from ( select count(t2.no) as like_sum, t1.no, t1.post_image, t1.content, to_char(t1.time_posted,'MM.DD') AS UPLOAD_DATE, t1.user_email,
+		(SELECT user_name FROM k_member WHERE user_email=t1.user_email) as USER_NAME 
+         from k_board t1
+         left join k_likes t2
+               on t1.no = t2.no
+         group by t2.no, t1.no, t1.post_image, t1.content, to_char(t1.time_posted,'MM.DD'), t1.user_email
+         order by like_sum desc
+         ) A
+where rownum <=3 ;
+
+-- top3에 프로필 이미지 같이 가져오기
+select rownum, A.*
+from ( select count(t2.no) as like_sum, t1.no, t1.post_image, t1.content, to_char(t1.time_posted,'MM.DD')AS UPLOAD_DATE,t1.user_email,
+(SELECT user_name FROM k_member WHERE user_email=t1.user_email) as USER_NAME,
+(SELECT profile_image FROM k_member WHERE user_email=t1.user_email) as USER_IMAGE
+         from k_board t1
+         left join k_likes t2
+               on t1.no = t2.no
+         group by t2.no, t1.no, t1.post_image, t1.content, to_char(t1.time_posted,'MM.DD'),t1.user_email
+         order by like_sum desc) A
+where rownum <=3 ;
+
+-- select * from k_member;
+-- select * from k_board;
 
 -- BoardDAO. getPostingListByUser(String email)
 -- 개인 포스팅 출력 return ArrayList<PosVO>
