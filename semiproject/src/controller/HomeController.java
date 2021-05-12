@@ -29,10 +29,9 @@ public class HomeController implements Controller{
 			for (int i = 0;i<list.size() ;i++) {
 				list.get(i).setLikeCount((BoardDAO.getInstance().countLikes(list.get(i).getNo())));
 			}
-			for (int j = 0;j<3 ;j++) {
+			for (int j = 0;j<list4.size() ;j++) {
 				list4.get(j).setLikeCount((BoardDAO.getInstance().countLikes(list4.get(j).getNo())));
 			}		
-			System.out.println(list4);
 			// top3 
 
 			
