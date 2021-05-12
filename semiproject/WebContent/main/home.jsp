@@ -27,35 +27,42 @@
 				<div class="photography">
 				<div style="background-color: lightgray; margin-bottom: 1rem;">
 					<div class="row justify-content-center mb-2 pb-3" >
-					<h2 class="mb-4">좋아요 탑 3</h2>
+					<h2 class="mb-4"><strong>HOT 게시물</strong></h2>
 					</div>
 					
 					<div class="row">
-					<c:forEach  items="${requestScope.list4}" var="pvoTop3" varStatus="status">
+					<c:forEach  items="${requestScope.list4}" var="pvoTop3" varStatus="status2">
 					<%-- ${pvoTop3 } --%>
 					<div class="col-md-4 ftco-animate">
 					<a href="images/contentImage/${pvoTop3.postImage}" class="photography-entry img image-popup d-flex justify-content-start align-items-end" style="background-image: url(images/contentImage/${pvoTop3.postImage});">
 								<div class="overlay">
 								</div>
 								</a>
-					<%-- 내용 : ${pvoTop3.content}<br> --%>
-					
-					작성자 : ${pvoTop3.mvo.userName}<br>
+								<div class="text ml-4 mb-4" style="display: inline-flex;">
+					<a href="ProfileDetailController.do">
+								<img alt="프로필사진" src="images/profileImage/profile_default.jpg" style="width:3rem; height:3rem;">
+								${pvoTop3.mvo.userName}</a>
 					<%-- 작성일 : ${pvoTop3.regdate} <br> --%>
-					<div id="like-display">
-						좋아요 유무(0 or 1)
-						<!-- if else로 좋아요 아이콘 넣을 거임 -->
-					    <%-- <c:set var="contains" value="1" /> --%>
-						<c:choose>
-						    <c:when test="${1 eq 1}">
-						        좋아요 하얀 버튼
-						    </c:when>
-						    <c:otherwise>
-						        좋아요 빨간 버튼
-						    </c:otherwise>
-						</c:choose>
-						<!-- 좋아요 아이콘 끝 -->
-						좋아요 개수 : <br>					
+					<!-- 이하 좋아요 개수 표시 코드 수정필요 -->
+					<c:set var="contains2" value="0" />
+										<c:forEach var="email2" items="${requestScope.list3}">
+										  <c:if test="${email2 eq pvoTop3.no}">
+										    <c:set var="contains2" value="1" />
+										  </c:if>
+										</c:forEach>
+					<div id="like-display" style="margin-left: 3rem;">
+											<c:choose>
+											    <c:when test="${contains2 eq 1}">
+														<img src="images/contentImage/like.png" height="20" width="20">
+											    </c:when>
+											    <c:otherwise>
+														<img src="images/contentImage/dislike.png" height="20" width="20">
+											    </c:otherwise>
+											</c:choose>
+											${status2.index}
+											
+										</div>
+					<!-- end like-display -->
 					</div>
 					</div>
 					</c:forEach>
@@ -63,32 +70,22 @@
 					<br>
 					</div>
 					</div>
-					
+					<!-- 좋아요 탑3 끝 -->
 					<div class="row">
 					<!-- 이미지 카드 한 칸 시작-->
 					<c:forEach  items="${requestScope.list}" var="pvo" varStatus="status">
 					<div class="col-md-4 ftco-animate">
-					<div class="popup-gallery">
-					<a class="simple-ajax-popup" href="images/contentImage/${pvo.postImage}">
 						<a href="images/contentImage/${pvo.postImage}" class="photography-entry img image-popup d-flex justify-content-start align-items-end" title="${pvo.mvo.userName}"  content="${pvo.content }" style="background-image: url(images/contentImage/${pvo.postImage});">
 								<div class="overlay">
 								</div>
 								</a>
-								</a>
-								</div>
-								<!-- popup 테스트용 -->
-								
-					<div id="test-popup" class="white-popup mfp-hide">
-								<%-- <div class="popup-gallery"> --%>
-									<a href="http://farm9.staticflickr.com/8242/8558295633_f34a55c1c6_b.jpg" title="${pvo.mvo.userName}" content="${pvo.content }"><img src="http://farm9.staticflickr.com/8242/8558295633_f34a55c1c6_s.jpg" width="75" height="75"></a>
-								</div>
 								<div class="text ml-4 mb-4" style="display: inline-flex;">
-								
-								작성자 : ${pvo.mvo.userName}<br>
 								<a href="ProfileDetailController.do">
-								프로필이미지 : <img alt="이미지안뜸" src="images/profileImage/profile_default.jpg" style="width:30px; height:30px;"><br></a>
+								<img alt="프로필사진" src="images/profileImage/profile_default.jpg" style="width:3rem; height:3rem;">
+								${pvo.mvo.userName}</a>
 <%-- 								<h3>글번호 ${pvo.no}</h3> --%>
-									<span class="tag">
+									<!-- <span class="tag"> -->
+									<div>
 									<c:set var="contains" value="0" />
 										<c:forEach var="email" items="${requestScope.list2}">
 										  <c:if test="${email eq pvo.no}">
@@ -96,7 +93,7 @@
 										  </c:if>
 										</c:forEach>
 										<!-- 좋아요 아이콘이랑 개수 float: right 하고픔 -->
-										<div id="like-display">
+										<div id="like-display" style="margin-left: 3rem;">
 											<c:choose>
 											    <c:when test="${contains eq 1}">
 														<img src="images/contentImage/like.png" height="20" width="20">
@@ -108,7 +105,8 @@
 											${status.index}
 											
 										</div>
-									</span>
+										</div>
+									<!-- </span> -->
 								</div>
 							</div>	
 						<!-- 사진 안에 글번호랑 좋아요 표시하려면 여기서 a태그 닫기 </a> -->
