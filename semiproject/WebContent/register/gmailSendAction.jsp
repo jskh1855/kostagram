@@ -56,14 +56,7 @@
 			script.println("</script>");
 		}
 	%>	
-<!DOCTYPE html>
-<html>
-<head>
-<meta charset="UTF-8">
-<title>Insert title here</title>
-</head>
-<body>
-<h1>이메일 주소 인증 메일이 전송되었습니다. 이메일에 들어가서 인증해주세요.</h1>
-<img src="../main/images/image_1.jpg" alt="Yejin" width="800" height="600">
-</body>
-</html>
+<script type="text/javascript">
+	alert("메일을 확인해 주세요!");
+	location.href = "${pageContext.request.contextPath}/index.jsp";
+</script>

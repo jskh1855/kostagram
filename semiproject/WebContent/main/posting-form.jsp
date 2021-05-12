@@ -11,9 +11,20 @@
  
  <%-- <form method="post" action="${pageContext.request.contextPath}/WritePostController.do" >
   --%>
-  
-  <form action="UploadServlet" method="post" enctype="multipart/form-data">
-        file: <input type="file" name="postImage" readonly="readonly"><br>
-        content: <input type="text" name="content"><br>
-        <input type="submit" value="포스팅 업로드!">
- </form>
+<div class="row block-9" style="margin-top:100px; margin-bottom:100px;">
+  <div class="col-md-6 d-flex" style="text-align: center; margin: 0 auto;">
+  	<form action="UploadServlet" method="post" lass="bg-light p-5 contact-form" style="width: 100%" enctype="multipart/form-data">
+     <div class="bg-light p-5 contact-form">
+     <div class="form-group">
+        File <input type="file" name="postImage" class="form-control" readonly="readonly"><br>
+      </div>
+      <div class="form-group">
+        Content <input type="text" name="content" class="form-control"><br>
+      </div>
+      <div class="form-group">
+        <input type="submit" value="포스팅 업로드!" class="btn btn-primary py-3 px-5">
+ 	</div>
+ 	</div>
+ 	</form>
+</div>
+</div>
