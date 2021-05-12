@@ -53,7 +53,7 @@ public class BoardDAO {
 			con = getConnection();
 			StringBuilder sql = new StringBuilder();
 
-			sql.append("select b.no, b.post_image, b.content, to_char(b.time_posted,'MM.DD'), m.user_name ");
+			sql.append("select b.no, b.post_image, b.content, to_char(b.time_posted,'MM.DD'), m.user_name,  m.profile_image, m.user_email ");
 			sql.append("from K_BOARD b, K_MEMBER m ");
 			sql.append("where b.user_email = m.user_email ");
 			sql.append("order by no desc");
@@ -70,6 +70,8 @@ public class BoardDAO {
 
 				MemberVO mvo = new MemberVO();
 				mvo.setUserName(rs.getString(5));
+				mvo.setProfileImage(rs.getString(6));
+				mvo.setUserEmail(rs.getString(7));
 				pvo.setMvo(mvo);
 
 				list.add(pvo);

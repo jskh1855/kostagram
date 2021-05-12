@@ -82,9 +82,14 @@
 								</div>
 								</a>
 								<div class="text ml-4 mb-4" style="display: inline-flex;">
-								<a href="ProfileDetailController.do">
+								
+								<a href="ProfileDetailController.do?userEmail=${pvo.mvo.userEmail}"> <img alt="이미지안뜸"
+							src="images/profileImage/${pvo.mvo.profileImage}"
+							style="width: 30px; height: 30px;"> ${pvo.mvo.userName}<br></a>
+							
+								<%-- <a href="ProfileDetailController.do">
 								<img alt="프로필사진" src="images/profileImage/profile_default.jpg" style="width:3rem; height:3rem;">
-								${pvo.mvo.userName}</a>
+								${pvo.mvo.userName}</a> --%>
 <%-- 								<h3>글번호 ${pvo.no}</h3> --%>
 									<!-- <span class="tag"> -->
 									<div>
