@@ -23,7 +23,37 @@
 
     
     </head>
-    
+    <style>
+    like-button {
+      -webkit-text-stroke: 1px;
+      animation: .5s linear burst; 
+    }
+    @keyframes burst{
+    0%,10%{
+        transform: scale(1);
+        opacity: .5;
+        color:lavender;
+    }
+    45%{
+        transform: scale(.2) rotate(30deg);
+        opacity: .75;
+    }
+    50%{
+        transform: scale(2) rotate(-37.5deg);
+        opacity: 1;
+        color: red;
+        text-shadow: 2px 2px 6px rgba(235, 9, 9, 0.5);
+    }
+    90%,95%{
+        transform: scale(1) rotate(10deg);
+        text-shadow: none;
+    }
+    100% {
+        transform: rotate(-2.5deg);
+    }
+
+  }
+    </style>
 			<section class="ftco-section-3">
 				<div class="photography">
 				
@@ -63,7 +93,7 @@
 														<img src="images/contentImage/dislike_down.png" height="20" width="20">
 											    </c:otherwise>
 											</c:choose> --%>
-											<img src="images/contentImage/like_up.png" height="20" width="20">
+											<img class="like-button" src="images/contentImage/like.png" height="20" width="20">
 											${status2.index}
 										</div>
 					<!-- end like-display -->
