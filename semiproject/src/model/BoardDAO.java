@@ -135,7 +135,9 @@ public class BoardDAO {
 
 			sql.append("select rownum, A.* ");
 			sql.append(
-					"from ( select count(t2.no) as like_sum, t1.no, t1.post_image, t1.content, to_char(t1.time_posted,'MM.DD')AS UPLOAD_DATE,t1.user_email,(SELECT user_name FROM k_member WHERE user_email=t1.user_email) as USER_NAME ");
+					"from ( select count(t2.no) as like_sum, t1.no, t1.post_image,"
+					+ "t1.content, to_char(t1.time_posted,'MM.DD')AS UPLOAD_DATE,t1.user_email,(SELECT user_name FROM k_member WHERE user_email=t1.user_email) as USER_NAME,  ");
+			sql.append("(SELECT profile_image FROM k_member WHERE user_email=t1.user_email) as USER_IMAGE ");
 			sql.append("from k_board t1 ");
 			sql.append("left join k_likes t2 ");
 			sql.append("on t1.no = t2.no ");
@@ -155,7 +157,9 @@ public class BoardDAO {
 				pvo.setRegdate(rs.getString(6));
 
 				MemberVO mvo = new MemberVO();
+				mvo.setUserEmail(rs.getString(7));
 				mvo.setUserName(rs.getString(8));
+				mvo.setProfileImage(rs.getString(9));
 				pvo.setMvo(mvo);
 
 				list.add(pvo);
