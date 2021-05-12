@@ -217,4 +217,4 @@ WHERE user_email = '123@gmail';
 
 SELECT COUNT(*) FROM k_likes WHERE no = 1;
 
-DELETE FROM k_member where user_email = 'halfspacekim@gmail.com';
+select user_email from k_member;

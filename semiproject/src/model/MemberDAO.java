@@ -5,6 +5,7 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.ArrayList;
 
 import javax.sql.DataSource;
 
@@ -172,5 +173,66 @@ public class MemberDAO {
 		    	  return false;		    	  
 		      }
 		   }
+	   
+	   public ArrayList<String> getAllMember() throws SQLException {
+		      Connection con = null;
+		      PreparedStatement pstmt = null;
+		      ResultSet rs = null;
+		      ArrayList<String> list = new ArrayList<String>();
+		      try {
+		         con = dataSource.getConnection();
+		         StringBuilder sql = new StringBuilder();
+		         sql.append("SELECT user_email from k_member ");
+		         pstmt = con.prepareStatement(sql.toString());
+		         rs = pstmt.executeQuery();
+		         while(rs.next()) {
+		            list.add(rs.getString(1));
+		         }
+		      } finally {
+		         closeAll(rs, pstmt, con);
+		      }
+		      return list;
+		   }
+	   
+		public void emailChecked(String email) throws SQLException {
+			Connection con=null;
+			PreparedStatement pstmt=null;
+			try{
+				con=dataSource.getConnection();
+				pstmt=con.prepareStatement("update k_member set user_email_checked = 1 where user_email=?");
+				pstmt.setString(1, email);
+				pstmt.executeUpdate();			
+			}finally{
+				closeAll(pstmt,con);
+			}
+		}
+		
+		   public boolean isChecked(String userEmail) throws SQLException {
+			      Connection con = null;
+			      PreparedStatement pstmt = null;
+			      ResultSet rs = null;
+			      int num = 0;
+			      try {
+			         con = dataSource.getConnection();
+			         StringBuilder sql = new StringBuilder();
+			         sql.append("SELECT user_email_checked ");
+			         sql.append("FROM k_member ");
+			         sql.append("WHERE user_email = ? ");
+			         pstmt = con.prepareStatement(sql.toString());
+			         pstmt.setString(1, userEmail);
+			         rs = pstmt.executeQuery();
+			         if (rs.next()) {
+			            num = rs.getInt(1);
+			         }
+			      } finally {
+			         closeAll(rs, pstmt, con);
+			      }
+			      if (num == 1) {
+			    	  return true;
+			      }else {
+			    	  return false;		    	  
+			      }
+			   }
+		
 	
 }
