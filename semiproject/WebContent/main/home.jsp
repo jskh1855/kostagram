@@ -27,7 +27,7 @@
 			<section class="ftco-section-3">
 				<div class="photography">
 				
-				<div style="background-color: lightgray; margin-bottom: 1rem;">
+				<div style="background-color: #ffdede; margin-bottom: 1rem;">
 					<div class="row justify-content-center mb-2 pb-3" >
 					<h2 class="mb-4"><strong>HOT 게시물</strong></h2>
 					</div>
@@ -113,7 +113,9 @@
 											    </c:otherwise>
 											</c:choose>
 											${status.index}
-											
+											<!-- 작성일 -->
+											${pvo.content}
+											<!-- 내용 -->
 										</div>
 										</div>
 									<!-- </span> -->

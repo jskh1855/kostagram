@@ -7752,7 +7752,8 @@ h1, h2, h3, h4, h5,
       -ms-transform: translateY(-50%);
       transform: translateY(-50%);
       margin-top: -10px;
-      color: #ccb78f !important;
+      /* color: #ccb78f !important; */
+      color: #C8B4D7 !important;
       -moz-transition: all 0.7s ease;
       -o-transition: all 0.7s ease;
       -webkit-transition: all 0.7s ease;
@@ -8002,7 +8003,8 @@ h1, h2, h3, h4, h5,
         color: #ccb78f; }
 
 .ftco-bread {
-  background: #ccb78f !important;
+  /* background: #92A8D1 !important; */
+  background: #C8B4D7 !important;
   padding: 4em 1.8em !important; }
   .ftco-bread .breadcrumbs {
     text-transform: uppercase;
@@ -8368,7 +8370,8 @@ textarea.form-control {
   background: #f8f9fa !important; }
 
 .bg-primary {
-  background: #ccb78f !important; }
+  /* background: #ccb78f !important; } */
+  background: #C8B4D7 !important; }
 
 .image-popup {
   cursor: -webkit-zoom-in;
