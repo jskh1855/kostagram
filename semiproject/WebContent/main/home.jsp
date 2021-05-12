@@ -51,16 +51,17 @@
 										  </c:if>
 										</c:forEach>
 					<div id="like-display" style="margin-left: 3rem;">
-											<c:choose>
+					
+											<%-- <c:choose>
 											    <c:when test="${contains2 eq 1}">
-														<img src="images/contentImage/like.png" height="20" width="20">
+														<img src="images/contentImage/like_up.png" height="20" width="20">
 											    </c:when>
 											    <c:otherwise>
-														<img src="images/contentImage/dislike.png" height="20" width="20">
+														<img src="images/contentImage/dislike_down.png" height="20" width="20">
 											    </c:otherwise>
-											</c:choose>
+											</c:choose> --%>
+											<img src="images/contentImage/like_up.png" height="20" width="20">
 											${status2.index}
-											
 										</div>
 					<!-- end like-display -->
 					</div>
@@ -77,12 +78,6 @@
 					<c:forEach  items="${requestScope.list}" var="pvo" varStatus="status">
 					<div class="col-md-4 ftco-animate">
 						<a href="images/contentImage/${pvo.postImage}" class="photography-entry img image-popup d-flex justify-content-start align-items-end" title="${pvo.mvo.userName}"  content="${pvo.content }" style="background-image: url(images/contentImage/${pvo.postImage});">
-
-					<div class="col-md-4 ftco-animate">
-					<div class="popup-gallery">
-					<a class="simple-ajax-popup" href="images/contentImage/${pvo.postImage}">
-						<a href="images/contentImage/${pvo.postImage}" class="photography-entry img image-popup d-flex justify-content-start align-items-end" title="${pvo.mvo.userName}"  content="${pvo.content }" style="background-image: url(images/contentImage/${pvo.postImage});">
-
 								<div class="overlay">
 								</div>
 								</a>
@@ -103,10 +98,10 @@
 										<div id="like-display" style="margin-left: 3rem;">
 											<c:choose>
 											    <c:when test="${contains eq 1}">
-														<img src="images/contentImage/like.png" height="20" width="20">
+														<img src="images/contentImage/like_up.png" height="20" width="20">
 											    </c:when>
 											    <c:otherwise>
-														<img src="images/contentImage/dislike.png" height="20" width="20">
+														<img src="images/contentImage/like_down.png" height="20" width="20">
 											    </c:otherwise>
 											</c:choose>
 											${status.index}
