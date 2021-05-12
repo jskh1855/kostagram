@@ -1,5 +1,6 @@
 <%@page import="model.Gmail"%>
 <%@page import="model.SHA256"%>
+<%@page import="model.MemberDAO"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 
@@ -35,35 +36,36 @@
 		p.put("mail.smtp.socketFactory.port", "465"); 
 		p.put("mail.smtp.socketFactory.class", "javax.net.ssl.SSLSocketFactory");
 		p.put("mail.smtp.sockerFactory.fallback", "false");
-
-		try {
-			Authenticator auth = new Gmail();
-			Session ses = Session.getInstance(p, auth);
-			ses.setDebug(true);
-			MimeMessage msg = new MimeMessage(ses);
-			msg.setSubject(subject);
-			Address fromAddr = new InternetAddress(from);
-			msg.setFrom(fromAddr);
-			Address toAddr = new InternetAddress(to);
-			msg.addRecipient(Message.RecipientType.TO, toAddr);
-			msg.setContent(content, "text/html; charset=UTF8");
-			Transport.send(msg);
-		} catch (Exception e) {
+		
+		if (MemberDAO.getInstance().isExist(to) == true){
 			PrintWriter script = response.getWriter();
 			script.println("<script>");
-			script.println("alert('이메일 인증 오류')");
+			script.println("alert('이메일이 이미 존재합니다')");
 			script.println("history.back();");
 			script.println("</script>");
 		}
+		else{
+			try {
+				Authenticator auth = new Gmail();
+				Session ses = Session.getInstance(p, auth);
+				ses.setDebug(true);
+				MimeMessage msg = new MimeMessage(ses);
+				msg.setSubject(subject);
+				Address fromAddr = new InternetAddress(from);
+				msg.setFrom(fromAddr);
+				Address toAddr = new InternetAddress(to);
+				msg.addRecipient(Message.RecipientType.TO, toAddr);
+				msg.setContent(content, "text/html; charset=UTF8");
+				Transport.send(msg);
+			} catch (Exception e) {
+				PrintWriter script = response.getWriter();
+				script.println("<script>");
+				script.println("alert('이메일 인증 오류')");
+				script.println("history.back();");
+				script.println("</script>");
+			}
+		}
 	%>	
-<!DOCTYPE html>
-<html>
-<head>
-<meta charset="UTF-8">
-<title>Insert title here</title>
-</head>
-<body>
-<h1>이메일 주소 인증 메일이 전송되었습니다. 이메일에 들어가서 인증해주세요.</h1>
-<img src="../main/images/image_1.jpg" alt="Yejin" width="800" height="600">
-</body>
-</html>
+<script type="text/javascript">
+	location.href = "${pageContext.request.contextPath}/index.jsp";
+</script>
