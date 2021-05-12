@@ -8,6 +8,7 @@ public class PostVO {
 	private String content;
 	private String regdate;
 	private MemberVO mvo;
+	private int likeCount;
 	public PostVO() {
 		super();
 		// TODO Auto-generated constructor stub
@@ -49,6 +50,12 @@ public class PostVO {
 	}
 	public void setMvo(MemberVO mvo) {
 		this.mvo = mvo;
+	}
+	public void setLikeCount(int like) {
+		this.likeCount = like;
+	}
+	public int getLikeCount() {
+		return likeCount;
 	}
 	@Override
 	public String toString() {
