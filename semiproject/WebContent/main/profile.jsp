@@ -67,10 +67,10 @@
 				</form>-->
 				<a href= "${pageContext.request.contextPath}/DeletePostController.do?no=${pvo.no}">삭제</a>
 				<!--  <button type="button" class="btn" onclick="deletePost()">삭제</button> -->
-				<form name="deleteForm"
+				<!-- <form name="deleteForm"
 					 method="post" action="${pageContext.request.contextPath}/DeletePostController.do?no=${pvo.no}">
 					 <input type="submit" name= "no" placeholder="삭제"> 
-				</form>
+				</form> -->
 			</td>
 			</tr>
 			<br>
