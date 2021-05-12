@@ -38,10 +38,17 @@
 								<div class="overlay">
 								</div>
 								</a>
+
 								<div class="text ml-4 mb-4" style="display: inline-flex; margin-top: 0.1rem;">
 					<a href="ProfileDetailController.do">
 								<img alt="프로필사진" src="images/profileImage/${pvoTop3.mvo.profileImage}" style="width:3rem; height:3rem;">
 								${pvoTop3.mvo.userName}</a>
+
+								<div class="text ml-4 mb-4" style="display: inline-flex;">
+					
+								<a href="ProfileDetailController.do?userEmail=${pvoTop3.mvo.userEmail}"> <img alt="이미지안뜸"
+							src="images/profileImage/${pvoTop3.mvo.profileImage}" style="width: 30px; height: 30px;"> ${pvoTop3.mvo.userName}<br></a>
+							
 					<%-- 작성일 : ${pvoTop3.regdate} <br> --%>
 					<!-- 이하 좋아요 개수 표시 코드 수정필요 -->
 					<c:set var="contains2" value="0" />
@@ -83,16 +90,27 @@
 					<div class="row">
 					
 					<!-- 이미지 카드 한 칸 시작-->
-					<c:forEach  items="${requestScope.list}" var="pvo" varStatus="status">
+						<c:forEach  items="${requestScope.list}" var="pvo" varStatus="status">
 					<div class="col-md-4 ftco-animate">
 						<a href="images/contentImage/${pvo.postImage}" class="photography-entry img image-popup d-flex justify-content-start align-items-end" title="${pvo.mvo.userName}"  content="${pvo.content }" style="background-image: url(images/contentImage/${pvo.postImage});">
 								<div class="overlay">
 								</div>
 								</a>
 								<div class="text ml-4 mb-4" style="display: inline-flex;">
+
 								<a href="ProfileDetailController.do">
 								<img alt="프로필사진" src="images/profileImage/${pvo.mvo.profileImage}" style="width:3rem; height:3rem;">
 								${pvo.mvo.userName}</a>
+
+								
+								<a href="ProfileDetailController.do?userEmail=${pvo.mvo.userEmail}"> <img alt="이미지안뜸"
+							src="images/profileImage/${pvo.mvo.profileImage}"
+							style="width: 30px; height: 30px;"> ${pvo.mvo.userName}<br></a>
+							
+								<%-- <a href="ProfileDetailController.do">
+								<img alt="프로필사진" src="images/profileImage/profile_default.jpg" style="width:3rem; height:3rem;">
+								${pvo.mvo.userName}</a> --%>
+
 <%-- 								<h3>글번호 ${pvo.no}</h3> --%>
 									<!-- <span class="tag"> -->
 									<div>

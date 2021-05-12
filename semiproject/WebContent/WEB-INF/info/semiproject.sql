@@ -133,8 +133,8 @@ from ( select count(t2.no) as like_sum, t1.no, t1.post_image, t1.content, to_cha
          order by like_sum desc) A
 where rownum <=3 ;
 
-select * from k_member;
-select * from k_board;
+-- select * from k_member;
+-- select * from k_board;
 
 -- BoardDAO. getPostingListByUser(String email)
 -- 개인 포스팅 출력 return ArrayList<PosVO>

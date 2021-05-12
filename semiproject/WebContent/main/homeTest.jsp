@@ -12,8 +12,10 @@
 		console.log(arrowImage);
 		arrowImage.attr("src", function(index, attr){
 			if (attr.match('up')) {
+ 				plus();
 				return attr.replace("up", "down");
 				} else {
+ 				minus();
 				return attr.replace("down", "up");
 				} 
 			}); 
@@ -41,6 +43,30 @@
 // 			document.getElementById("likeCount").innerHTML = xhr.responseText;
 		}
 	}
+	
+	function plus()  {
+		  // 결과를 표시할 element
+		  const resultElement = document.getElementById('likeCount');
+		  
+		  // 현재 화면에 표시된 값
+		  let number = resultElement.innerText;
+		  
+		  number = parseInt(number) + 1;
+		  console.log(number);
+		  resultElement.innerText = number;
+		}
+	
+		function minus()  {
+		  // 결과를 표시할 element
+		  const resultElement = document.getElementById('likeCount');
+		  
+		  // 현재 화면에 표시된 값
+		  let number = resultElement.innerText;
+
+		  number = parseInt(number) - 1;
+		  
+		  resultElement.innerText = number;
+		}
 
 
 </script>
@@ -58,8 +84,7 @@
 </div>
 <%-- <input type="hidden" id="postNum${pvo.no}" name="${pvo.no}" value="${pvo.no}"> --%>
 로그인유저의 <br> 좋아요 유무(0 or 1) : <span id="likeBoolean"></span><br>
-좋아요 개수 : <span id="likeCount"> ${pvo.likeCount }</span><br>
-
+좋아요 개수 : <div id="likeCount"> ${pvo.likeCount}</div><br>
 
 	<hr>
 	<hr>
