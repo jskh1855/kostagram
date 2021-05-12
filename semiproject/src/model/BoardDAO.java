@@ -70,16 +70,14 @@ public class BoardDAO {
 				MemberVO mvo = new MemberVO();
 				mvo.setUserName(rs.getString(5));
 				mvo.setProfileImage(rs.getString(6));
-				
 				mvo.setUserEmail(rs.getString(7));
 				pvo.setMvo(mvo);
-				System.out.println(mvo);
+
 				list.add(pvo);
 			}
 		} finally {
 			closeAll(rs, pstmt, con);
 		}
-
 		return list;
 	}
 

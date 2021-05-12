@@ -17,6 +17,7 @@
 	}
 </script>
 
+<!-- 내 프로필 출력 시작 -->
 	<table>
 		<tr>
 			<td>이름</td>
@@ -41,14 +42,16 @@
 			<td colspan="5" class="btnArea">
 				<form name="updateForm"
 					action="${pageContext.request.contextPath}/UpdateProfileFormController.do" method="post">
-					<input 	type="hidden" name="userEmail" value="${requestScope.vo.userEmail}">
+					<input type="hidden" name="userEmail" value="${requestScope.vo.userEmail}">
 				</form>
 				<button type="button" class="btn" onclick="updatePost()">수정</button>
 			</td>
 		</tr>
 		</c:if>
-		<br><br><!-- 개인 피드 게시물 출력 -->
+		<br><br>
+		<!-- 내 프로필 출력 끝 -->
 		
+		<!-- 개인 피드 게시물 출력 -->
 		<section class="ftco-section-3">
 				<div class="photography">
 				<div>
@@ -58,6 +61,7 @@
 		
 		<div class="col-md-4 ftco-animate">
 			글번호 : ${pvo.no} 
+			<%-- 자기 글에만 수정 버튼 표시하는 if문 날리나요?? -->
 			<c:if test="${requestScope.vo.userEmail==sessionScope.mvo.userEmail}">
 			<tr>
 			<td colspan="5" class="btnArea">
