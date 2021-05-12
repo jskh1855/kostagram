@@ -53,27 +53,29 @@
     }
 
   }
+ 
+}
     </style>
 			<section class="ftco-section-3">
 				<div class="photography">
 				
-				<div style="background-color: #ffdede; margin-bottom: 1rem;">
-					<div class="row justify-content-center mb-2 pb-3" >
-					<h2 class="mb-4"><strong>HOT 게시물</strong></h2>
+				<div class="top3" style="background-color: rgb(204 183 143 / 20%); padding: 0 1rem 2rem 2rem; margin-right: -1rem; margin-left: -1rem;">
+					<div class="row justify-content-center mb-2 pb-3">
+					<h2 class="text ml-4 mb-4" style="text-align: center; margin: 2rem -2rem 0 0 !important;"><strong>HOT 게시물</strong></h2>
 					</div>
 					
 					<div class="row">
 					<c:forEach  items="${requestScope.list4}" var="pvoTop3" varStatus="status2">
 					<%-- ${pvoTop3 } --%>
-					<div class="col-md-4 ftco-animate">
+					<div class="col-md-4 ftco-animate" id="top3-post" style="box-shadow: 0 2px 4px 0 rgb(216 216 216 / 20%), 0 16px 68px 0 rgb(216 216 216 / 40%) background-color: white !important;">
 					<a href="images/contentImage/${pvoTop3.postImage}" class="photography-entry img image-popup d-flex justify-content-start align-items-end" style="background-image: url(images/contentImage/${pvoTop3.postImage});">
 								<div class="overlay">
 								</div>
 								</a>
-								<div class="text ml-4 mb-4" style="display: inline-flex;">
+								<div class="text ml-4 mb-4" style="display: inline-flex; align-items: center;  margin-top: 0 !important;  margin-bottom: 0 !important;">
 					
-								<a href="ProfileDetailController.do?userEmail=${pvoTop3.mvo.userEmail}"> <img alt="이미지안뜸"
-							src="images/profileImage/${pvoTop3.mvo.profileImage}" style="width: 30px; height: 30px;"> ${pvoTop3.mvo.userName}<br></a>
+								<a href="ProfileDetailController.do?userEmail=${pvoTop3.mvo.userEmail}"> <img class="image--cover" alt="이미지안뜸"
+							src="images/profileImage/${pvoTop3.mvo.profileImage}" style="width: 4rem; height: 4rem;"> ${pvoTop3.mvo.userName}<br></a>
 							
 					<%-- 작성일 : ${pvoTop3.regdate} <br> --%>
 					<!-- 이하 좋아요 개수 표시 코드 수정필요 -->
@@ -116,20 +118,23 @@
 					</div>
 					</div>
 					<!-- 좋아요 탑3 끝 -->
+					
+					
+					<div class="main-feed" style="padding: 0 1rem 2rem 2rem; margin-right: -1rem; margin-left: -1rem;">
 					<div class="row">
 					
 					<!-- 이미지 카드 한 칸 시작-->
 						<c:forEach  items="${requestScope.list}" var="pvo" varStatus="status">
 					<div class="col-md-4 ftco-animate" style="box-shadow: 0 2px 4px 0 rgb(216 216 216 / 20%), 0 16px 68px 0 rgb(216 216 216 / 40%)">
-						<a href="images/contentImage/${pvo.postImage}" class="photography-entry img image-popup d-flex justify-content-start align-items-end" title="${pvo.mvo.userName}"  content="${pvo.content }" style="background-image: url(images/contentImage/${pvo.postImage});">
+						<a href="images/contentImage/${pvo.postImage}" class="photography-entry img image-popup d-flex justify-content-start align-items-end" style="background-image: url(images/contentImage/${pvo.postImage});">
 								<div class="overlay">
 								</div>
 								</a>
-								<div class="text ml-4 mb-4" style="display: inline-flex;">
+								<div class="text ml-4 mb-4" style="display: inline-flex; align-items: center; margin-top: 0 !important;  margin-bottom: 0 !important;">
 								
-								<a href="ProfileDetailController.do?userEmail=${pvo.mvo.userEmail}"> <img alt="이미지안뜸"
+								<a href="ProfileDetailController.do?userEmail=${pvo.mvo.userEmail}"> <img class="image--cover" alt="이미지안뜸"
 							src="images/profileImage/${pvo.mvo.profileImage}"
-							style="width: 30px; height: 30px;"> ${pvo.mvo.userName}<br></a>
+							style="width: 4rem; height: 4rem;"> ${pvo.mvo.userName}<br></a>
 								<%-- <a href="ProfileDetailController.do">
 								<img alt="프로필사진" src="images/profileImage/profile_default.jpg" style="width:3rem; height:3rem;">
 								${pvo.mvo.userName}</a> --%>
@@ -172,8 +177,6 @@
 <!-- 														<img src="images/contentImage/like_down.png" height="20" width="20"> -->
 <%-- 											    </c:otherwise> --%>
 <%-- 											</c:choose> --%>
-											
-
 											<!-- 작성일 -->
 											<span style="margin-left: 8rem;">작성일 :  ${pvo.regdate}</span>
 
@@ -182,14 +185,15 @@
 										</div>
 									<!-- </span> -->
 								</div>
-								
+								<hr>
 									<!-- 내용 -->
 									<div class="content">
-									내용 : ${pvo.content}
+									${pvo.content}
 									</div>
 							</div>	
 						<!-- 사진 안에 글번호랑 좋아요 표시하려면 여기서 a태그 닫기 </a> -->
 					</c:forEach>
+				</div>
 				</div>
 			</div>			
 		</section>
