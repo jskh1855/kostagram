@@ -13,9 +13,7 @@
   --%>
   
   <form action="UploadServlet" method="post" enctype="multipart/form-data">
-        file: <input type="file" name="postImage"><br>
+        file: <input type="file" name="postImage" readonly="readonly"><br>
         content: <input type="text" name="content"><br>
         <input type="submit" value="포스팅 업로드!">
  </form>
- 
-test test
