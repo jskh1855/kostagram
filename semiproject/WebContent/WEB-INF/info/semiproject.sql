@@ -44,6 +44,7 @@ insert into k_member(user_email,user_name,user_password, profile_image) values('
 insert into k_member(user_email,user_name,user_password, profile_image) values('345@gmail','박','345', 'profile_default.jpg');
 insert into k_member(user_email,user_name,user_password) values('456@gmail','정','456');
 
+delete from k_member;
 insert into k_likes(no,user_email) values(1,'123@gmail');
 insert into k_likes(no,user_email) values(1,'234@gmail');
 insert into k_likes(no,user_email) values(1,'345@gmail');
