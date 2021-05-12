@@ -47,7 +47,7 @@
 							
 					<%-- 작성일 : ${pvoTop3.regdate} <br> --%>
 					<!-- 이하 좋아요 개수 표시 코드 수정필요 -->
-					<c:set var="contains2" value="0" />
+									<c:set var="contains2" value="0" />
 										<c:forEach var="email2" items="${requestScope.list2}">
 										  <c:if test="${email2 eq pvoTop3.no}">
 										    <c:set var="contains2" value="1" />
@@ -69,7 +69,7 @@
 
 <%-- 											<button  onclick="myFunction(${pvo.no})">Click me</button> --%>
 											<div id="likeBoolean${pvoTop3.no }" style="margin-left: -20px;">${contains2 }</div>
-											<c:set var="count2" value="${pvo3.likeCount}" />
+											<c:set var="count2" value="${pvoTop3.likeCount}" />
 <%-- 											좋아요 개수 : <div id="likeCount${pvo.no }"> ${pvo.likeCount}</div><br> --%>
 											<div id="likeCount${pvoTop3.no }"  style="margin-left: 20px;"> ${count2}</div>
 										</div>
