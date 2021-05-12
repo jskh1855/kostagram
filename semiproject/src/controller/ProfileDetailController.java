@@ -34,10 +34,3 @@ public class ProfileDetailController implements Controller {
 		return "/template/layout.jsp";
 	}
 }
-
-
-
-
-
-
-
