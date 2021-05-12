@@ -132,9 +132,8 @@
 <%-- 											</c:choose> --%>
 											
 
-											${status.index}
 											<!-- 작성일 -->
-											${pvo.content}
+											내용: ${pvo.content}
 											<!-- 내용 -->
 
 										</div>
