@@ -8,6 +8,9 @@
 	function updatePost() {
 			document.updateForm.submit();
 	}
+	function withdrawPost() {
+		document.withdrawForm.submit();
+}
 	function deletePost() {
 		if (confirm("게시글을 삭제하시겠습니까?")) {
 			//location.href='DeletePostController.do?no='+no;
@@ -47,11 +50,11 @@
 				<button type="button" class="btn" onclick="updatePost()">수정</button>
 			</td>
 			<td colspan="5" class="btnArea">
-				<form name="updateForm"
+				<form name="withdrawForm"
 					action="${pageContext.request.contextPath}/LeaveController.do" method="post">
 					<input type="hidden" name="userEmail" value="${requestScope.vo.userEmail}">
 				</form>
-				<button type="button" class="btn" onclick="updatePost()">탈퇴</button>
+				<button type="button" class="btn" onclick="withdrawPost()">탈퇴</button>
 			</td>
 		</tr>
 		</c:if>
