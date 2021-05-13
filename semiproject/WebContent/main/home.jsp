@@ -23,39 +23,19 @@
 
     
 <!--     </head> -->
-    <style>
-    like-button {
-      -webkit-text-stroke: 1px;
-      animation: .5s linear burst; 
-    }
-    @keyframes burst{
-    0%,10%{
-        transform: scale(1);
-        opacity: .5;
-        color:lavender;
-    }
-    45%{
-        transform: scale(.2) rotate(30deg);
-        opacity: .75;
-    }
-    50%{
-        transform: scale(2) rotate(-37.5deg);
-        opacity: 1;
-        color: red;
-        text-shadow: 2px 2px 6px rgba(235, 9, 9, 0.5);
-    }
-    90%,95%{
-        transform: scale(1) rotate(10deg);
-        text-shadow: none;
-    }
-    100% {
-        transform: rotate(-2.5deg);
-    }
-
-  }
- 
+<style>
+#section {
+  width: 500px;
+  height: 400px;
+  word-wrap: break-word;
 }
-    </style>
+
+.moretext {
+  display: none;
+}
+
+
+</style>
 			<section class="ftco-section-3">
 				<div class="photography">
 				
@@ -124,14 +104,13 @@
 					<div class="row">
 					
 					<!-- 이미지 카드 한 칸 시작-->
-						<c:forEach  items="${requestScope.list}" var="pvo" varStatus="status">
+					<c:forEach  items="${requestScope.list}" var="pvo" varStatus="status">
 					<div class="col-md-4 ftco-animate" style="box-shadow: 0 2px 4px 0 rgb(216 216 216 / 20%), 0 16px 68px 0 rgb(216 216 216 / 40%)">
 						<a href="images/contentImage/${pvo.postImage}" class="photography-entry img image-popup d-flex justify-content-start align-items-end" style="background-image: url(images/contentImage/${pvo.postImage});">
 								<div class="overlay">
 								</div>
 								</a>
 								<div class="text ml-4 mb-4" style="display: inline-flex; align-items: center; margin-top: 0 !important;  margin-bottom: 0 !important;">
-								
 								<a href="ProfileDetailController.do?userEmail=${pvo.mvo.userEmail}"> <img class="image--cover" alt="이미지안뜸"
 							src="images/profileImage/${pvo.mvo.profileImage}"
 							style="width: 4rem; height: 4rem;"> ${pvo.mvo.userName}<br></a>
@@ -187,9 +166,34 @@
 								</div>
 								<hr>
 									<!-- 내용 -->
-									<div class="content">
+									<div class="post-content">
 									${pvo.content}
 									</div>
+									<%-- <main>
+									  <h2>CSS Expand/Collapse Section</h2>
+									  <input id="toggle" type="checkbox" checked>
+									  <label for="toggle">
+									    <div class="control to-center">
+									      <div class="line"></div>
+									    </div>
+									  </label>
+									  <div id="expand">
+									    <section>
+									      <p>${pvo.content}
+									    </section>
+									  </div>
+									
+									</main> --%>
+									<!-- <div id="section">
+									  <div class="article">
+									    <p>Bacon ipsum dolor amet sirloin jowl turducken pork loin pig pork belly, chuck cupim tongue beef doner tri-tip pancetta spare ribs porchetta. 
+									    </p>
+									    <p class="moretext">
+									      Brisket ball tip cow sirloin. Chuck porchetta kielbasa pork chop doner sirloin, bacon beef brisket ball tip short ribs. 
+									    </p>
+									  </div>
+									  <a class="moreless-button" href="#">Read more</a>
+									</div> -->
 							</div>	
 						<!-- 사진 안에 글번호랑 좋아요 표시하려면 여기서 a태그 닫기 </a> -->
 					</c:forEach>
@@ -218,11 +222,11 @@ $(".area-desc").click(function() {
 function startAjax(no){	
 	xhr=new XMLHttpRequest();//Ajax 통신을 위한 자바스크립트 객체 
 	//no1 = no;
-	const resultElement2 = document.getElementById('likeBoolean'+no);
+	const list = document.getElementsByClassName('likeBoolean'+no);
 	myFunction(no);
-	  
+	console.log(list)
 	  // 현재 화면에 표시된 값
-	 let like2 = resultElement2.innerText;
+	 let like2 = list[0].innerText;
 	 like2 = parseInt(like2);
 	//alert(xhr);
 	//XMLHttpRequest의 속성에 callback 함수를 바인딩
@@ -230,6 +234,7 @@ function startAjax(no){
 	//서버가 응답할 때 callback 함수를 실행하기 위한 코드이다 
 	//xhr.onreadystatechange=callback; 
 //		//서버로 요청 
+	console.log(like2)
 	xhr.open("GET","LikesCountServlet?no="+no+"&like="+like2);
 	xhr.send(null); //post 방식일때 form data 명시 
 }
@@ -283,33 +288,21 @@ function callback(){
 // 			  document.getElementsByClassName('img'+no).src = "images/contentImage/like_up.png";
 // 		  }
 	}
-$(document).ready(function() {
-	$('.simple-ajax-popup-align-top').magnificPopup({
-		type: 'ajax',
-		alignTop: true,
-		overflowY: 'scroll' // as we know that popup content is tall we set scroll overflow by default to avoid jump
+
+	// The function toggles more (hidden) text when the user clicks on "Read more". The IF ELSE statement ensures that the text 'read more' and 'read less' changes interchangeably when clicked on.
+	$('.moreless-button').click(function() {
+	  $('.moretext').slideToggle();
+	  if ($('.moreless-button').text() == "Read more") {
+	    $(this).text("Read less")
+	  } else {
+	    $(this).text("Read more")
+	  }
 	});
-	$('.simple-ajax-popup').magnificPopup({
-		type: 'ajax'
-	});
-	$('.popup-gallery').magnificPopup({
-		delegate: 'a',
-		type: 'image',
-		tLoading: 'Loading image #%curr%...',
-		mainClass: 'mfp-img-mobile',
-		gallery: {
-			enabled: true,
-			navigateByImgClick: true,
-			preload: [0,1] // Will preload 0 - before current, and 1 after the current image
-		},
-		image: {
-			tError: '<a href="%url%">The image #%curr%</a> could not be loaded.',
-			titleSrc: function(item) {
-				return item.el.attr('title') + item.el.attr('content') +  '<small>by Marsel Van Oosten</small>';
-			}
-		}
-	});
-});
+	
+	$('.control').on('click',function(){
+		  $(this).toggleClass('active');
+		  console.log('yo');
+		});
 </script>
   <script src="js/jquery.min.js"></script>
   <script src="js/jquery-migrate-3.0.1.min.js"></script>
