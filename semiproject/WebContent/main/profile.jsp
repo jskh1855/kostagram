@@ -1,6 +1,14 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8" %>
     <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>    
+    
+<script type="text/javascript">
+function deletePost() {
+    if (confirm("게시글을 삭제하시겠습니까?")) {
+       document.forms["deleteForm"].submit();
+    }	
+</script>
+
 
 <style>
 .item-wrap{
@@ -104,16 +112,18 @@ margin-top
 		<!-- 내 프로필 출력 끝 -->
 		
 		<!-- 개인 피드 게시물 출력 -->
+		
 		<section class="ftco-section-3">
 				<div class="photography">
 				<div>
+			
 		<div class="row">
-		
+			
 		<c:forEach items="${requestScope.list}" var="pvo" varStatus="status">
-		
-		<div class="col-md-4 ftco-animate">
+	
+		<div class="col-md-4 ftco-animate" style="box-shadow: 0 2px 4px 0 rgb(216 216 216 / 20%), 0 16px 68px 0 rgb(216 216 216 / 40%)">
 			글번호 : ${pvo.no} 
-			<%-- 자기 글에만 수정 버튼 표시하는 if문 날리나요?? -->
+			
 			<c:if test="${requestScope.vo.userEmail==sessionScope.mvo.userEmail}">
 			<tr>
 			<td colspan="5" class="btnArea">
@@ -122,7 +132,14 @@ margin-top
 					 <input type= "hidden" name= "no" value="${ pvo.no }">
 					 <input type="submit" name= "no" placeholder="삭제"> 
 				</form>-->
-				<a href= "${pageContext.request.contextPath}/DeletePostController.do?no=${pvo.no}">삭제</a>
+				<button type="button" class="btn" onclick="deletePost()">삭제</button> 
+				
+				<form name="deleteForm"
+					 method="post" action="${pageContext.request.contextPath}/DeletePostController.do?no=${pvo.no}"></form>
+					 <!-- <input type="submit" name= "no" placeholder="삭제"> -->
+				
+			<%-- 	<a href= "${pageContext.request.contextPath}/DeletePostController.do?no=${pvo.no}">삭제</a> --%>
+				
 				<!--  <button type="button" class="btn" onclick="deletePost()">삭제</button> -->
 				<!-- <form name="deleteForm"
 					 method="post" action="${pageContext.request.contextPath}/DeletePostController.do?no=${pvo.no}">
@@ -135,9 +152,12 @@ margin-top
 			<a href="images/contentImage/${pvo.postImage}"
 				class="photography-entry img image-popup d-flex justify-content-start align-items-end"
 				style="background-image: url(images/contentImage/${pvo.postImage});">
-				<div class="overlay">
-				</div>
 			</a>
+			
+			<div class="overlay">
+				</div>
+			<div class="text ml-4 mb-4" style="display: inline-flex; align-items: center; margin-top: 0 !important;  margin-bottom: 0 !important;">
+								
 			<%-- <img src="images/contentImage/${pvo.postImage}" alt="My Image"
 					width="100" height="200"><br> --%>
 			내용 : ${pvo.content}<br>
@@ -148,6 +168,7 @@ margin-top
 			<input type="hidden" id="postNum${pvo.no}" name="${pvo.no}" value="${pvo.no}"> --%>
 			<!-- 로그인유저의 <br> 좋아요 유무(0 or 1) : <span id="likeBoolean"></span><br>
 			좋아요 개수 : <span id="likeCount"></span><br> -->
+			</div>
 			</div>
 		</c:forEach>
 	
