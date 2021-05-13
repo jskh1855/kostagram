@@ -20,44 +20,72 @@
 		}
 	}
 </script>
+<style>
+	table{
+		width :1000px;
+		
+		   margin-left: auto;
+    	   margin-right: auto;
+	}
+	td{
+		  margin-left: auto;
+		
+	}
 
+	.buttonn{
+		align:right;
+		height: 40px; 
+		width: 20%; 
+	}
+
+</style>
 <!-- 내 프로필 출력 시작 -->
-	<table>
+	<table >
+	<tr>
+
+	</tr>	
 		<tr>
-			<td>이름</td>
-			<td>${requestScope.vo.userName}</td>
-		</tr>
-		<tr>
-			<td>프로필사진</td>
 			<%-- default 이미지 설정해주기 --%>
-			<td><img src="images/profileImage/${requestScope.vo.profileImage}" alt="My Image" width="200" height="200"></td>
+			<td rowspan="2" style=" padding-top:3rem;"><img style="border-radius : 50%;" src="images/profileImage/${requestScope.vo.profileImage}" alt="My Image" width="200" height="200"></td>
+			<td style="font-size:300%;" align=right>${requestScope.vo.userName}</td>
+			
+		</tr>
+	
+	<%-- 	<tr>
+			<td style="font-size:150%;"  align=right>${requestScope.vo.userEmail}</td>
+		</tr> --%>
+		<tr>
+			<td  style="font-size:150%;"  align=right>${requestScope.vo.profileContent}</td>
 		</tr>
 		<tr>
-			<td>이메일</td>
-			<td>${requestScope.vo.userEmail}</td>
-		</tr>
-		<tr>
-			<td>자기소개</td>
-			<td>${requestScope.vo.profileContent}</td>
+		<td style="align: left; padding-left: 7rem; padding-top:3rem;">게시물수 : ${requestScope.posts}</td>
 		</tr>
 	</table>
 	<c:if test="${requestScope.vo.userEmail==sessionScope.mvo.userEmail}">
-			<tr>
-			<td colspan="5" class="btnArea">
+		
+		<table>
+			<tr style="float: right;">
+			<td  class="btnArea">
 				<form name="updateForm"
 					action="${pageContext.request.contextPath}/UpdateProfileFormController.do" method="post">
 					<input type="hidden" name="userEmail" value="${requestScope.vo.userEmail}">
 				</form>
-				<button type="button" class="btn" onclick="updatePost()">수정</button>
+				
+				<button type="button" class="btn"onclick="updatePost()">수정</button>
+			
 			</td>
-			<td colspan="5" class="btnArea">
+			<td class="btnArea">
 				<form name="withdrawForm"
 					action="${pageContext.request.contextPath}/LeaveController.do" method="post">
 					<input type="hidden" name="userEmail" value="${requestScope.vo.userEmail}">
 				</form>
+			
 				<button type="button" class="btn" onclick="withdrawPost()">탈퇴</button>
+			
 			</td>
 		</tr>
+		</table>
+
 		</c:if>
 		<br><br>
 		<!-- 내 프로필 출력 끝 -->
