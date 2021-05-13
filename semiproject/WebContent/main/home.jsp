@@ -95,7 +95,7 @@
 											    <c:otherwise>
 
 														<audio id="audio${pvo.no }" src="audio/like.MP3"></audio>
-<%-- 														<audio id="audioSecond${pvo.no }" src="audio/unlike.MP3"></audio> --%>
+														<audio id="audioSecond${pvo.no }" src="audio/unlike.MP3"></audio>
 														<span><img class="img${pvoTop3.no }" src ="images/contentImage/unlike.png" width = "25" height="25" onclick="startAjax(${pvoTop3.no})"><br></span>
 
 											    </c:otherwise>
@@ -152,7 +152,7 @@
 										<div id="like-display" style="margin-left: 3rem; display:flex;">
 										<div class="area-desc" style="cursor: pointer;">
 										<audio id="audio${pvo.no }" src="audio/like.MP3"></audio>
-<%-- 										<audio id="audio2${pvo.no }" src="audio/unlike.MP3"></audio> --%>
+										<audio id="audioSecond${pvo.no }" src="audio/unlike.MP3"></audio>
 										<span>
 																					<c:choose>
 											    <c:when test="${contains eq 1}">
@@ -224,7 +224,15 @@ function startAjax(no){
 	
 	const list = document.getElementsByClassName('likeBoolean'+no);
 	 let like2 = list[0].innerText;
-	 play(no);
+	 console.log(like2);
+	 const zero = '0';
+	 if (like2 == zero){
+		 play(no);
+	 }
+	 else{
+		 played(no);
+	 }
+	 //play(no);
 	 //played(no);
 // 	 like2 = parseInt(like2);
 
@@ -255,8 +263,8 @@ function callback(){
 	}
 	
 	function played(no){
-		var audio2 = document.getElementById("audioSecond"+no);
-		audio2.play();		
+		var audios = document.getElementById("audioSecond"+no);
+		audios.play();		
 		
 	}
 	
