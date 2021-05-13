@@ -73,6 +73,7 @@
 				
 				<button type="button" class="btn"onclick="updatePost()">수정</button>
 			
+			
 			</td>
 			<td class="btnArea">
 				<form name="withdrawForm"

@@ -17,7 +17,7 @@ public class ProfileDetailController implements Controller {
 	public String execute(HttpServletRequest request, HttpServletResponse response) throws Exception {
 		HttpSession session=request.getSession(false);
 		if(session==null||session.getAttribute("mvo")==null){
-			return "redirect:index.jsp";
+			return "redirect:index.jsp"; 
 		}
 		
 		String userEmail=request.getParameter("userEmail");
