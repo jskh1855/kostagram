@@ -191,7 +191,7 @@
 								<hr>
 									<!-- 내용 -->
 									<div class="content">
-									${pvo.content}
+									<p style="color: black !important;">${pvo.content}</p>
 									</div>
 							</div>	
 						<!-- 사진 안에 글번호랑 좋아요 표시하려면 여기서 a태그 닫기 </a> -->

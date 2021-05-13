@@ -15,7 +15,7 @@
 		<form method="post"
 			action="${pageContext.request.contextPath}/RegisterController.do"
 			class="bg-light p-5 contact-form" style="width: 100%">
-				<img alt="dd" src="images/contentImage/sample5.jpg" width = "150" height="150">
+				<img alt="dd" src="images/contentImage/kosta-logo.png" width = "150" height="150">
 			<div class="form-group">
 				<input type="submit" value="회원가입?" class="btn btn-primary py-3 px-5">
 			</div>
