@@ -9,6 +9,7 @@
 			document.updateForm.submit();
 	}
 	function withdrawPost() {
+		if (confirm("회원..탈퇴하시게요??")) 
 		document.withdrawForm.submit();
 }
 	function deletePost() {
