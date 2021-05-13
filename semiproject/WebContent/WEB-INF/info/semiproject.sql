@@ -14,8 +14,7 @@ CREATE TABLE k_member(
    user_password varchar2(100) not null,
    profile_image varchar2(100) default 'profile_default.jpg',
    profile_content varchar2(100),
-   user_email_checked number(1,0) default 0,
-   user_email_hash varchar2(100)
+   user_email_checked number(1,0) default 0
 );
 
 delete from k_board;
@@ -75,20 +74,7 @@ insert into k_board(no, post_image, content, time_posted, user_email) values (k_
 insert into k_board(no, post_image, content, time_posted, user_email) values (k_seq.nextval,'image_11.jpg', '내용2', sysdate, '234@gmail');  
 insert into k_board(no, post_image, content, time_posted, user_email) values (k_seq.nextval,'image_12.jpg', '내용33', sysdate, '234@gmail');
 
------- 동은이 본문 띄우기 테스트용
--- insert into k_board(no, post_image, content, time_posted, user_email) values (k_seq.nextval,'image_12.jpg', '내용33', sysdate, '234@gmail');
--- 새 컬럼을 생성 (기존 데이터를 옮겨담을 컬럼)
--- ALTER TABLE k_board ADD COLUMN_COPY varchar2(500);
- 
--- 새 컬럼에 기존 데이터를 입력 (SET)
--- UPDATE k_board SET COLUMN_COPY = content;
- 
--- 기존 컬럼 삭제
--- ALTER TABLE k_board DROP COLUMN content;
- 
--- 새 컬럼의 이름을 기존 컬럼 이름으로 RENAME
--- ALTER TABLE k_board RENAME COLUMN COLUMN_COPY TO content;
--- select * from k_board;
+
 
 -- BoardDAO.getPostingTotalList()    
 -- 전체 리스트 출력 

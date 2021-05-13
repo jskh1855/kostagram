@@ -2,6 +2,19 @@
     pageEncoding="UTF-8" %>
     <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>    
 
+<style>
+.item-wrap{
+position:relative;
+width:600px;
+height:1800px;
+border-radius:8px;
+padding:20px;
+margin:auto;
+margin-top
+}
+</style>
+
+
 <meta charset="UTF-8">
 <title>현재 로그인한 유저정보</title>
 <script type="text/javascript">
@@ -31,11 +44,13 @@
 		  margin-left: auto;
 		
 	}
+
 	.buttonn{
 		align:right;
 		height: 40px; 
 		width: 20%; 
 	}
+
 </style>
 <!-- 내 프로필 출력 시작 -->
 	<table >

@@ -42,23 +42,27 @@ public class LikesCountServlet extends HttpServlet {
 		String email = mvo.getUserEmail();
 		String like = request.getParameter("like");
 		PrintWriter out = response.getWriter();
+		System.out.println(like);
 		
 		if (like.equals("0")) {
 			try {
-				BoardDAO.getInstance().deleteLike(no, email);
-				System.out.println("좋아요 취소  ");
-			} catch (SQLException e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
-			}			
-		}else {
-			try {
+				System.out.println("좋아요 추가 시작");
 				BoardDAO.getInstance().insertLike(no, email);
 				System.out.println("좋아요   ");
 			} catch (SQLException e) {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
-			}			
+			}	
+		
+		}else {
+			try {
+				System.out.println("좋아요 취소 시작");
+				BoardDAO.getInstance().deleteLike(no, email);
+				System.out.println("좋아요 취소  ");
+			} catch (SQLException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}	
 		}
 		
 		
