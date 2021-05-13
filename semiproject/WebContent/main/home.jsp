@@ -94,7 +94,7 @@
 													</div>
 											    </c:when>
 											    <c:otherwise>
-														  <div class="area-desc">
+														  <div class="area-desc" style="cursor: pointer;">
 														<audio id="audio${pvo.no }" src="audio/like.MP3"></audio>
 <%-- 														<audio id="audioSecond${pvo.no }" src="audio/unlike.MP3"></audio> --%>
 														<span><img class="img${pvoTop3.no }" src ="images/contentImage/unlike.png" width = "25" height="25" onclick="startAjax(${pvoTop3.no})"><br></span>
@@ -151,7 +151,7 @@
 										</c:forEach>
 										<!-- 좋아요 아이콘이랑 개수 float: right 하고픔 -->
 										<div id="like-display" style="margin-left: 3rem; display:flex;">
-										<div class="area-desc">
+										<div class="area-desc" style="cursor: pointer;">
 										<audio id="audio${pvo.no }" src="audio/like.MP3"></audio>
 <%-- 										<audio id="audio2${pvo.no }" src="audio/unlike.MP3"></audio> --%>
 										<span>
