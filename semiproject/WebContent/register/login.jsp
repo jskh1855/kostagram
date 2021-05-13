@@ -6,7 +6,7 @@
 
 
 <div class="row block-9"
-	style="margin-top: 100px; margin-bottom: 100px;">
+	style="margin-top: 100px; margin-bottom: 100px; margin-right: 250px; margin-left: 250px;">
 
 	<div class="col-md-6 d-flex"
 		style="text-align: center; margin: 0 auto;">
