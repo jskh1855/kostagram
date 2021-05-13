@@ -14,8 +14,7 @@ CREATE TABLE k_member(
    user_password varchar2(100) not null,
    profile_image varchar2(100) default 'profile_default.jpg',
    profile_content varchar2(100),
-   user_email_checked number(1,0) default 0,
-   user_email_hash varchar2(100)
+   user_email_checked number(1,0) default 0
 );
 
 delete from k_board;
