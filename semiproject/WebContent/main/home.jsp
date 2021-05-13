@@ -95,6 +95,8 @@
 											    </c:when>
 											    <c:otherwise>
 														  <div class="area-desc">
+														<audio id="audio${pvo.no }" src="audio/like.MP3"></audio>
+<%-- 														<audio id="audioSecond${pvo.no }" src="audio/unlike.MP3"></audio> --%>
 														<span><img class="img${pvoTop3.no }" src ="images/contentImage/unlike.png" width = "25" height="25" onclick="startAjax(${pvoTop3.no})"><br></span>
 														</div>
 											    </c:otherwise>
@@ -150,6 +152,8 @@
 										<!-- 좋아요 아이콘이랑 개수 float: right 하고픔 -->
 										<div id="like-display" style="margin-left: 3rem; display:flex;">
 										<div class="area-desc">
+										<audio id="audio${pvo.no }" src="audio/like.MP3"></audio>
+<%-- 										<audio id="audio2${pvo.no }" src="audio/unlike.MP3"></audio> --%>
 										<span>
 																					<c:choose>
 											    <c:when test="${contains eq 1}">
@@ -218,11 +222,11 @@ let xhr;
 function startAjax(no){	
 	xhr=new XMLHttpRequest();//Ajax 통신을 위한 자바스크립트 객체 
 	//no1 = no;
-
+	
 	const list = document.getElementsByClassName('likeBoolean'+no);
 	 let like2 = list[0].innerText;
-	 console.log(no);
-	 console.log(like2);
+	 play(no);
+	 //played(no);
 // 	 like2 = parseInt(like2);
 
 	  // 현재 화면에 표시된 값
@@ -246,19 +250,25 @@ function callback(){
 // 		document.getElementByClassName("likeCount"+no1).innerHTML = xhr.responseText;
 	}
 }
+	function play(no){
+		var audio = document.getElementById("audio"+no);
+		audio.play();
+	}
+	
+	function played(no){
+		var audio2 = document.getElementById("audioSecond"+no);
+		audio2.play();		
+		
+	}
+	
+
 	function myFunction(no){
 		  let list1 = document.getElementsByClassName('likeBoolean'+no);
 		  let list2 = document.getElementsByClassName('likeCount'+no);
 		  let list3 = document.getElementsByClassName('img'+no);
 		  const number1 = list1[0].innerText;
 		  let number2 = 0;
-		  
-
-		  
 		  for (var i = 0; i < list1.length; i++) {	  
-// 			  console.log(list1[i].innerText);
-// 			  console.log(list2[i].innerText);
-// 			  console.log(list3[i].innerText);
 		 	  if (number1 === '0'){
 				  list1[i].innerText = 1;		  
 				  number2 = parseInt(list2[i].innerText) + 1;
@@ -271,10 +281,6 @@ function callback(){
 				  list2[i].innerText = number2;
 				  list3[i].src = "images/contentImage/unlike.png";
 			  }
-		 	  
-// 			  console.log(list1[i].innerText);
-// 			  console.log(list2[i].innerText);
-// 			  console.log(list3[i].innerText);
 			}
 	}
 	
