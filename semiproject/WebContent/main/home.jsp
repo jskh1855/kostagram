@@ -86,22 +86,21 @@
 										  </c:if>
 										</c:forEach>
 					<div id="like-display" style="margin-left: 3rem; display:flex;">
+										<div class="area-desc" style="cursor: pointer;">
 											<c:choose>
 											    <c:when test="${contains2 eq 1}">
 											    <!-- <div class="area-desc" style="width: 50px; height: 50px;"> -->
-													  <div class="area-desc">
 															<span><img class="img${pvoTop3.no }" src ="images/contentImage/like.png" width = "25" height="25" onclick="startAjax(${pvoTop3.no})"><br></span>
-													</div>
 											    </c:when>
 											    <c:otherwise>
-														  <div class="area-desc" style="cursor: pointer;">
+
 														<audio id="audio${pvo.no }" src="audio/like.MP3"></audio>
 <%-- 														<audio id="audioSecond${pvo.no }" src="audio/unlike.MP3"></audio> --%>
 														<span><img class="img${pvoTop3.no }" src ="images/contentImage/unlike.png" width = "25" height="25" onclick="startAjax(${pvoTop3.no})"><br></span>
-														</div>
+
 											    </c:otherwise>
 											</c:choose>
-
+										</div>
 <%-- 										<button onclick="myFunction(${pvo.no})">Click me</button> --%>
 											<!-- 탑3 좋아요 플래그 안보이게함 -->
 											<div class="likeBoolean${pvoTop3.no }" style="display:none">${contains2}</div>
