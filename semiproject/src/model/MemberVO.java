@@ -4,7 +4,6 @@ public class MemberVO {
 	private String userName;
 	private String userPassword;
 	private String userEmail;
-	private String userEmailHash = "";
 	private int userEmailChecked;
 	private String profileImage = "";
 	private String profileContent = "내용 없음";
@@ -37,12 +36,8 @@ public class MemberVO {
 	public void setUserEmail(String userEmail) {
 		this.userEmail = userEmail;
 	}
-	public String getUserEmailHash() {
-		return userEmailHash;
-	}
-	public void setUserEmailHash(String userEmailHash) {
-		this.userEmailHash = userEmailHash;
-	}
+
+
 	public int getUserEmailChecked() {
 		return userEmailChecked;
 	}
@@ -64,7 +59,7 @@ public class MemberVO {
 	@Override
 	public String toString() {
 		return "MemberVO [userName=" + userName + ", userPassword=" + userPassword + ", userEmail=" + userEmail
-				+ ", userEmailHash=" + userEmailHash + ", userEmailChecked=" + userEmailChecked + ", profileImage="
+				+  ", userEmailChecked=" + userEmailChecked + ", profileImage="
 				+ profileImage + ", profileContent=" + profileContent + "]";
 	}
 	

@@ -233,6 +233,36 @@ public class MemberDAO {
 			    	  return false;		    	  
 			      }
 			   }
-		
+		   
+			public void deleteMemberByEmail(String email) throws SQLException {
+				Connection con = null;
+				PreparedStatement pstmt = null;
+				try {
+					con = dataSource.getConnection();
+					pstmt = con.prepareStatement("DELETE FROM k_member WHERE user_email=?");
+					pstmt.setString(1, email);
+					pstmt.executeUpdate();
+				} finally {
+					closeAll(pstmt, con);
+				}
+			}
 	
+			public int countPostsByEmail(String userEmail) throws SQLException {
+				Connection con = null;
+				PreparedStatement pstmt = null;
+				ResultSet rs = null;
+				int posts = 0;
+				try {
+					con = dataSource.getConnection();
+					pstmt = con.prepareStatement("SELECT COUNT(*) FROM k_board WHERE user_email = ?");
+					pstmt.setString(1, userEmail);
+					rs = pstmt.executeQuery();
+					if (rs.next()) {
+						posts = rs.getInt(1);
+					}
+				} finally {
+					closeAll(rs, pstmt, con);
+				}
+				return posts;
+			}
 }
