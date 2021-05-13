@@ -44,7 +44,8 @@ public class LikesCountServlet extends HttpServlet {
 		PrintWriter out = response.getWriter();
 		
 		
-		if (like.equals("1")) {
+		
+		if (like.equals("0")) {
 			try {
 				BoardDAO.getInstance().deleteLike(no, email);
 				System.out.println("좋아요 취소  ");

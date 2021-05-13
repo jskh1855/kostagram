@@ -38,10 +38,10 @@ CREATE TABLE k_likes(
 
 select no,count(*) AS likes from k_likes group by no;
 
-insert into k_member(user_email,user_name,user_password, profile_image) values('123@gmail','김','123', 'profile_default.jpg');
-insert into k_member(user_email,user_name,user_password, profile_image) values('234@gmail','이','234', 'profile_default.jpg');
-insert into k_member(user_email,user_name,user_password, profile_image) values('345@gmail','박','345', 'profile_default.jpg');
-insert into k_member(user_email,user_name,user_password) values('456@gmail','정','456');
+insert into k_member(user_email,user_name,user_password, profile_image,user_email_checked) values('123@gmail','김','123', 'profile_default.jpg',1);
+insert into k_member(user_email,user_name,user_password, profile_image,user_email_checked) values('234@gmail','이','234', 'profile_default.jpg',1);
+insert into k_member(user_email,user_name,user_password, profile_image,user_email_checked) values('345@gmail','박','345', 'profile_default.jpg',1);
+insert into k_member(user_email,user_name,user_password,user_email_checked) values('456@gmail','정','456',1);
 
 delete from k_member;
 insert into k_likes(no,user_email) values(1,'123@gmail');

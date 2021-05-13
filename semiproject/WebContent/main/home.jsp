@@ -218,11 +218,11 @@ $(".area-desc").click(function() {
 function startAjax(no){	
 	xhr=new XMLHttpRequest();//Ajax 통신을 위한 자바스크립트 객체 
 	//no1 = no;
-	const resultElement2 = document.getElementById('likeBoolean'+no);
+	const list = document.getElementsByClassName('likeBoolean'+no);
 	myFunction(no);
-	  
+	console.log(list)
 	  // 현재 화면에 표시된 값
-	 let like2 = resultElement2.innerText;
+	 let like2 = list[0].innerText;
 	 like2 = parseInt(like2);
 	//alert(xhr);
 	//XMLHttpRequest의 속성에 callback 함수를 바인딩
@@ -230,6 +230,7 @@ function startAjax(no){
 	//서버가 응답할 때 callback 함수를 실행하기 위한 코드이다 
 	//xhr.onreadystatechange=callback; 
 //		//서버로 요청 
+	console.log(like2)
 	xhr.open("GET","LikesCountServlet?no="+no+"&like="+like2);
 	xhr.send(null); //post 방식일때 form data 명시 
 }
