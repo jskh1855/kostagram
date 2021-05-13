@@ -46,6 +46,13 @@
 				</form>
 				<button type="button" class="btn" onclick="updatePost()">수정</button>
 			</td>
+			<td colspan="5" class="btnArea">
+				<form name="updateForm"
+					action="${pageContext.request.contextPath}/LeaveController.do" method="post">
+					<input type="hidden" name="userEmail" value="${requestScope.vo.userEmail}">
+				</form>
+				<button type="button" class="btn" onclick="updatePost()">탈퇴</button>
+			</td>
 		</tr>
 		</c:if>
 		<br><br>

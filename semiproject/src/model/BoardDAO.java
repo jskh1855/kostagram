@@ -398,5 +398,34 @@ public class BoardDAO {
 			closeAll(pstmt, con);
 		}
 	}
+	public void deleteLikeByEmail(String email) throws SQLException {
+		Connection con = null;
+		PreparedStatement pstmt = null;
+		try {
+			con = getConnection();
+			pstmt = con.prepareStatement("DELETE FROM k_likes WHERE user_email=?");
+			pstmt.setString(1, email);
+			pstmt.executeUpdate();
+		} finally {
+			closeAll(pstmt, con);
+		}
+	}
+	
+	public void deletePostByEmail(String email) throws SQLException {
+		Connection con = null;
+		PreparedStatement pstmt = null;
+		try {
+			con = getConnection();
+			pstmt = con.prepareStatement("DELETE FROM k_board WHERE user_email=?");
+			pstmt.setString(1, email);
+			pstmt.executeUpdate();
+		} finally {
+			closeAll(pstmt, con);
+		}
+	}
+	
+
+	
+	
 
 }

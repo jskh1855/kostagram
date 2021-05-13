@@ -233,6 +233,18 @@ public class MemberDAO {
 			    	  return false;		    	  
 			      }
 			   }
-		
+		   
+			public void deleteMemberByEmail(String email) throws SQLException {
+				Connection con = null;
+				PreparedStatement pstmt = null;
+				try {
+					con = dataSource.getConnection();
+					pstmt = con.prepareStatement("DELETE FROM k_member WHERE user_email=?");
+					pstmt.setString(1, email);
+					pstmt.executeUpdate();
+				} finally {
+					closeAll(pstmt, con);
+				}
+			}
 	
 }
