@@ -8,9 +8,6 @@
 	function updatePost() {
 			document.updateForm.submit();
 	}
-	function withdrawPost() {
-		document.withdrawForm.submit();
-}
 	function deletePost() {
 		if (confirm("게시글을 삭제하시겠습니까?")) {
 			//location.href='DeletePostController.do?no='+no;
@@ -50,11 +47,11 @@
 				<button type="button" class="btn" onclick="updatePost()">수정</button>
 			</td>
 			<td colspan="5" class="btnArea">
-				<form name="withdrawForm"
+				<form name="updateForm"
 					action="${pageContext.request.contextPath}/LeaveController.do" method="post">
 					<input type="hidden" name="userEmail" value="${requestScope.vo.userEmail}">
 				</form>
-				<button type="button" class="btn" onclick="withdrawPost()">탈퇴</button>
+				<button type="button" class="btn" onclick="updatePost()">탈퇴</button>
 			</td>
 		</tr>
 		</c:if>
@@ -71,21 +68,21 @@
 		
 		<div class="col-md-4 ftco-animate">
 			글번호 : ${pvo.no} 
-			<%-- 자기 글에만 수정 버튼 표시하는 if문 날리나요?? -->
+			<!-- 	자기 글에만 수정 버튼 표시하는 if문 날리나요?? --> 
 			<c:if test="${requestScope.vo.userEmail==sessionScope.mvo.userEmail}">
 			<tr>
 			<td colspan="5" class="btnArea">
-				<!--  <form name="deleteForm"
+<%-- 				 <form name="deleteForm"
 					 method="post" action="${pageContext.request.contextPath}/DeletePostController.do?no=${pvo.no}">
 					 <input type= "hidden" name= "no" value="${ pvo.no }">
-					 <input type="submit" name= "no" placeholder="삭제"> 
-				</form>-->
-				<a href= "${pageContext.request.contextPath}/DeletePostController.do?no=${pvo.no}">삭제</a>
-				<!--  <button type="button" class="btn" onclick="deletePost()">삭제</button> -->
-				<!-- <form name="deleteForm"
+					 <input type="submit" name= "no" placeholder="DELETE"> 
+				</form> --%>
+<%-- 				<a href= "${pageContext.request.contextPath}/DeletePostController.do?no=${pvo.no}">삭제3</a> --%>
+				 <button type="button" class="btn" onclick="deletePost()">삭제</button>
+			<%-- 	<form name="deleteForm"
 					 method="post" action="${pageContext.request.contextPath}/DeletePostController.do?no=${pvo.no}">
-					 <input type="submit" name= "no" placeholder="삭제"> 
-				</form> -->
+					 <input type="submit" name= "no" placeholder="삭제2"> 
+				</form> --%>
 			</td>
 			</tr>
 			</c:if>
@@ -96,11 +93,12 @@
 				<div class="overlay">
 				</div>
 			</a>
-			<%-- <img src="images/contentImage/${pvo.postImage}" alt="My Image"
+		<%-- 	<img src="images/contentImage/${pvo.postImage}" alt="My Image"
 					width="100" height="200"><br> --%>
-			내용 : ${pvo.content}<br>
-			<%-- 작성자 : ${pvo.mvo.userName}<br> --%>
+			내용 : ${pvo.content} <br>
 			작성일 : ${pvo.regdate} <br>
+			<%-- 작성자 : ${pvo.mvo.userName}<br>
+			
 			
 			<%-- <input type="button" value="좋아요~" onclick="startAjax(${pvo.no})"><br>
 			<input type="hidden" id="postNum${pvo.no}" name="${pvo.no}" value="${pvo.no}"> --%>
