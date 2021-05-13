@@ -102,7 +102,7 @@
 
 <%-- 										<button onclick="myFunction(${pvo.no})">Click me</button> --%>
 											<!-- 탑3 좋아요 플래그 안보이게함 -->
-											<div class="likeBoolean${pvoTop3.no }" style="display: none;"></div>
+											<div class="likeBoolean${pvoTop3.no }" style="display:none">${contains2}</div>
 											<c:set var="count2" value="${pvoTop3.likeCount}" />
 <%-- 											좋아요 개수 : <div id="likeCount${pvo.no }"> ${pvo.likeCount}</div><br> --%>
 											<div class="likeCount${pvoTop3.no }"  style="margin-left: 0.5rem;"> ${count2}</div>
@@ -149,22 +149,22 @@
 										</c:forEach>
 										<!-- 좋아요 아이콘이랑 개수 float: right 하고픔 -->
 										<div id="like-display" style="margin-left: 3rem; display:flex;">
+										<div class="area-desc">
+										<span>
 																					<c:choose>
 											    <c:when test="${contains eq 1}">
-													  <div class="area-desc">
-															<span><img class="img${pvo.no }" src ="images/contentImage/like.png" width = "25" height="25" onclick="startAjax(${pvo.no})"><br></span>
-													</div>
+															<img class="img${pvo.no }" src ="images/contentImage/like.png" width = "25" height="25" onclick="startAjax(${pvo.no})"><br>
 											    </c:when>
 											    <c:otherwise>
-														  <div class="area-desc">
-														<span><img class="img${pvo.no }" src ="images/contentImage/unlike.png" width = "25" height="25" onclick="startAjax(${pvo.no})"><br></span>
-														</div>
+														<img class="img${pvo.no }" src ="images/contentImage/unlike.png" width = "25" height="25" onclick="startAjax(${pvo.no})"><br>
+
 											    </c:otherwise>
 											</c:choose>
-
+											</span>
+											</div>
 <%-- 											<button  onclick="myFunction(${pvo.no})">Click me</button> --%>
 											<!-- 좋아요 flag 안보이게함 -->
-											<div class="likeBoolean${pvo.no }" style="display: none;">${contains }</div>
+											<div class="likeBoolean${pvo.no }"style="display:none">${contains }</div>
 											
 											<c:set var="count" value="${pvo.likeCount}" />
 <%-- 											좋아요 개수 : <div id="likeCount${pvo.no }"> ${pvo.likeCount}</div><br> --%>
@@ -200,39 +200,42 @@
 	
 <script type="text/javascript">
 let xhr;
-$(document).ready(function(){
+// $(document).ready(function(){
 	
-$(".area-desc").click(function() { 
-	var arrowImage = $(this).children("span").children("img"); 
-	arrowImage.attr("src", function(index, attr){
-		if (attr.match('up')) {		
-				return attr.replace("up", "down");
+// $(".area-desc").click(function() { 
+// 	var arrowImage = $(this).children("span").children("img"); 
+// 	arrowImage.attr("src", function(index, attr){
+// 		if (attr.match('up')) {		
+// 				return attr.replace("up", "down");
 				
-			} else {
-				return attr.replace("down", "up");
-			} 
-		}); 
-	});
-})
+// 			} else {
+// 				return attr.replace("down", "up");
+// 			} 
+// 		}); 
+// 	});
+// })
 //let no1;
 function startAjax(no){	
 	xhr=new XMLHttpRequest();//Ajax 통신을 위한 자바스크립트 객체 
 	//no1 = no;
+
 	const list = document.getElementsByClassName('likeBoolean'+no);
-	myFunction(no);
-	console.log(list)
-	  // 현재 화면에 표시된 값
 	 let like2 = list[0].innerText;
-	 like2 = parseInt(like2);
+	 console.log(no);
+	 console.log(like2);
+// 	 like2 = parseInt(like2);
+
+	  // 현재 화면에 표시된 값
+
 	//alert(xhr);
 	//XMLHttpRequest의 속성에 callback 함수를 바인딩
 	//readystate가 변화될 때 callback 함수가 실행 
 	//서버가 응답할 때 callback 함수를 실행하기 위한 코드이다 
 	//xhr.onreadystatechange=callback; 
 //		//서버로 요청 
-	console.log(like2)
 	xhr.open("GET","LikesCountServlet?no="+no+"&like="+like2);
 	xhr.send(null); //post 방식일때 form data 명시 
+	myFunction(no);
 }
 function callback(){
 	//console.log(xhr.readyState)
@@ -240,50 +243,41 @@ function callback(){
 	// status 가 200 : 정상 수행 
 	if(xhr.readyState==4&&xhr.status==200){
 //			alert(xhr.responseText); // : 서버의 응답데이터를 저장하는 변수 
-		document.getElementByClassName("likeCount"+no1).innerHTML = xhr.responseText;
+// 		document.getElementByClassName("likeCount"+no1).innerHTML = xhr.responseText;
 	}
 }
 	function myFunction(no){
-		  const list1 = document.getElementsByClassName('likeBoolean'+no);
-		  const list2 = document.getElementsByClassName('likeCount'+no);
-		  const list3 = document.getElementsByClassName('img'+no);
-		  let number1 = 0;
+		  let list1 = document.getElementsByClassName('likeBoolean'+no);
+		  let list2 = document.getElementsByClassName('likeCount'+no);
+		  let list3 = document.getElementsByClassName('img'+no);
+		  const number1 = list1[0].innerText;
 		  let number2 = 0;
-// 		  let number1 = resultElement1.innerText;
-// 		  let number2 = resultElement2.innerText;
-		  for (var i = 0; i < list1.length; i++) {
-	 		  number1 = list1[i].innerText;
-//	 		  let number2 = resultElement2.innerText;			  
-		 	  if (number1 === '1'){
-				  list1[i].innerText = 0;		  
-				  number2 = parseInt(list2[i].innerText) - 1;
-				  list2[i].innerText = number2;
-				  list3[i].src = "images/contentImage/unlike.png";
-			  }else{			  
-// 					  resultElement1.innerText = 1;
-// 				  number2 = parseInt(number2) + 1;
-// 				  resultElement2.innerText = number2;
-// 				  document.getElementsByClassName('img'+no).src = "images/contentImage/like_up.png";
+		  
+
+		  
+		  for (var i = 0; i < list1.length; i++) {	  
+// 			  console.log(list1[i].innerText);
+// 			  console.log(list2[i].innerText);
+// 			  console.log(list3[i].innerText);
+		 	  if (number1 === '0'){
 				  list1[i].innerText = 1;		  
 				  number2 = parseInt(list2[i].innerText) + 1;
 				  list2[i].innerText = number2;
 				  list3[i].src = "images/contentImage/like.png";
+
+			  }else{			  
+				  list1[i].innerText = 0;		  
+				  number2 = parseInt(list2[i].innerText) - 1;
+				  list2[i].innerText = number2;
+				  list3[i].src = "images/contentImage/unlike.png";
 			  }
+		 	  
+// 			  console.log(list1[i].innerText);
+// 			  console.log(list2[i].innerText);
+// 			  console.log(list3[i].innerText);
 			}
-		  
-		  
-// 		  if (number1 === '1'){
-// 			  resultElement1.innerText = 0;		  
-// 			  number2 = parseInt(number2) - 1;
-// 			  resultElement2.innerText = number2;
-// 			  document.getElementsByClassName('img'+no).src = "images/contentImage/like_down.png";
-// 		  }else{			  
-// 				  resultElement1.innerText = 1;
-// 			  number2 = parseInt(number2) + 1;
-// 			  resultElement2.innerText = number2;
-// 			  document.getElementsByClassName('img'+no).src = "images/contentImage/like_up.png";
-// 		  }
 	}
+	
 $(document).ready(function() {
 	$('.simple-ajax-popup-align-top').magnificPopup({
 		type: 'ajax',
