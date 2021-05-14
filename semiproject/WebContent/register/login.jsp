@@ -15,7 +15,7 @@
 		<form method="post"
 			action="${pageContext.request.contextPath}/RegisterController.do"
 			class="bg-light p-5 contact-form" style="width: 100%">
-				<img alt="dd" src="images/contentImage/sample5.jpg" width = "150" height="150">
+				<img alt="dd" src="images/contentImage/kosta-logo.png" width = "150" height="150">
 			<div class="form-group">
 				<input type="submit" value="회원가입?" class="btn btn-primary py-3 px-5">
 			</div>
@@ -26,11 +26,11 @@
 		<form method="post"
 			action="${pageContext.request.contextPath}/LoginController.do"
 			class="bg-light p-5 contact-form" style="width: 100%">
-			<div class="form-group">
+			<div class="form-group" style="margin-bottom: 2.3rem">
 				<input type="text" name="userEmail" class="form-control"
 					placeholder="이메일">
 			</div>
-			<div class="form-group">
+			<div class="form-group" style="margin-bottom: 2.3rem">
 				<input type="password" name="userPassword" class="form-control"
 					placeholder="패스워드">
 			</div>

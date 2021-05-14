@@ -124,7 +124,7 @@
 
      <button type="submit" class="btn btn-primary py-3 px-5" >수정</button>  
 
-     <button type="reset" class="btn btn-primary py-3 px-5" >취소</button>   
+     <a href="${pageContext.request.contextPath}/index.jsp" class="btn btn-primary py-3 px-5">취소</a> 
 
     </div>  
 

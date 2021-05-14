@@ -7,8 +7,7 @@
 	<div class="container">
 		<!-- 		<div class="row no-gutters slider-text justify-content-center align-items-center"> -->
 		<div class="row justify-content-center mb-2 pb-3">
-			<a href="${pageContext.request.contextPath}/index.jsp"><img
-				src="pics/logo.png" width="250rem" height="100rem"></a>
+			<a href="${pageContext.request.contextPath}/index.jsp"><img src="pics/logo.png" width="250rem" height="100rem"></a>
 		</div>
 		<c:choose>
 			<c:when test="${sessionScope.mvo==null}">
