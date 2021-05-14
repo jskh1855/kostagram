@@ -22,7 +22,7 @@ margin-top
 			document.updateForm.submit();
 	}
 	function withdrawPost() {
-		if (confirm("회원..탈퇴하시게요??")) 
+		if (confirm("회원 탈퇴하시겠습니까?")) 
 		document.withdrawForm.submit();
 }
 	function deletePost(no) {
@@ -184,10 +184,11 @@ margin-top
 			<td colspan="5" class="btnArea" >
 			 <form name="deleteForm${pvo.no}"
 					 method="post" action="${pageContext.request.contextPath}/DeletePostController.do?no=${pvo.no}">
-					 <input type= "hidden" name= "no" value="${ pvo.no }
-<!-- 					 <input type="submit" name= "no" placeholder="삭제">  -->
-				</form>
-			<button type="button" class="btn" onclick="deletePost(${pvo.no})">삭제</button> 
+					 <input type= "hidden" name= "no" value="${ pvo.no }"> 
+<!--  					 <input type="submit" name= "no" placeholder="삭제">-->
+			<button type="button" class="btn" onclick="deletePost(${pvo.no})" style="margin-left: 25rem;">삭제</button> 
+			</form>
+			
 				
 				<form name="deleteForm"
 					 method="post" action="${pageContext.request.contextPath}/DeletePostController.do?no=${pvo.no}"></form>
