@@ -22,7 +22,7 @@ delete from k_board;
 CREATE TABLE k_board(
    no number primary key,
    post_image varchar2(100) not null,
-   content varchar2(100),
+   content varchar2(500),
    time_posted date,
    user_email varchar2(100) not null, 
    constraint user_email_fk foreign key (user_email) references k_member(user_email)
@@ -35,6 +35,9 @@ CREATE TABLE k_likes(
    constraint user_email_fk1 foreign key (user_email) references k_member(user_email),
    constraint no_fk foreign key (no) references k_board(no)
 );
+
+-- post content varchar2(500)으로 수정 by 동은
+-- ALTER TABLE k_board MODIFY content VARCHAR2(500);
 
 select no,count(*) AS likes from k_likes group by no;
 
