@@ -52,11 +52,7 @@ margin-top
 		  margin-left: auto;
 		
 	}
-	.buttonn{
-		align:right;
-		height: 40px; 
-		width: 20%; 
-	}
+
 </style>
 <!-- 내 프로필 출력 시작 -->
 	<table >
@@ -64,7 +60,7 @@ margin-top
 	</tr>	
 		<tr>
 			<%-- default 이미지 설정해주기 --%>
-			<td rowspan="2" style=" padding-top:3rem;"><img style="border-radius : 50%;" src="images/profileImage/${requestScope.vo.profileImage}" alt="My Image" width="200" height="200"></td>
+			<td rowspan="2" style=" padding-top:3rem;"><img style="border-radius : 50%;" src="images/profileImage/${requestScope.vo.profileImage}" alt="My Image" width="300" height="300"></td>
 			<td style="font-size:300%;" align=right>${requestScope.vo.userName}</td>
 			
 		</tr>
