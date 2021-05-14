@@ -87,8 +87,8 @@
 			<label for="profileImage">프로필 이미지</label>
 
 			<input type="file" class="form-control w200" id="profileImage" 
-
-				name="profileImage" placeholder="프로필이미지" value="${requestScope.mvo.profileImage}" />
+${vo.profileImage}
+				name="profileImage" placeholder="${vo.profileImage}" value="${vo.profileImage}" />
 
 		</div>
 

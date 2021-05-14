@@ -33,10 +33,10 @@ margin-top
 		if (confirm("회원..탈퇴하시게요??")) 
 		document.withdrawForm.submit();
 }
-	function deletePost() {
+	function deletePost(no) {
 		if (confirm("게시글을 삭제하시겠습니까?")) {
 			//location.href='DeletePostController.do?no='+no;
-			document.forms["deleteForm"].submit();
+			document.forms["deleteForm"+no].submit();
 			//document.deleteForm.submit();
 		}
 	}
@@ -120,12 +120,12 @@ margin-top
 			<c:if test="${requestScope.vo.userEmail==sessionScope.mvo.userEmail}">
 			<tr>
 			<td colspan="5" class="btnArea">
-				<!--  <form name="deleteForm"
+			 <form name="deleteForm${pvo.no}"
 					 method="post" action="${pageContext.request.contextPath}/DeletePostController.do?no=${pvo.no}">
 					 <input type= "hidden" name= "no" value="${ pvo.no }">
-					 <input type="submit" name= "no" placeholder="삭제"> 
-				</form>-->
-				<button type="button" class="btn" onclick="deletePost()">삭제</button> 
+<!-- 					 <input type="submit" name= "no" placeholder="삭제">  -->
+				</form>
+			<button type="button" class="btn" onclick="deletePost(${pvo.no})">삭제</button> 
 				
 				<form name="deleteForm"
 					 method="post" action="${pageContext.request.contextPath}/DeletePostController.do?no=${pvo.no}"></form>
