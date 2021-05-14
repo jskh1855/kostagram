@@ -136,7 +136,7 @@ margin-top
 			<td  style="font-size:150%;"  align=right>${requestScope.vo.profileContent}</td>
 		</tr>
 		<tr>
-		<td style="align: left; padding-left: 7rem; padding-top:3rem;">게시물수 : ${requestScope.posts}</td>
+		<td style="align: left; padding-left: 10rem; padding-top:3rem;">게시물수 : ${requestScope.posts}</td>
 		</tr>
 	</table>
 	<c:if test="${requestScope.vo.userEmail==sessionScope.mvo.userEmail}">
