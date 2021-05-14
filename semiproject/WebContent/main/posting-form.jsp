@@ -9,7 +9,8 @@
 	
  --%>
  
- 
+ <%-- <form method="post" action="${pageContext.request.contextPath}/WritePostController.do" >
+  --%>
 <div class="row block-9" style="margin-top:100px; margin-bottom:100px;">
   <div class="col-md-6 d-flex" style="text-align: center; margin: 0 auto;">
   	<form action="UploadServlet" method="post" lass="bg-light p-5 contact-form" style="width: 100%" enctype="multipart/form-data">

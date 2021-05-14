@@ -20,10 +20,10 @@
 	              <h2 class="ftco-heading-2">Sponsors</h2>
 	              <a href = "https://www.facebook.com" class = "img" ><img src = "pics/facebook.png"  width="100" height="100"></a>
 	              <a href = "https://www.google.com" class = "img" ><img src = "pics/google.png"  width="100" height="100"></a>
-	              <a href = "https://www.netflix.com" class = "img" ><img src = "pics/netflix.png"  width="100" height="100"></a>
+<!-- 	              <a href = "https://www.netflix.com" class = "img" ><img src = "pics/netflix.png"  width="100" height="100"></a> -->
 	              <a href = "https://www.apple.com" class = "img" ><img src = "pics/apple.png"  width="100" height="100"></a>
 	              <a href = "https://www.naver.com" class = "img" ><img src = "pics/naver.jpg"  width="100" height="100"></a>
-	              <a href = "https://www.starbucks.com" class = "img" ><img src = "pics/starbucks.jpg"  width="100" height="100"></a>
+<!-- 	              <a href = "https://www.starbucks.com" class = "img" ><img src = "pics/starbucks.jpg"  width="100" height="100"></a> -->
 	              
 	            </div>
 	          </div>

@@ -59,7 +59,7 @@
 			<section class="ftco-section-3">
 				<div class="photography">
 				
-				<div class="top3" style="background-color: rgb(204 183 143 / 20%); padding: 0 1rem 2rem 2rem; margin-right: -1rem; margin-left: -1rem;">
+				<div class="top3" style="background-color: rgb(204 183 143 / 45%); padding: 0 1rem 2rem 2rem; margin-right: -1rem; margin-left: -1rem;">
 					<div class="row justify-content-center mb-2 pb-3">
 					<h2 class="text ml-4 mb-4" style="text-align: center; margin: 2rem -2rem 0 0 !important;"><strong>HOT 게시물</strong></h2>
 					</div>
@@ -94,7 +94,7 @@
 											    </c:when>
 											    <c:otherwise>
 
-														<audio id="audio${pvo.no }" src="audio/like.MP3"></audio>
+														<audio id="audio${pvo.no }" src="audio/like.m4a"></audio>
 														<audio id="audioSecond${pvo.no }" src="audio/unlike.MP3"></audio>
 														<span><img class="img${pvoTop3.no }" src ="images/contentImage/unlike.png" width = "25" height="25" onclick="startAjax(${pvoTop3.no})"><br></span>
 
@@ -151,7 +151,7 @@
 										<!-- 좋아요 아이콘이랑 개수 float: right 하고픔 -->
 										<div id="like-display" style="margin-left: 3rem; display:flex;">
 										<div class="area-desc" style="cursor: pointer;">
-										<audio id="audio${pvo.no }" src="audio/like.MP3"></audio>
+										<audio id="audio${pvo.no }" src="audio/like.m4a"></audio>
 										<audio id="audioSecond${pvo.no }" src="audio/unlike.MP3"></audio>
 										<span>
 																					<c:choose>
