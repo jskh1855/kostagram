@@ -13,9 +13,13 @@ public class LoginController implements Controller{
 	public String execute(HttpServletRequest request, HttpServletResponse response) throws Exception {
 		String userEmail = request.getParameter("userEmail");
 		String userPassword = request.getParameter("userPassword");
-		if (MemberDAO.getInstance().isChecked(userEmail) == false) {
+		if (MemberDAO.getInstance().isExist(userEmail) == false) {
+			return "redirect:noEmail.jsp";
+		}
+		else if (MemberDAO.getInstance().isChecked(userEmail) == false) {
 			return "redirect:emailFail.jsp";
 		}
+		
 		MemberVO mvo = MemberDAO.getInstance().login(userEmail, userPassword);
 		
 		if (mvo != null) {
