@@ -25,14 +25,15 @@ CREATE TABLE k_board(
    content varchar2(500),
    time_posted date,
    user_email varchar2(100) not null, 
-   constraint user_email_fk foreign key (user_email) references k_member(user_email)
+   constraint user_email_fk foreign key (user_email) references k_member(user_email) on delete cascade
 );
+ALTER TABLE k_board add CONSTRAINT (email_fk) foreign key (user_email) references k_member(user_email) on delete cascade
 
 CREATE TABLE k_likes(
    no number,
    user_email varchar2(100) not null,
    constraint like_pk primary key(no,user_email),
-   constraint user_email_fk1 foreign key (user_email) references k_member(user_email),
+   constraint user_email_fk1 foreign key (user_email) references k_member(user_email) on delete cascade,
    constraint no_fk foreign key (no) references k_board(no)
 );
 
@@ -46,7 +47,7 @@ insert into k_member(user_email,user_name,user_password, profile_image,user_emai
 insert into k_member(user_email,user_name,user_password, profile_image,user_email_checked) values('345@gmail','박','345', 'profile_default.jpg',1);
 insert into k_member(user_email,user_name,user_password,user_email_checked) values('456@gmail','정','456',1);
 
-delete from k_member;
+delete from k_member where user_email='123@gmail';
 insert into k_likes(no,user_email) values(1,'123@gmail');
 insert into k_likes(no,user_email) values(1,'234@gmail');
 insert into k_likes(no,user_email) values(1,'345@gmail');
@@ -76,6 +77,10 @@ insert into k_board(no, post_image, content, time_posted, user_email) values (k_
 insert into k_board(no, post_image, content, time_posted, user_email) values (k_seq.nextval,'image_10.jpg', '내용1', sysdate, '234@gmail');  
 insert into k_board(no, post_image, content, time_posted, user_email) values (k_seq.nextval,'image_11.jpg', '내용2', sysdate, '234@gmail');  
 insert into k_board(no, post_image, content, time_posted, user_email) values (k_seq.nextval,'image_12.jpg', '내용33', sysdate, '234@gmail');
+
+insert into k_board(no, post_image, content, time_posted, user_email) values (1,'image_10.jpg', '내용1', sysdate, '123@gmail');  
+insert into k_board(no, post_image, content, time_posted, user_email) values (2,'image_11.jpg', '내용2', sysdate, '234@gmail');  
+insert into k_board(no, post_image, content, time_posted, user_email) values (3,'image_12.jpg', '내용33', sysdate, '345@gmail');
 
 
 
