@@ -21,11 +21,6 @@ public class ProfileDetailController implements Controller {
 		}
 		
 		String userEmail=request.getParameter("userEmail");
-		System.out.println(userEmail);
-		/*
-		 * MemberVO mvo = (MemberVO)session.getAttribute("mvo"); String
-		 * user_email=mvo.getUserEmail();
-		 */
 		int posts = MemberDAO.getInstance().countPostsByEmail(userEmail);	
 		MemberVO vo = MemberDAO.getInstance().getProfileTotalList(userEmail);	
 		request.setAttribute("posts", posts);
