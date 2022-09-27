@@ -26,18 +26,12 @@ public class FrontControllerServlet extends HttpServlet {
      */
     public void handleRequest(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
     	try {
-    	/////// step1 ///////
     	String uri=request.getRequestURI();
-    	//System.out.println(uri);//  /webstudy18-ex/MockController.do
     	String contextPath=request.getContextPath();
-    	//System.out.println(contextPath);// /webstudy18-ex
     	String command=uri.substring(contextPath.length()+1,uri.length()-".do".length());
     	//System.out.println(command);// MockController
-    	/////// step2 /////////
     	Controller controller=HandlerMapping.getInstance().create(command);
-    	////// step3 /////////
     	String view=controller.execute(request, response);
-    	///// step4 /////////
     	if(view.startsWith("redirect:")) {
     		response.sendRedirect(view.substring("redirect:".length()));
     	}else {
@@ -50,7 +44,6 @@ public class FrontControllerServlet extends HttpServlet {
 		}
     }
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		//System.out.println("front get");
 		handleRequest(request, response);
 	}
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
