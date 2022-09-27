@@ -15,10 +15,6 @@ public class LeaveController implements Controller{
 		request.setCharacterEncoding("UTF-8");
 		HttpSession session=request.getSession(false);
 		MemberVO mvo = (MemberVO)session.getAttribute("mvo");
-		/*
-		 * BoardDAO.getInstance().deleteLikeByEmail(mvo.getUserEmail());
-		 * BoardDAO.getInstance().deletePostByEmail(mvo.getUserEmail());
-		 */
 		MemberDAO.getInstance().deleteMemberByEmail(mvo.getUserEmail());
 		session.setAttribute("mvo", null);	
 		
